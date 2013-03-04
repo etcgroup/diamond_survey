@@ -13,9 +13,7 @@ include("utils/UI.php");
             .sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: .9em; height:18px }
             .sortable li span { position: absolute; margin-left: -1.3em; }
             .help{ font-size: .9em }
-            body{
-                background-color:#aaaaaa;
-            }
+            body{ background-color:#aaaaaa; }
             .box{
                 width:50%;
                 margin:auto;
@@ -25,24 +23,22 @@ include("utils/UI.php");
                 margin-top:30px;
                 background-color:#ffffff;
             }
-            .q-box{ position:relative;width:500px; margin:auto; background-color:#dddddd; padding:10px; border:solid 1px #333333; margin-bottom:5px;} 
-            p,h1,.likert{
-               padding-left:50px;
-               padding-right:50px;
-            }
-            .likert-extreme{
-                font-size:.5em;
-                color:#aaaaaa;
-            }
+            .q-box{
+                position:relative;
+                width:500px;
+                margin:auto;
+                background-color:#dddddd;
+                padding:10px;
+                border:solid 1px #333333;
+                margin-bottom:5px;
+            } 
+            p, h1, .likert{ padding-left:50px;  padding-right:50px; }
+            .likert-extreme{ font-size:.5em; color:#aaaaaa; }
             .q-box-left{ float:left; width:75%; }
             .q-box-right{ float:right; width:20%; }
             .q-box-clear{ clear:both;padding-top:15px; }
-            .img{
-                text-align: center;
-            }
-            .img img{
-                border:solid 1px #aaaaaa;
-            }
+            .img{ text-align: center; }
+            .img img{ border:solid 1px #aaaaaa; }
         </style>
         <script>
             $(function() {
