@@ -229,11 +229,10 @@ include("utils/UI.php");
                 <?php
                 echo UI::likert("reflection", array(
                     "difficulty" => " The chart was difficult to learn",
-                    "The chart was easy to use once I figured it out",
-                    "The chart was easy to use once I figured it out",
-                    "I was able to use the chart to guide me through the scenarios",
-                    "The chart was helpful for understanding classifier bugs",
-                    "The chart was useful for understanding shifts in the dataset"
+                    "learned" => "The chart was easy to use once I figured it out",
+                    "usable" => "I was able to use the chart to guide me through the scenarios",
+                    "bugs" => "The chart was helpful for understanding classifier bugs",
+                    "data_shifts" => "The chart was useful for understanding shifts in the dataset"
                         ), 5, "disagree", "agree");
                 ?>
 
