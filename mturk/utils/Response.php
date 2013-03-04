@@ -10,9 +10,9 @@ class Type {
 
 class Response {
 
+    public $id;
+    public $token;
     private $queries;
-    private $id;
-    private $token;
 
     public function __construct($id = null, $queries = null) {
         $this->queries = isset($queries) ? $queries : new Queries("db.ini");
@@ -24,7 +24,6 @@ class Response {
                     break;
                 }
             }
-            echo $this->queries->get_token($this->id);
         } else {
             $this->id = $id;
             $this->token = $this->queries->get_token($id);
@@ -32,19 +31,6 @@ class Response {
     }
 
     public function finish() {
-        $this->queries->touch_response($this->id);
-    }
-
-    public function answer($question, $type, $answer) {
-        if ($type == Type::$open_ended) {
-            
-        } else if ($type == Type::$likert) {
-            
-        } else if ($type == Type::$checkboxes) {
-            $this->queries->add_checkbox($question, );
-        } else {
-            return
-        }
         $this->queries->touch_response($this->id);
     }
 

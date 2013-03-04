@@ -8,7 +8,6 @@ class Queries {
     public function __construct($ini_file)
     {
         $parsed = parse_ini_file($ini_file);
-        var_dump($parsed);
         $this->db = new mysqli($parsed['host'], $parsed['username'], $parsed['password'], $parsed['database']);
         $this->queries = new stdClass();
         $this->queries->new_response = $this->db->prepare("INSERT INTO responses (mturk_token, started) VALUES (?, NOW())");
