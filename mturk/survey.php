@@ -38,7 +38,8 @@ include("utils/UI.php");
             .q-box-right{ float:right; width:20%; }
             .q-box-clear{ clear:both;padding-top:15px; }
             .img{ text-align: center; }
-            .img img{ border:solid 1px #aaaaaa; }
+            .img img{ border: solid 1px #aaaaaa; }
+            textarea{ width: 500px; height: 200px; }
         </style>
         <script>
             $(function() {
@@ -189,13 +190,13 @@ include("utils/UI.php");
                         <div class="help ui-state-highlight" help="possible-problems">help</div>
                     </div>
                     <div class="q-box-clear">
-                        <textarea style="width:500px;height:200px;"></textarea>
+                        <textarea name="open-ended-2-problems"></textarea>
                     </div>
                 </div>
                 <div class="q-box">
                     <div class="q-box-clear">
                         <u>Question 4.</u> What should the researchers do next to improve the performance?<br>
-                        <textarea style="width:500px;height:200px;"></textarea>
+                        <textarea name="open-ended-2-solutions"></textarea>
                     </div>
                 </div>
             </div>
@@ -212,13 +213,13 @@ include("utils/UI.php");
                         <div class="help ui-state-highlight" help="possible-problems">help</div>
                     </div>
                     <div class="q-box-clear">
-                        <textarea style="width:500px;height:200px;"></textarea>
+                        <textarea name="open-ended-3-problems"></textarea>
                     </div>
                 </div>
                 <div class="q-box">
                     <div class="q-box-clear">
                         <u>Question 6.</u> What should the researchers do next to improve the performance?<br>
-                        <textarea style="width:500px;height:200px;"></textarea>
+                        <textarea name="open-ended-3-solutions"></textarea>
                     </div>
                 </div>
             </div>
@@ -252,8 +253,8 @@ include("utils/UI.php");
 
                 <div class="q-box">
                     <div class="q-box-clear">
-                        <u>Question 6.</u> What should the researchers do next to improve the performance?<br>
-                        <textarea style="width:500px;height:200px;"></textarea>
+                        <u>Question 9.</u> Is there anything you'd like to comment on regarding the chart or this survey?<br>
+                        <textarea name="open-ended-comments"></textarea>
                     </div>
                 </div>
             </div>
