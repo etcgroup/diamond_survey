@@ -42,31 +42,59 @@ include("utils/UI.php");
             textarea{ width: 500px; height: 200px; }
         </style>
         <script>
+            var time_start = new Date();
+            var time_example = 0;
+            var time_help = 0;
+            var timer = 0;
+            function submitTime() {
+                curr_time = new Date();
+                var total_time = document.getElementById("total-survey-time");
+                var survey_time = Math.round((curr_time - window.time_start) / 1000);
+                total_time.value = survey_time;
+
+                var total_help = document.getElementById("total-help-time");
+                total_help.value = window.time_help;
+
+                var total_example = document.getElementById("total-example-time");
+                total_example.value = window.time_example;
+
+            }
             $(function() {
-                $( ".sortable" ).sortable({
-                    stop: function(){
-                        ids = $(this).sortable( "toArray" );
+                $(".sortable").sortable({
+                    stop: function() {
+                        ids = $(this).sortable("toArray");
                         var list = "";
-                        for (var i in ids){
-                            list += $("#"+ids[i]).attr('value')+" ";
+                        for (var i in ids) {
+                            list += $("#" + ids[i]).attr('value') + " ";
                         }
-                        $("#"+$(this).attr('id')+"-input").attr('value', list);
+                        $("#" + $(this).attr('id') + "-input").attr('value', list);
                     }
                 });
-                $( "#sortable" ).disableSelection();
+                $("#sortable").disableSelection();
                 $(".help").button({
                     icons: {
                         primary: "ui-icon-help"
                     }
-                }).click(function( event ) {
-                    $("#"+$(this).attr("help")).modal();
+                }).click(function(event) {
+                    $("#" + $(this).attr("help")).modal();
                 });
-                $('.modal').on('hidden', function () {
+                $('#possible-problems').on('hidden', function() {
                     // stop timer, record, restart timer
                     // keep stuff in hidden inputs
+                    window.time_help += Math.round(((new Date() - timer) / 1000));
+                    window.timer = 0;
                 });
-                $('.modal').on('shown', function () {
+                $('#example').on('hidden', function() {
+                    // stop timer, record, restart timer
+                    // keep stuff in hidden inputs
+                    window.time_example += Math.round(((new Date() - window.timer) / 1000));
+                    window.timer = 0;
+                    
+                });
+               
+                $('.modal').on('shown', function() {
                     // start timer
+                    window.timer = new Date();
                 });
             });
         </script>
@@ -313,10 +341,12 @@ include("utils/UI.php");
             </div>
 
             <div class="box">
-                <input type="hidden" name="total-help-time" id="total-help-time">
+                <input type="hidden" name="total-help-time" id="total-help-time" value="">
+                <input type="hidden" name="total-example-time" id="total-example-time" value="">
+                <input type="hidden" name="total-survey-time" id="total-survey-time" value="">
                 <input type="hidden" name="problems" id="problems-input">
                 <input type="hidden" name="solutions" id="solutions-input">
-                <input type="submit" >
+                <input type="submit" onclick="submitTime()">
             </div>
         </form>
     </body>
