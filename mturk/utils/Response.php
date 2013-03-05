@@ -3,7 +3,7 @@
 class Type {
 
     public $open_ended = "open_ended";
-    public $likert     = "likert";
+    public $likert = "likert";
     public $checkboxes = "checkboxes";
 
 }
@@ -13,6 +13,8 @@ class Response {
     public $id;
     public $token;
     private $queries;
+
+    private static $open_ended = "open-ended";
 
     public function __construct($id = null, $queries = null) {
         $this->queries = isset($queries) ? $queries : new Queries("db.ini");
@@ -27,6 +29,27 @@ class Response {
         } else {
             $this->id = $id;
             $this->token = $this->queries->get_token($id);
+        }
+    }
+
+    public function answer_question($question, $answer) {
+        if (substr($question, 0, strlen(self::$open_ended)) == self::$open_ended) {
+            $parts = explode("-",$question);
+            $scenario = null;
+            if(is_numeric($parts[2])){
+                $scenario = (int)$parts[2];
+            }
+            $new_question = "";
+            for($i=($scenario==null?2:3); $i<count($parts); $i++){
+                if($new_question!="")
+                    $new_question.="-";
+                $new_question .= $parts[$i];
+            }
+            $this->queries->add_open_ended($this->id, $question, $scenario, $answer);
+        } else if (is_numeric($answer)) {
+            $this->queries->add_likert($this->id, $question, (int) $answer);
+        } else {
+            $this->queries->add_sort($this->id, $question, $answer);
         }
     }
 
