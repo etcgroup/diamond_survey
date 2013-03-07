@@ -23,7 +23,7 @@ class UI {
     public static function orderlist($name, $options) {
         $out = "<ul class='sortable' id='$name'>";
         foreach($options as $id=>$option){
-            $out.="<li class='ui-state-default' id='$name-$id' value='$id'>";
+            $out.="<li class='sort-option' id='$name-$id' value='$id'>";
             $out.="<span class='ui-icon ui-icon-arrowthick-2-n-s'></span>";
             $out.=$option."</li>\n";
         }

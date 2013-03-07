@@ -54,11 +54,22 @@ include("utils/UI.php");
                 background-color: #ffffff;
                 border:solid 1px #333333;
             }
+            .sort-option{
+                -moz-border-radius: 5px;
+                border-radius: 5px;
+                padding:2px;
+                font-size:.9em;
+                border:solid 1px #333333;
+                width:100%;
+                background-color:#eeeeee;
+            }
             .question{
                 background-color:#aa0000;
                 color:#ffffff;
-                padding-left:2px;
-                padding-right:3px;
+                padding:3px;
+            }
+            .modal-body{
+                font-size:.8em;
             }
         </style>
         <script>
