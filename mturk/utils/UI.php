@@ -6,7 +6,7 @@ class UI {
         $out = "<table class='likert'>";
         foreach ($questions as $q => $question) {
             $out .= "<tr>";
-            $out .= "<td>" . $question . "</td>";
+            $out .= "<td class='likert-option'>" . $question . "</td>";
             if (isset($min))
                 $out .= "<td class='likert-extreme'>$min</td>";
             for ($i = 1; $i <= $scale; $i++) {

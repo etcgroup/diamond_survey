@@ -12,41 +12,48 @@ include("utils/UI.php");
             .sortable { list-style-type: none; margin: 0; padding: 0; width: 500px; }
             .sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: .9em; height:18px }
             .sortable li span { position: absolute; margin-left: -1.3em; }
-            .help{ font-size: .9em }
+            .help{
+                font-size: .9em;
+                float: right;
+            }
+            .submit{
+                width:20%;
+                height:40px;
+                margin-left:40%;
+                margin-right:40%;
+            }
+            h1{ text-align: center; }
             body{ background-color:#aaaaaa; }
             .box{
-                width:50%;
+                width:600px;
                 margin:auto;
-                padding-top:20px;
-                padding-bottom:20px;
+                padding:50px; 
                 margin-bottom:30px;
                 margin-top:30px;
                 background-color:#ffffff;
             }
-            .q-box{
-                position:relative;
-                width:500px;
-                margin:auto;
-                background-color:#dddddd;
-                padding:10px;
-                border:solid 1px #333333;
-                margin-bottom:5px;
-            } 
-            p, h1, .likert{ padding-left:50px;  padding-right:50px; }
-            .likert-extreme{ font-size:.5em; color:#aaaaaa; }
-            .q-box-left{ float:left; width:75%; }
-            .q-box-right{ float:right; width:20%; }
-            .q-box-clear{ clear:both;padding-top:15px; }
+            .likert-extreme{ font-size:.7em; color:#aaaaaa; }
+            .likert-option{ font-size:.9em; padding-right:5px; }
             .img{ text-align: center; }
             .img img{ border: solid 1px #aaaaaa; }
-            textarea{ width: 500px; height: 200px; }
+            textarea{ width: 100%; height: 200px; }
             #key{
+                -moz-border-radius: 15px;
+                border-radius: 15px;
+                padding:20px;
+                padding-right:50px;
                 position: fixed;
                 bottom: 10px;
-                right: 0px;
+                right: -30px;
                 z-index: -1;
                 background-color: #ffffff;
-                border:solid 1px #aaaaaa;
+                border:solid 1px #333333;
+            }
+            .question{
+                background-color:#aa0000;
+                color:#ffffff;
+                padding-left:2px;
+                padding-right:3px;
             }
         </style>
         <script>
@@ -121,6 +128,7 @@ include("utils/UI.php");
                 });
             });
         </script>
+        <title>Survey</title>
     </head>
     <body>
         <div id="key">
@@ -128,34 +136,25 @@ include("utils/UI.php");
             <p class="img"><img src="http://anachrobot.us/storage/example_1_legend.PNG" alt="" height=300 /></p>
         </div>
         <div class="box">
-            <div class="q-box">
-                <div class="q-box-left">
-                    A group of scientists is studying emotion expression in text. They
-                    want to identify what emotion is expressed in individual text chat
-                    messages, but in a chat log data too big to be labeled manually,
-                    so: 
-                </div>
-                <div class="q-box-right">
-                    <div class="help ui-state-highlight" help="example">example</div>
-                </div>
-                <div class="q-box-clear">
-                    <ol>
-                        <li>Scientists manually apply labels, such as "anger" and
-                            "frustration" to 15% of the chat log messages.
-                            This is the <strong>historic data</strong>.</li>
-                        <li>An automated classifier is created based on the <em>historic
-                                data</em>, and used to label the remaining 85% of the chat
-                            log messages. This is the
-                            <strong>automatic data</strong>.</li>
-                        <li>For validity, scientists look at 100 random messages that have
-                            been <em>both</em> manually and automatically labeled. They
-                            check whether they agree or disagree with a particular label
-                            that was applied. This is the
-                            <strong>current data</strong>.</li>
-                    </ol>
-                </div>
-            </div>
-
+            <div class="help ui-state-highlight" help="example" style="margin-top:20px">example</div>
+            <p>A group of scientists is studying emotion expression in text. They
+                want to identify what emotion is expressed in individual text chat
+                messages, but in a chat log data too big to be labeled manually,
+                so:</p>
+            <ol>
+                <li>Scientists manually apply labels, such as "anger" and
+                    "frustration" to 15% of the chat log messages.
+                    This is the <strong>historic data</strong>.</li>
+                <li>An automated classifier is created based on the <em>historic
+                        data</em>, and used to label the remaining 85% of the chat
+                    log messages. This is the
+                    <strong>automatic data</strong>.</li>
+                <li>For validity, scientists look at 100 random messages that have
+                    been <em>both</em> manually and automatically labeled. They
+                    check whether they agree or disagree with a particular label
+                    that was applied. This is the
+                    <strong>current data</strong>.</li>
+            </ol>
             <p>I designed a chart to help these scientists
                 consider all at once the 3 labels that have been applied to 100
                 messages - historic, automatic, and current.
@@ -188,97 +187,72 @@ include("utils/UI.php");
         <form method="post" action="submit.php">
             <div class="box">
                 <h1>Scenario 1</h1>
+                <p>Consider the chart below:</p>
                 <p class="img"><img src="http://anachrobot.us/storage/scenario1.PNG" alt="" width="300"/></p>
 
-                <div class="q-box">
-                    <div class="q-box-left">
-                        <u>Question 1.</u> What problem(s) exist in this scenario? Using
-                        dragging and dropping, <strong>sort from most problematic (at
-                            the top) to least problematic (at the bottom).</strong> 
-                    </div>
-                    <div class="q-box-right">
-                        <div class="help ui-state-highlight" help="possible-problems">help</div>
-                    </div>
-                    <div class="q-box-clear">
-                        <?php
-                        echo UI::orderlist("problems", array(
-                            "FP" => "False positives",
-                            "FN" => "False positives",
-                            "FTPN" => "False true-positives/negatives",
-                            "nrw" => "Code definition narrows",
-                            "exp" => "Code definition expands",
-                            "shft" => "Code definition shifts"
-                        ));
-                        ?>
-                    </div>
-                </div>
+                <div class="help ui-state-highlight" help="possible-problems">help</div>
+                <p><span class="question">Question 1.</span> What problem(s) exist
+                    in this scenario? Using dragging and dropping, <strong>sort
+                        from most problematic (at the top) to least problematic
+                        (at the bottom).</strong></p> 
+                <?php
+                echo UI::orderlist("problems", array(
+                    "FP" => "False positives",
+                    "FN" => "False positives",
+                    "FTPN" => "False true-positives/negatives",
+                    "nrw" => "Code definition narrows",
+                    "exp" => "Code definition expands",
+                    "shft" => "Code definition shifts"
+                ));
+                ?>
 
-                <div class="q-box">
-                    <div class="q-box-clear">
-                        <u>Question 2.</u> How could the scientists improve the data?
-                        <strong>Sort from most effective (at the top) to least
-                            effective (at the bottom).</strong> 
-                    </div>
-                    <div class="q-box-clear">
-                        <?php
-                        echo UI::orderlist("solutions", array(
-                            "ml" => "Find/build a better automatic classifier",
-                            "cdr" => "Find more reliable people to label data",
-                            "lbl" => "Go through the labels and refine definitions"
-                        ));
-                        ?>
-                    </div>
-                </div>
+                <p><span class="question">Question 2.</span> How could the scientists improve the data?
+                    <strong>Sort from most effective (at the top) to least
+                        effective (at the bottom).</strong></p>
+                <?php
+                echo UI::orderlist("solutions", array(
+                    "ml" => "Find/build a better automatic classifier",
+                    "cdr" => "Find more reliable people to label data",
+                    "lbl" => "Go through the labels and refine definitions"
+                ));
+                ?>
             </div>
 
             <div class="box">
                 <h1>Scenario 2</h1>
+                <p>Consider the chart below:</p>
                 <p class="img"><img src="http://anachrobot.us/storage/scenario2.PNG" alt="" wdith="300" /></p>
-                <div class="q-box">
-                    <div class="q-box-left">
-                        <u>Question 3.</u> Describe what problems exist in this scenario.
-                        Hint: refer to the options presented in question 1!
-                    </div>
-                    <div class="q-box-right">
-                        <div class="help ui-state-highlight" help="possible-problems">help</div>
-                    </div>
-                    <div class="q-box-clear">
-                        <textarea name="open-ended-2-problems"></textarea>
-                    </div>
-                </div>
-                <div class="q-box">
-                    <div class="q-box-clear">
-                        <u>Question 4.</u> What should the researchers do next to improve the performance?<br>
-                        <textarea name="open-ended-2-solutions"></textarea>
-                    </div>
-                </div>
+                <div class="help ui-state-highlight" help="possible-problems">help</div>
+                <p><span class="question">Question 3.</span> Describe what
+                    problems exist in this scenario.
+                    Hint: refer to the options presented in question 1!</span></p>
+                <textarea name="open-ended-2-problems"></textarea>
+                <p><span class="question">Question 4.</span> What should the
+                    researchers do next to improve the performance?</p>
+                <textarea name="open-ended-2-solutions"></textarea>
             </div>
             <div class="box">
                 <h1>Scenario 3</h1>
+                <p>Consider the chart below:</p>
                 <p class="img"><img src="http://anachrobot.us/storage/scenario3.PNG" alt="" width="500 "/></p>
-                <p>Here, two charts are shown side by side: the first one is from December 2012, and the second - from January 2013. <strong>Think about what changed in that time to have this kind of impact on the different kinds of data.</strong>
-                <div class="q-box">
-                    <div class="q-box-left">
-                        <u>Question 5.</u> Describe what problems exist in this scenario.
-                        Hint: refer to the options presented in question 1!
-                    </div>
-                    <div class="q-box-right">
-                        <div class="help ui-state-highlight" help="possible-problems">help</div>
-                    </div>
-                    <div class="q-box-clear">
-                        <textarea name="open-ended-3-problems"></textarea>
-                    </div>
-                </div>
-                <div class="q-box">
-                    <div class="q-box-clear">
-                        <u>Question 6.</u> What should the researchers do next to improve the performance?<br>
-                        <textarea name="open-ended-3-solutions"></textarea>
-                    </div>
-                </div>
+                <div class="help ui-state-highlight" help="possible-problems">help</div>
+                <p>Here, two charts are shown side by side: the first one is
+                    from December 2012, and the second - from January 2013.
+                    <strong>Think about what changed in that time to have this
+                        kind of impact on the different kinds of data.</strong>
+                <p><span class="question">Question 5.</span> Describe what problems exist in this scenario.
+                Hint: refer to the options presented in question 1!</p>
+                <textarea name="open-ended-3-problems"></textarea>
+                <p><span class="question">Question 6.</span> What should the researchers do next
+                to improve the performance?</p>
+                <textarea name="open-ended-3-solutions"></textarea>
             </div>
 
             <div class="box">
-                <p><u>Question 7.</u> On a scale from 1 (Disagree) to 5 (Agree) please rate the following statements:</span></p>
+
+                <p><span class="question">Question 7.</span> On a scale from 1 (Disagree) to 5 (Agree)
+                    please rate the following statements:</p>
+
                 <?php
                 echo UI::likert("reflection", array(
                     "difficulty" => " The chart was difficult to learn",
@@ -289,7 +263,9 @@ include("utils/UI.php");
                         ), 5, "disagree", "agree");
                 ?>
 
-                <p><u>Question 8.</u> On a scale from 1 (unfamiliar) to 7 (expert) please rate your familiarity with the following topics:</p>
+                <p><span class="question">Question 8.</span> On a scale from 1
+                    (unfamiliar) to 7 (expert) please rate your familiarity with
+                    the following topics:</p>
 
                 <?php
                 echo UI::likert("familiarity", array(
@@ -303,12 +279,9 @@ include("utils/UI.php");
                 ?>
 
 
-                <div class="q-box">
-                    <div class="q-box-clear">
-                        <u>Question 9.</u> Is there anything you'd like to comment on regarding the chart or this survey?<br>
-                        <textarea name="open-ended-comments"></textarea>
-                    </div>
-                </div>
+                <p><span class="question">Question 9.</span> Is there anything
+                    you'd like to comment on regarding the chart or this survey?</span></p>
+                <textarea name="open-ended-comments"></textarea>
             </div>
 
 
@@ -373,7 +346,7 @@ include("utils/UI.php");
                 <input type="hidden" name="total-survey-time" id="total-survey-time" value="">
                 <input type="hidden" name="problems" id="problems-input">
                 <input type="hidden" name="solutions" id="solutions-input">
-                <input type="submit" onclick="submitTime()">
+                <input type="submit" onclick="submitTime()" class="submit">
             </div>
         </form>
     </body>
