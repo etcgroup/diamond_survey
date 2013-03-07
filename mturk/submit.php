@@ -5,11 +5,11 @@ include("utils/Response.php");
 
 $response = new Response();
 
-echo "<h1>" . $response->token . "</h1>";
-
-echo "<pre>";
+echo "<p><strong><em>Thank you for takign our survey! Please copy this line ";
+echo "into mechanical turk to get credit for this HIT:</em></strong></p>";
+echo "<h3>" . $response->token . "</h3>";
 
 foreach ($_POST as $question => $answer) {
-    echo $response->answer_question($question, $answer)."\n";
+    $response->answer_question($question, $answer)."\n";
 }
 ?>

@@ -13,12 +13,8 @@ class Queries {
         $this->queries->update_response_time = $this->db->prepare("UPDATE responses SET modified=NOW() WHERE id=?");
         $this->queries->get_token = $this->db->prepare("SELECT mturk_token FROM responses WHERE id=?");
         $this->queries->add_sort_item = $this->db->prepare("INSERT INTO sorted (response_id, question, item, `order`) VALUES (?,?,?,?)");
-        if (!$this->queries->add_sort_item)
-        {
-            echo "Prepare originals failed: (" . $this->db->errno . ") " . $this->db->error;
-        }
-    
         $this->queries->add_likert = $this->db->prepare("INSERT INTO likert (response_id, question, answer) VALUES (?,?,?)");
+        $this->queries->add_time = $this->db->prepare("INSERT INTO time (response_id, action, `time`) VALUES (?,?,?)");
         $this->queries->add_open_ended = $this->db->prepare("INSERT INTO open_ended (response_id, question, scenario, answer) VALUES (?,?,?,?)");
     }       
 
@@ -46,7 +42,12 @@ class Queries {
 
     public function add_likert($id, $question, $rating) {
         $this->queries->add_likert->bind_param('isi', $id, $question, $rating);
-        echo $this->queries->add_likert->execute();
+        $this->queries->add_likert->execute();
+    }
+
+    public function add_time($id, $action, $time) {
+        $this->queries->add_time->bind_param('isi', $id, $action, $time);
+        $this->queries->add_time->execute();
     }
 
     public function add_sort($id, $question, $list) {
@@ -56,13 +57,13 @@ class Queries {
                 continue;
             }
             $this->queries->add_sort_item->bind_param('issi', $id, $question, $item, $order);
-            echo $this->queries->add_sort_item->execute();
+            $this->queries->add_sort_item->execute();
         }
     }
 
     public function add_open_ended($id, $question, $scenario, $answer) {
         $this->queries->add_open_ended->bind_param('isis', $id, $question, $scenario, $answer);
-        echo $this->queries->add_open_ended->execute();
+        $this->queries->add_open_ended->execute();
     }
 
 }

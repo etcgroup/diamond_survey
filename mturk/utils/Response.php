@@ -1,13 +1,5 @@
 <?php
 
-class Type {
-
-    public $open_ended = "open_ended";
-    public $likert = "likert";
-    public $checkboxes = "checkboxes";
-
-}
-
 class Response {
 
     public $id;
@@ -15,6 +7,7 @@ class Response {
     private $queries;
 
     private static $open_ended = "open-ended";
+    private static $time = "-time";
 
     public function __construct($id = null, $queries = null) {
         $this->queries = isset($queries) ? $queries : new Queries("db.ini");
@@ -46,6 +39,8 @@ class Response {
                 $new_question .= $parts[$i];
             }
             $this->queries->add_open_ended($this->id, $question, $scenario, $answer);
+        } else if (substr($question, strlen($question)-strlen(self::$time)) == self::$time){
+            $this->queries->add_time($this->id, substr($question,0,strlen($question)-strlen(self::$time)), (int) $answer);
         } else if (is_numeric($answer)) {
             $this->queries->add_likert($this->id, $question, (int) $answer);
         } else {
