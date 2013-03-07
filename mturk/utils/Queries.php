@@ -7,7 +7,7 @@ class Queries {
 
     public function __construct($ini_file) {
         $parsed = parse_ini_file($ini_file);
-        $this->db = new mysqli($parsed['host'], $parsed['username'], $parsed['password'], $parsed['database']);
+        $this->db = new mysqli($parsed['host'], $parsed['username'], $parsed['password'], $parsed['database'], $parsed['port']);
         $this->queries = new stdClass();
         $this->queries->new_response = $this->db->prepare("INSERT INTO responses (mturk_token, started) VALUES (?, NOW())");
         $this->queries->update_response_time = $this->db->prepare("UPDATE responses SET modified=NOW() WHERE id=?");
