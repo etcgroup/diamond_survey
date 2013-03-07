@@ -163,8 +163,7 @@ include("utils/UI.php");
             <p>I designed a chart to help these scientists
                 analyze the historic, automatic, and current data all at once for
                 codes that have been applied to 100 messages.
-                <strong>Please help me improve this chart</strong> by stepping into
-                the shoes of these scientists, and using it to analyze how well
+                <strong>Please help me improve this chart</strong> by using it to analyze how well
                 the labeling process (outlined above) is working!</p>
 
             <p>For example, consider these two charts:</p>
