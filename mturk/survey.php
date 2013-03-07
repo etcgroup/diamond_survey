@@ -16,6 +16,11 @@ include("utils/UI.php");
                 font-size: .9em;
                 float: right;
             }
+            .example-table td{
+                vertical-align: top;
+                border-top:solid 1px #cccccc;
+                padding-right:4px;
+            }
             .submit{
                 width:20%;
                 height:40px;
@@ -138,8 +143,8 @@ include("utils/UI.php");
         <div class="box">
             <div class="help ui-state-highlight" help="example" style="margin-top:20px">example</div>
             <p>A group of scientists is studying emotion expression in text. They
-                want to identify what emotion is expressed in individual text chat
-                messages, but in a chat log data too big to be labeled manually,
+                want to identify what emotion is expressed in individual text-based chat
+                messages, but the chat log dataset is too big to be labeled manually,
                 so:</p>
             <ol>
                 <li>Scientists manually apply labels, such as "anger" and
@@ -156,8 +161,8 @@ include("utils/UI.php");
                     <strong>current data</strong>.</li>
             </ol>
             <p>I designed a chart to help these scientists
-                consider all at once the 3 labels that have been applied to 100
-                messages - historic, automatic, and current.
+                analyze the historic, automatic, and current data all at once for
+                codes that have been applied to 100 messages.
                 <strong>Please help me improve this chart</strong> by stepping into
                 the shoes of these scientists, and using it to analyze how well
                 the labeling process (outlined above) is working!</p>
@@ -175,7 +180,7 @@ include("utils/UI.php");
                 to change their definition of <em>frustration;</em> perhaps
                 they are now distinguishing <em>frustration</em> and
                 <em>annoyance</em>, so messages that used to be labeled
-                <em>frustration</em> would no longer be.</p>
+                <em>frustration</em> would no longer be labeled as such.</p>
 
 
             <p><strong>Please analyze</strong> the following three scenarios, based on
@@ -228,7 +233,7 @@ include("utils/UI.php");
                     Hint: refer to the options presented in question 1!</span></p>
                 <textarea name="open-ended-2-problems"></textarea>
                 <p><span class="question">Question 4.</span> What should the
-                    researchers do next to improve the performance?</p>
+                    researchers do next to improve the performance? (Refer to question 2 for example answers).</p>
                 <textarea name="open-ended-2-solutions"></textarea>
             </div>
             <div class="box">
@@ -244,7 +249,7 @@ include("utils/UI.php");
                 Hint: refer to the options presented in question 1!</p>
                 <textarea name="open-ended-3-problems"></textarea>
                 <p><span class="question">Question 6.</span> What should the researchers do next
-                to improve the performance?</p>
+                to improve the performance? (Refer to question 2 for example answers).</p>
                 <textarea name="open-ended-3-solutions"></textarea>
             </div>
 
@@ -296,15 +301,15 @@ include("utils/UI.php");
                         either the historic or current data. The classifier is generating
                         false positives.</p>
                     <p><strong>False negatives:</strong> The automatic classifier is failing
-                        to label lines as "interest" that are not actually "interest" that
-                        are labeled thus in both the historic or current data. The
+                        to label lines as "interest" that are not actually "interest". These lines
+                        are labeled as "interest" in both historic or current data. The
                         classifier is generating false negatives.</p>
                     <p><strong>False true-positives/negatives:</strong> The
                         automatic classifier is correctly labeling messages as according to
                         historic, but not current data; therefore, the apparently true
                         positives are now false.</p>
                     <p><strong>Code definition narrows:</strong> The historic data has some
-                        messages labeled as "interest" that are not labeled than in the
+                        messages labeled as "interest" that are not labeled "interest" in the
                         current data. The definition of the "interest" label has
                         narrowed over time.</p>
                     <p><strong>Code definition expands:</strong> In the current data, the
@@ -327,13 +332,13 @@ include("utils/UI.php");
                     <p>Below is a segment of a chat log with labeled data;
                         #1 is the <u>historic</u>, #2 is the <u>automatic</u>, and #3
                     is the <u>current</u> label</p>
-                    <table>
-                        <tr><th>time</th><th>speaker</th><th>message</th></tr>
-                        <tr><td>05:58:41</td><td>Alice</td><td>ok, so where was the f***ing SN on the image?<br>#1: interest / anger<br>#2: annoyance / confusion<br>#3:   interest / frustration</td></tr>
-                        <tr><td>05:58:55</td><td>Alice</td><td>was it the bright blob?<br>#1: interest / anger<br>#2: considering<br>#3: interest</td></tr>
-                        <tr><td>05:59:03</td><td>Ben</td><td>5876 absorption is much wider than the H alpha in v space<br>#1, #2, #3: no affect</td></tr>
-                        <tr><td>05:59:18</td><td>Ben</td><td>Oh hmmm.<br>#1, #2, #3: considering</td></tr>
-                        <tr><td>05:59:28</td><td>Ben</td><td>Lemme see what [the] coordinates were...<br>#1, #2, #3: no affect</td></tr>
+                    <table class="example-table">
+                        <tr><th>time</th><th>speaker</th><th>message</th><th>emotion label</th></tr>
+                        <tr><td>05:58:41</td><td>Alice</td><td>ok, so where was the f***ing SN on the image?</td><td>#1: interest, anger<br>#2: annoyance, confusion<br>#3:   interest, frustration</td></tr>
+                        <tr><td>05:58:55</td><td>Alice</td><td>was it the bright blob?</td><td>#1: interest, anger<br>#2: considering<br>#3: interest</td></tr>
+                        <tr><td>05:59:03</td><td>Ben</td><td>5876 absorption is much wider than the H alpha in v space  </td><td>#1, #2, #3: no affect</td></tr>
+                        <tr><td>05:59:18</td><td>Ben</td><td>Oh hmmm.</td><td>#1, #2, #3: considering</td></tr>
+                        <tr><td>05:59:28</td><td>Ben</td><td>Lemme see what [the] coordinates were...</td><td>#1, #2, #3: no affect</td></tr>
                     </table>
                 </div>
             </div>
