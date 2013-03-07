@@ -40,6 +40,14 @@ include("utils/UI.php");
             .img{ text-align: center; }
             .img img{ border: solid 1px #aaaaaa; }
             textarea{ width: 500px; height: 200px; }
+            #key{
+                position: fixed;
+                bottom: 10px;
+                right: 0px;
+                z-index: -1;
+                background-color: #ffffff;
+                border:solid 1px #aaaaaa;
+            }
         </style>
         <script>
             var time_start = new Date();
@@ -100,6 +108,10 @@ include("utils/UI.php");
         </script>
     </head>
     <body>
+        <div id="key">
+            <p><em>How to read the chart:</em></p>
+            <p class="img"><img src="http://anachrobot.us/storage/example_1_legend.PNG" alt="" height=300 /></p>
+        </div>
         <div class="box">
             <div class="q-box">
                 <div class="q-box-left">
@@ -135,8 +147,6 @@ include("utils/UI.php");
                 <strong>Please help me improve this chart</strong> by stepping into
                 the shoes of these scientists, and using it to analyze how well
                 the labeling process (outlined above) is working!</p>
-
-            <p class="img"><img src="http://anachrobot.us/storage/example_1_legend.PNG" alt="" height=300 /></p>
 
             <p>For example, consider these two charts:</p>
             <p class="img"><img src="http://anachrobot.us/storage/example_2_obsolete.PNG" height=200></p>
