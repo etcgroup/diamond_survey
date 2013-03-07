@@ -40,7 +40,7 @@ class Response {
             }
             $this->queries->add_open_ended($this->id, $question, $scenario, $answer);
         } else if (substr($question, strlen($question)-strlen(self::$time)) == self::$time){
-            $this->queries->add_time($this->id, substr($question,0,strlen($question)-strlen(self::$time)), (int) $answer);
+            $this->queries->add_time($this->id, substr($question,0,strlen($question)-strlen(self::$time)), $answer);
         } else if (is_numeric($answer)) {
             $this->queries->add_likert($this->id, $question, (int) $answer);
         } else {

@@ -14,7 +14,7 @@ class Queries {
         $this->queries->get_token = $this->db->prepare("SELECT mturk_token FROM responses WHERE id=?");
         $this->queries->add_sort_item = $this->db->prepare("INSERT INTO sorted (response_id, question, item, `order`) VALUES (?,?,?,?)");
         $this->queries->add_likert = $this->db->prepare("INSERT INTO likert (response_id, question, answer) VALUES (?,?,?)");
-        $this->queries->add_time = $this->db->prepare("INSERT INTO time (response_id, action, `time`) VALUES (?,?,?)");
+        $this->queries->add_time = $this->db->prepare("INSERT INTO time (response_id, action, session, `time`) VALUES (?,?,?,?)");
         $this->queries->add_open_ended = $this->db->prepare("INSERT INTO open_ended (response_id, question, scenario, answer) VALUES (?,?,?,?)");
     }       
 
@@ -45,9 +45,13 @@ class Queries {
         $this->queries->add_likert->execute();
     }
 
-    public function add_time($id, $action, $time) {
-        $this->queries->add_time->bind_param('isi', $id, $action, $time);
-        $this->queries->add_time->execute();
+    public function add_time($id, $action, $times) {
+        $times = explode(",",$times);
+        foreach($times as $session => $time){
+            $this->queries->add_time->bind_param('isii', $id, $action, $session, $time);
+            $this->queries->add_time->execute();
+            $session++;
+        }
     }
 
     public function add_sort($id, $question, $list) {
