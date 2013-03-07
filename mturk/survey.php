@@ -51,21 +51,37 @@ include("utils/UI.php");
         </style>
         <script>
             var time_start = new Date();
-            var time_example = 0;
-            var time_help = 0;
+            var time_example = [];
+            var time_help = [];
             var timer = 0;
+            
+            // Adding up modal sessions and submitting the values
             function submitTime() {
                 curr_time = new Date();
                 var total_time = document.getElementById("total-survey-time");
                 var survey_time = Math.round((curr_time - window.time_start) / 1000);
                 total_time.value = survey_time;
 
+                var session_help = document.getElementById("session-help-time");
+                session_help.value = window.time_help;
+
+                var session_example = document.getElementById("session-example-time");
+                session_example.value = window.time_example;
+                
                 var total_help = document.getElementById("total-help-time");
-                total_help.value = window.time_help;
-
+                sessions_help = 0;
+                for (x in time_help) {
+                    sessions_help += time_help[x];
+                }
+                total_help.value = sessions_help;
+                
                 var total_example = document.getElementById("total-example-time");
-                total_example.value = window.time_example;
-
+                sessions_example = 0;
+                for (x in time_example) {
+                    sessions_example += time_example[x];
+                }
+                total_example.value = sessions_example;
+            
             }
             $(function() {
                 $(".sortable").sortable({
@@ -89,15 +105,14 @@ include("utils/UI.php");
                 $('#possible-problems').on('hidden', function() {
                     // stop timer, record, restart timer
                     // keep stuff in hidden inputs
-                    window.time_help += Math.round(((new Date() - timer) / 1000));
+                    window.time_help.push(Math.round(((new Date() - timer) / 1000)));
                     window.timer = 0;
                 });
                 $('#example').on('hidden', function() {
                     // stop timer, record, restart timer
                     // keep stuff in hidden inputs
-                    window.time_example += Math.round(((new Date() - window.timer) / 1000));
-                    window.timer = 0;
-                    
+                    window.time_example.push(Math.round(((new Date() - window.timer) / 1000)));
+                    window.timer = 0; 
                 });
                
                 $('.modal').on('shown', function() {
@@ -352,7 +367,9 @@ include("utils/UI.php");
 
             <div class="box">
                 <input type="hidden" name="total-help-time" id="total-help-time" value="">
+                <input type="hidden" name="session-help-time" id="session-help-time" value="">
                 <input type="hidden" name="total-example-time" id="total-example-time" value="">
+                <input type="hidden" name="session-example-time" id="session-example-time" value="">
                 <input type="hidden" name="total-survey-time" id="total-survey-time" value="">
                 <input type="hidden" name="problems" id="problems-input">
                 <input type="hidden" name="solutions" id="solutions-input">
