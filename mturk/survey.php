@@ -50,9 +50,12 @@ include("utils/UI.php");
                 position: fixed;
                 bottom: 10px;
                 right: -30px;
-                z-index: -1;
+                z-index: 1;
                 background-color: #ffffff;
                 border:solid 1px #333333;
+            }
+            .minimized{
+                right:-100px;
             }
             .sort-option{
                 -moz-border-radius: 5px;
@@ -142,13 +145,22 @@ include("utils/UI.php");
                     // start timer
                     window.timer = new Date();
                 });
+                $('#key-button').on("click",function(){
+                    if($(this).text()=="[-]"){
+                        $(this).text("[+]");
+                        $("#key").addClass("minimized");
+                    } else{
+                        $(this).text("[-]");
+                        $("#key").removeClass("minimized");
+                    }
+                });
             });
         </script>
         <title>Survey</title>
     </head>
     <body>
         <div id="key">
-            <p><em>How to read the chart:</em></p>
+            <p><button id="key-button">[-]</button> <em>How to read the chart:</em></p>
             <p class="img"><img src="http://anachrobot.us/storage/example_1_legend.PNG" alt="" height=300 /></p>
         </div>
         <div class="box">
