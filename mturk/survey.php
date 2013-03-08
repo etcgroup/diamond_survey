@@ -54,9 +54,6 @@ include("utils/UI.php");
                 background-color: #ffffff;
                 border:solid 1px #333333;
             }
-            .minimized{
-                right:-100px;
-            }
             .sort-option{
                 -moz-border-radius: 5px;
                 border-radius: 5px;
@@ -148,10 +145,10 @@ include("utils/UI.php");
                 $('#key-button').on("click",function(){
                     if($(this).text()=="[-]"){
                         $(this).text("[+]");
-                        $("#key").addClass("minimized");
+                        $("#key").css("right", "-260px");
                     } else{
                         $(this).text("[-]");
-                        $("#key").removeClass("minimized");
+                        $("#key").css("right", "-30px");
                     }
                 });
             });
