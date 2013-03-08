@@ -222,7 +222,7 @@ include("utils/UI.php");
                 <?php
                 echo UI::orderlist("problems", array(
                     "FP" => "False positives",
-                    "FN" => "False positives",
+                    "FN" => "False negatives",
                     "FTPN" => "False true-positives/negatives",
                     "nrw" => "Code definition narrows",
                     "exp" => "Code definition expands",
