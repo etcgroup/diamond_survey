@@ -158,7 +158,7 @@ include("utils/UI.php");
     <body>
         <div id="key">
             <p><button id="key-button">[-]</button> <em>How to read the chart:</em></p>
-            <p class="img"><img src="http://anachrobot.us/storage/example_1_legend.PNG" alt="" height=300 /></p>
+            <p class="img"><img src="img/example_1_legend.PNG" alt="" height=300 /></p>
         </div>
         <div class="box">
             <div class="help ui-state-highlight" help="example" style="margin-top:20px">example</div>
@@ -187,7 +187,7 @@ include("utils/UI.php");
                 the labeling process (outlined above) is working!</p>
 
             <p>For example, consider these two charts:</p>
-            <p class="img"><img src="http://anachrobot.us/storage/example_2_obsolete.PNG" height=200></p>
+            <p class="img"><img src="img/example_2_obsolete.PNG" height=200></p>
 
             <p>In the chart on the left, the automatic classifier is accurate
                 relative to both current and historic data. In the chart on the
@@ -212,7 +212,7 @@ include("utils/UI.php");
             <div class="box">
                 <h1>Scenario 1</h1>
                 <p>Consider the chart below:</p>
-                <p class="img"><img src="http://anachrobot.us/storage/scenario1.PNG" alt="" width="300"/></p>
+                <p class="img"><img src="img/scenario1.PNG" alt="" width="300"/></p>
 
                 <div class="help ui-state-highlight" help="possible-problems">help</div>
                 <p><span class="question">Question 1.</span> What problem(s) exist
@@ -245,7 +245,7 @@ include("utils/UI.php");
             <div class="box">
                 <h1>Scenario 2</h1>
                 <p>Consider the chart below:</p>
-                <p class="img"><img src="http://anachrobot.us/storage/scenario2.PNG" alt="" wdith="300" /></p>
+                <p class="img"><img src="img/scenario2.PNG" alt="" wdith="300" /></p>
                 <div class="help ui-state-highlight" help="possible-problems">help</div>
                 <p><span class="question">Question 3.</span> Describe what
                     problems exist in this scenario.
@@ -258,7 +258,7 @@ include("utils/UI.php");
             <div class="box">
                 <h1>Scenario 3</h1>
                 <p>Consider the chart below:</p>
-                <p class="img"><img src="http://anachrobot.us/storage/scenario3.PNG" alt="" width="500 "/></p>
+                <p class="img"><img src="img/scenario3.PNG" alt="" width="500 "/></p>
                 <div class="help ui-state-highlight" help="possible-problems">help</div>
                 <p>Here, two charts are shown side by side: the first one is
                     from December 2012, and the second - from January 2013.
