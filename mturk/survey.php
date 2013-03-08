@@ -145,7 +145,7 @@ include("utils/UI.php");
                 $('#key-button').on("click",function(){
                     if($(this).text()=="[-]"){
                         $(this).text("[+]");
-                        $("#key").css("right", "-260px");
+                        $("#key").css("right", "-250px");
                     } else{
                         $(this).text("[-]");
                         $("#key").css("right", "-30px");
