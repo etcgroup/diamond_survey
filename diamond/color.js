@@ -2,7 +2,7 @@ $(document).ready(function() {
 	var values = ["FTT","TTT","TFT","TTF","FFT","FTF","FFF","TFF"];
 	values.forEach(
 		function(element, index, array){
-			var obj = $("#"+element);
+			var obj = $("."+element);
 			var which = "top";
 			if(obj.hasClass("triangle-bottomleft") || obj.hasClass("triangle-bottomright")){
 				which = "bottom";

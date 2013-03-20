@@ -43,78 +43,78 @@
 		<img src="legend.jpg" alt="legend" width="60%" height="60%">
 	</div>
 	<div id="toprow">
-		<div id="FTT" class="triangle-topleft">15</div>
-		<div id="FTTtext"><p>15</p></div>
-		<div class="squaresbackground" id="FTTbackground"></div>
+		<div class="FTT triangle-topleft">15</div>
+		<div class="FTTtext">15</div>
+		<div class="squaresbackground FTTbackground"></div>
 		<div class="FTTsquares">
-			<div id="historic" class="squareblack"></div>
-			<div id="current" class="squarewhite"></div>
-			<div id="auto" class="squarewhite"></div>
+			<div class="historic squareblack"></div>
+			<div class="current squarewhite"></div>
+			<div class="auto squarewhite"></div>
 		</div>
 
-		<div id="TTT" class="triangle-bottomright">10</div>
-		<div id="TTTtext"><p>10</p></div>
-		<div class="squaresbackground" id="TTTbackground"></div>
+		<div class="TTT triangle-bottomright">10</div>
+		<div class="TTTtext">10</div>
+		<div class="squaresbackground TTTbackground"></div>
 		<div class="TTTsquares">
-			<div id="historic" class="squarewhite"></div>
-			<div id="current" class="squarewhite"></div>
-			<div id="auto" class="squarewhite"></div>
+			<div class="historic squarewhite"></div>
+			<div class="current squarewhite"></div>
+			<div class="auto squarewhite"></div>
 		</div>
 		
-		<div id="TFT" class="triangle-bottomleft">13</div>
-		<div id="TFTtext"><p>13</p></div>
-		<div class="squaresbackground" id="TFTbackground"></div>
+		<div class="TFT triangle-bottomleft">13</div>
+		<div class="TFTtext">13</div>
+		<div class="squaresbackground TFTbackground"></div>
 		<div class="TFTsquares">
-			<div id="historic" class="squarewhite"></div>
-			<div id="current" class="squareblack"></div>
-			<div id="auto" class="squarewhite"></div>
+			<div class="historic squarewhite"></div>
+			<div class="current squareblack"></div>
+			<div class="auto squarewhite"></div>
 		</div>
 		
-		<div id="TTF" class="triangle-topright">26</div>
-		<div id="TTFtext"><p>26</p></div>
-		<div class="squaresbackground" id="TTFbackground"></div>
+		<div class="TTF triangle-topright">26</div>
+		<div class="TTFtext">26</div>
+		<div class="squaresbackground TTFbackground"></div>
 		<div class="TTFsquares">
-			<div id="historic" class="squarewhite"></div>
-			<div id="current" class="squarewhite"></div>
-			<div id="auto" class="squareblack"></div>
+			<div class="historic squarewhite"></div>
+			<div class="current squarewhite"></div>
+			<div class="auto squareblack"></div>
 		</div>
 		
 	</div>
 	<div id="bottomrow">
-		<div id="FFT" class="triangle-bottomleft">3</div>
-		<div id="FFTtext"><p>3</p></div>
-		<div class="squaresbackground" id="FFTbackground"></div>
+		<div class="FFT triangle-bottomleft">3</div>
+		<div class="FFTtext">3</div>
+		<div class="squaresbackground FFTbackground"></div>
 		<div class="FFTsquares">		
-			<div id="historic" class="squareblack"></div>
-			<div id="current" class="squareblack"></div>
-			<div id="auto" class="squarewhite"></div>
+			<div class="historic squareblack"></div>
+			<div class="current squareblack"></div>
+			<div class="auto squarewhite"></div>
 		</div>
 				
-		<div id="FTF" class="triangle-topright">5</div>
-		<div id="FTFtext"><p>5</p></div>
-		<div class="squaresbackground" id="FTFbackground"></div>
+		<div class="FTF triangle-topright">5</div>
+		<div class="FTFtext">5</div>
+		<div class="squaresbackground FTFbackground"></div>
 		<div class="FTFsquares">		
-			<div id="historic" class="squareblack"></div>
-			<div id="current" class="squarewhite"></div>
-			<div id="auto" class="squareblack"></div>
+			<div class="historic squareblack"></div>
+			<div class="current squarewhite"></div>
+			<div class="auto squareblack"></div>
 		</div>
 		
-		<div id="FFF" class="triangle-topleft">27</div>
-		<div id="FFFtext"><p>27</p></div>
-		<div class="squaresbackground" id="FFFbackground"></div>
+		<div class="FFF triangle-topleft">27</div>
+		<div class="FFFtext">27</div>
+		<div class="squaresbackground FFFbackground"></div>
 		<div class="FFFsquares">		
-			<div id="historic" class="squareblack"></div>
-			<div id="current" class="squareblack"></div>
-			<div id="auto" class="squareblack"></div>
+			<div class="historic squareblack"></div>
+			<div class="current squareblack"></div>
+			<div class="auto squareblack"></div>
 		</div>
 		
-		<div id="TFF" class="triangle-bottomright">1</div>
-		<div id="TFFtext"><p>1</p></div>
-		<div class="squaresbackground" id="TFFbackground"></div>
+		<div class="TFF triangle-bottomright">1</div>
+		<div class="TFFtext">1</div>
+		<div class="squaresbackground TFFbackground"></div>
 		<div class="TFFsquares">		
-			<div id="historic" class="squarewhite"></div>
-			<div id="current" class="squareblack"></div>
-			<div id="auto" class="squareblack"></div>
+			<div class="historic squarewhite"></div>
+			<div class="current squareblack"></div>
+			<div class="auto squareblack"></div>
 		</div>
 		
 	</div>

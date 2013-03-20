@@ -68,37 +68,37 @@
 	left:250px;
 }
 
-#historic {
+.historic {
 	position:absolute;
 	top:0px;
 	left:0px;
 }
 
-#current {
+.current {
 	position:absolute;
 	top:0px;
 	left:11px;
 }
 
-#auto {
+.auto {
 	position:absolute;
 	top:0px;
 	left:22px;
 }
 
-#FTT , #FFT {
+.FTT , .FFT {
 	position:absolute;
 	top:1px;
 	left:1px;
 }
 
-#FTTtext {
+.FTTtext {
 	position:absolute;
-	top:10px;
-	left:20px;
+	top:25px;
+	left:15px;
 }
 
-#FTTbackground {
+.FTTbackground {
 	position:absolute;
 	top:5px;
 	left:5px;
@@ -116,29 +116,29 @@
 	left:6px;
 }
 
-#FFTbackground {
+.FFTbackground {
 	position:absolute;
 	top:85px;
 	left:5px;
 }
 
-#FFTtext {
+.FFTtext {
 	position:absolute;
-	top:45px;
+	top:55px;
 	left:20px;
 }
 
 
-#TTT, #FTF {
+.TTT, .FTF {
 	position:absolute;
 	top:1px;
 	left:7px;
 }
 
-#TTTtext {
+.TTTtext {
 	position:absolute;
-	top:45px;
-	left:70px;
+	top:50px;
+	left:75px;
 }
 
 .TTTsquares {
@@ -147,7 +147,7 @@
 	left:70px;
 }
 
-#TTTbackground {
+.TTTbackground {
 	position:absolute;
 	top:84px;
 	left:69px;
@@ -160,19 +160,19 @@
 
 }
 
-#FTFbackground {
+.FTFbackground {
 	position:absolute;
 	top:4px;
 	left:69px;
 }
 
-#FTFtext {
+.FTFtext {
 	position:absolute;
-	top:10px;
-	left:70px;
+	top:25px;
+	left:75px;
 }
 
-#TFT, #FFF {
+.TFT, .FFF {
 	position:absolute;
 	top:1px;
 	left:110px;
@@ -184,7 +184,7 @@
 	left:116px;
 }
 
-#TFTbackground {
+.TFTbackground {
 	position:absolute;
 	top:84px;
 	left:115px;
@@ -196,26 +196,26 @@
 	left:116px;
 }
 
-#FFFbackground {
+.FFFbackground {
 	position:absolute;
 	top:4px;
 	left:115px;
 }
 
 
-#TFTtext {
+.TFTtext {
 	position:absolute;
-	top:45px;
-	left:140px;
+	top:50px;
+	left:125px;
 }
 
-#FFFtext {
+.FFFtext {
 	position:absolute;
-	top:10px;
-	left:140px;
+	top:25px;
+	left:125px;
 }
 
-#TTF, #TFF {
+.TTF, .TFF {
 	position:absolute;
 	top:1px;
 	left:116px;
@@ -227,7 +227,7 @@
 	left:180px;
 }
 
-#TTFbackground {
+.TTFbackground {
 	position:absolute;
 	top:4px;
 	left:179px;
@@ -240,20 +240,20 @@
 	left:180px;
 }
 
-#TFFbackground {
+.TFFbackground {
 	position:absolute;
 	top:84px;
 	left:179px;
 }
 
-#TTFtext {
+.TTFtext {
 	position:absolute;
-	top:10px;
+	top:25px;
 	left:190px;
 }
 
-#TFFtext {
+.TFFtext {
 	position:absolute;
-	top:45px;
+	top:55px;
 	left:190px;
 }
