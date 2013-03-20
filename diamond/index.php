@@ -7,6 +7,15 @@
 	<script>
 		window.special_triangle_classes = [];
 		window.special_triangle_classes["FTT"] = "triangle-topleft";
+		window.special_triangle_classes["TTT"] = "triangle-bottomright";
+		window.special_triangle_classes["TFT"] = "triangle-bottomleft";
+		window.special_triangle_classes["TTF"] = "triangle-topright";
+		window.special_triangle_classes["FFT"] = "triangle-bottomleft";
+		window.special_triangle_classes["FTF"] = "triangle-topright";
+		window.special_triangle_classes["FFF"] = "triangle-topleft";
+		window.special_triangle_classes["TFF"] = "triangle-bottomright";
+		
+
 		$.getJSON('data.php', function(data) {
 			$.each(data.codes, function(code, diamond_data){
             }
