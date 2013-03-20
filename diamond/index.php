@@ -19,7 +19,8 @@
 
 		function get_triangle(which, value){
 			var out = [];
-			out.push('<div class="'+which+' '+triangle_info[which][0]+'">'+value+'</div>');
+			out.push('<div class="'+which+' '+triangle_info[which][0]+' triangle">' + value+'</div>');
+			out.push('<div class="'+which+'text">'+value+'</div>');
 			out.push('<div class="squaresbackground" id="'+which+'background"></div>');
 			out.push('<div class="'+which+'squares">');
 			$.each(triangle_info[which][1], function(datasource, color){
@@ -31,37 +32,26 @@
 
 		$.getJSON('data.php', function(data) {
 			var widgets = [];
-			$.each(data.codes, function(code, diamond_data){
-				var toprow_elements
+			$.each(data, function(code, diamond_data){
 				var toprow = []; 
 				$.each(window.top_triangles, function(key, which){
-					toprow.push(get_triangle(which, diamond_data[which]));
+					toprow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
 				});
 				var bottomrow = [];
 				$.each(window.bottom_triangles, function(key, which){
-					bottomrow.push(get_triangle(which, diamond_data[which]));
+					bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
 				});
-				widgets.push('<div class="widget"><div class="label">' + code + '</div><div class="diamond"><div class="toprow">' + toprow + '</div><div class="bottomrow">' + bottomrow + '</div></div></div>');
+				widgets.push('<div class="widget"><div class="label">' + code + '</div><div class="diamond"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
             });
-			('#canvas').html(widgets.join('\n'));
+			$('#canvas').html(widgets.join('\n'));
 		});
 	</script>
 	<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-	<div>
-		<h1>Heading1</h1>
-		<p>paragraph.</p>
-		
-		<h1>Heading2</h1>
-		<p>paragraph.</p>
-		
-		<h1>Heading3</h1>
-		<p>paragraph.</p>
-	</div>
-	<div id="legend">
-		<img src="legend.jpg" alt="legend" width="60%" height="60%">
-	</div>
+	<div id="canvas"></div>
+	
+	<!--
 	<div id="toprow">
 		<div class="FTT triangle-topleft">15</div>
 		<div class="FTTtext">15</div>
@@ -138,6 +128,6 @@
 		</div>
 		
 	</div>
-
+	-->
 </body>
 </html>

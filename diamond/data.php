@@ -2,13 +2,13 @@
 
 $results = array(
 	"anger" => array(
-		"TTF" => 50,
-		"TFF" => 50,
-		"TTT" => 50,
-		"FFF" => 50
+		"TTF" => 30,
+		"TFF" => 30,
+		"TTT" => 20,
+		"FFF" => 20
 		),
 	"interest" => array(
-		"TTT" => 40000
+		"TTT" => 30
 		)
 	);
 
