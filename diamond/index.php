@@ -17,7 +17,12 @@
 		
 
 		$.getJSON('data.php', function(data) {
+			var widgets = [];
 			$.each(data.codes, function(code, diamond_data){
+				var toprow = []; // FTT TTT TFT TTF
+				
+				var bottomrow = []; // TODO :)
+				widgets.push('<div class="toprow">' + toprow + '</div><div class="bottomrow">' + bottomrow + '</div>');
             }
 		});
 	</script>
