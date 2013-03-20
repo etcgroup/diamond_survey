@@ -5,25 +5,45 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script src="color.js"></script>
 	<script>
-		window.special_triangle_classes = [];
-		window.special_triangle_classes["FTT"] = "triangle-topleft";
-		window.special_triangle_classes["TTT"] = "triangle-bottomright";
-		window.special_triangle_classes["TFT"] = "triangle-bottomleft";
-		window.special_triangle_classes["TTF"] = "triangle-topright";
-		window.special_triangle_classes["FFT"] = "triangle-bottomleft";
-		window.special_triangle_classes["FTF"] = "triangle-topright";
-		window.special_triangle_classes["FFF"] = "triangle-topleft";
-		window.special_triangle_classes["TFF"] = "triangle-bottomright";
-		
+		window.triangle_info = [];
+		window.triangle_info["FTT"] = ["triangle-topleft", {"historic": "black", "current": "white", "auto": "white"}];
+		window.triangle_info["TTT"] = ["triangle-bottomright", {"historic": "white", "current": "white", "auto": "white"}];
+		window.triangle_info["TFT"] = ["triangle-bottomleft", {"historic": "white", "current": "black", "auto": "white"}];
+		window.triangle_info["TTF"] = ["triangle-topright", {"historic": "white", "current": "white", "auto": "black"}];
+		window.triangle_info["FFT"] = ["triangle-bottomleft", {"historic": "black", "current": "white", "auto": "white"}];
+		window.triangle_info["FTF"] = ["triangle-topright", {"historic": "black", "current": "white", "auto": "white"}];
+		window.triangle_info["FFF"] = ["triangle-topleft", {"historic": "black", "current": "white", "auto": "white"}];
+		window.triangle_info["TFF"] = ["triangle-bottomright", {"historic": "black", "current": "white", "auto": "white"}];
+		window.top_triangles = ["FTT", "TTT", "TFT", "TTF"];
+		window.bottom_triangles = ["FFT", "FTF", "FFF", "TFF"];
+
+		function get_triangle(which, value){
+			var out = [];
+			out.push('<div class="'+which+' '+triangle_info[which][0]+'">'+value+'</div>');
+			out.push('<div class="squaresbackground" id="'+which+'background"></div>');
+			out.push('<div class="'+which+'squares">');
+			$.each(triangle_info[which][1], function(datasource, color){
+				out.push('<div class="' + datasource + ' square' + color + '"></div>');
+			});
+			out.push('</div>');
+			return out.join('\n');
+		}
 
 		$.getJSON('data.php', function(data) {
 			var widgets = [];
 			$.each(data.codes, function(code, diamond_data){
-				var toprow = []; // FTT TTT TFT TTF
-				
-				var bottomrow = []; // TODO :)
-				widgets.push('<div class="toprow">' + toprow + '</div><div class="bottomrow">' + bottomrow + '</div>');
-            }
+				var toprow_elements
+				var toprow = []; 
+				$.each(window.top_triangles, function(key, which){
+					toprow.push(get_triangle(which, diamond_data[which]));
+				});
+				var bottomrow = [];
+				$.each(window.bottom_triangles, function(key, which){
+					bottomrow.push(get_triangle(which, diamond_data[which]));
+				});
+				widgets.push('<div class="widget"><div class="label">' + code + '</div><div class="diamond"><div class="toprow">' + toprow + '</div><div class="bottomrow">' + bottomrow + '</div></div></div>');
+            });
+			('#canvas').html(widgets.join('\n'));
 		});
 	</script>
 	<link rel="stylesheet" href="styles.css" />
