@@ -13,12 +13,12 @@ window.bottom_triangles = ["FFT", "FTF", "FFF", "TFF"];
 function get_triangle(which, value){
 	var out = [];
 	out.push('<div class="'+which+' '+triangle_info[which][0]+' triangle">' + value+'</div>');
-	out.push('<div class="'+which+'text">'+value+'</div>');
-	out.push('<div class="squaresbackground" id="'+which+'background"></div>');
+	//out.push('<div class="'+which+'text">'+value+'</div>');
+	//out.push('<div class="squaresbackground" id="'+which+'background"></div>');
 	out.push('<div class="'+which+'squares">');
-	$.each(triangle_info[which][1], function(datasource, color){
-		out.push('<div class="' + datasource + ' square' + color + '"></div>');
-	});
+	//$.each(triangle_info[which][1], function(datasource, color){
+	//	out.push('<div class="' + datasource + ' square' + color + '"></div>');
+	//});
 	out.push('</div>');
 	return out.join('\n');
 }

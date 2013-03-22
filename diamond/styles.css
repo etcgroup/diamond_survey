@@ -8,29 +8,29 @@
 .triangle-topleft {
 	width: 0;
 	height: 0;
-	border-top: 100px solid red;
-	border-right: 100px solid transparent;
+	border-top: 50px solid red;
+	border-right: 50px solid transparent;
 }
 
 .triangle-topright {
 	width: 0;
 	height: 0;
-	border-top: 100px solid red;
-	border-left: 100px solid transparent;
+	border-top: 50px solid red;
+	border-left: 50px solid transparent;
 }
 
 .triangle-bottomleft {
 	width: 0;
 	height: 0;
-	border-bottom: 100px solid red;
-	border-right: 100px solid transparent;
+	border-bottom: 50px solid red;
+	border-right: 50px solid transparent;
 }
 
 .triangle-bottomright {
 	width: 0;
 	height: 0;
-	border-bottom: 100px solid red;
-	border-left: 100px solid transparent;
+	border-bottom: 50px solid red;
+	border-left: 50px solid transparent;
 }
 
 .squareblack {
@@ -55,8 +55,8 @@
 	position:relative;
 	top:10px;
 	left:10px;
-	width: 217px;
-	height: 107px;
+	width: 112px;
+	height: 57px;
 	background-color: black;
 }
 
@@ -64,8 +64,8 @@
 	position:relative;
 	top:5px;
 	left:10px;
-	width: 217px;
-	height:102px;
+	width: 112px;
+	height:52px;
 	background-color: black;
 }
 
@@ -139,7 +139,7 @@
 .TTT, .FTF {
 	position:absolute;
 	top:1px;
-	left:7px;
+	left:5px;
 }
 
 .TTTtext {
@@ -182,7 +182,7 @@
 .TFT, .FFF {
 	position:absolute;
 	top:1px;
-	left:110px;
+	left:57px;
 }
 
 .TFTsquares {
@@ -225,7 +225,7 @@
 .TTF, .TFF {
 	position:absolute;
 	top:1px;
-	left:116px;
+	left:61px;
 }
 
 .TTFsquares {
