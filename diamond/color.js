@@ -34,7 +34,7 @@ $.getJSON('data.php', function(data) {
 		$.each(window.bottom_triangles, function(key, which){
 			bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
 		});
-		widgets.push('<div class="widget"><div class="label">' + code + '</div><div class="diamond"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
+		widgets.push('<div class="widget inline"><div class="label">' + code + '</div><div class="diamond"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
 	$('#canvas').html(widgets.join('\n'));
 	
