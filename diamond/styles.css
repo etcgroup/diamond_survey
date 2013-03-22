@@ -101,8 +101,8 @@
 
 .FTTtext {
 	position:absolute;
-	top:25px;
-	left:15px;
+	top:8px;
+	left:8px;
 }
 
 .FTTbackground {
@@ -131,8 +131,8 @@
 
 .FFTtext {
 	position:absolute;
-	top:55px;
-	left:20px;
+	bottom:8px;
+	left:8px;
 }
 
 
@@ -144,8 +144,8 @@
 
 .TTTtext {
 	position:absolute;
-	top:50px;
-	left:75px;
+	top:25px;
+	left:33px;
 }
 
 .TTTsquares {
@@ -175,8 +175,8 @@
 
 .FTFtext {
 	position:absolute;
-	top:25px;
-	left:75px;
+	top:5px;
+	left:33px;
 }
 
 .TFT, .FFF {
@@ -212,14 +212,14 @@
 
 .TFTtext {
 	position:absolute;
-	top:50px;
-	left:125px;
+	top:25px;
+	left:63px;
 }
 
 .FFFtext {
 	position:absolute;
-	top:25px;
-	left:125px;
+	top:5px;
+	left:63px;
 }
 
 .TTF, .TFF {
@@ -255,12 +255,12 @@
 
 .TTFtext {
 	position:absolute;
-	top:25px;
-	left:190px;
+	top:8px;
+	right:8px;
 }
 
 .TFFtext {
 	position:absolute;
-	top:55px;
-	left:190px;
+	bottom:8px;
+	right:8px;
 }
