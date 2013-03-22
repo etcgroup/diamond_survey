@@ -12,8 +12,19 @@ window.bottom_triangles = ["FFT", "FTF", "FFF", "TFF"];
 
 function get_triangle(which, value){
 	var out = [];
-	out.push('<div class="'+which+' '+triangle_info[which][0]+' triangle">' + value+'</div>');
-	out.push('<div class="'+which+'text">'+value+'</div>');
+        var tooltip_vals = [];
+        var data_type = ["Historic", "Automatic", "Current"];
+        for (var i = 0, len = which.length; i < len; i++) {
+            if (which[i] === 'T') {
+                tooltip_vals.push("True in " + data_type[i]);
+            } 
+            else {
+                tooltip_vals.push("False in " + data_type[i]);
+            }
+        }
+        tooltip_vals = tooltip_vals.join('\n');
+	out.push('<div class="'+which+' '+triangle_info[which][0]+' triangle">'+value+'</div>');
+	out.push('<div class="'+which+'text"><a href="" title="'+value+' Messages rated:\n'+tooltip_vals+'">'+value+'</a></div>');
 	//out.push('<div class="squaresbackground" id="'+which+'background"></div>');
 	out.push('<div class="'+which+'squares">');
 	//$.each(triangle_info[which][1], function(datasource, color){
