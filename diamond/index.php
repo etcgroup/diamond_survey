@@ -14,12 +14,6 @@
             });
             //$("#test label[title]").tooltip();
         </script>
-        <style>
-            label {
-              display: inline-block;
-              width: 5em;
-            }
-        </style>
 </head>
 <body>
 	<div id="canvas"></div>
