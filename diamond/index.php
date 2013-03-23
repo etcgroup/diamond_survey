@@ -12,7 +12,6 @@
             $(function() {
               $( document ).tooltip();
             });
-            //$("#test label[title]").tooltip();
         </script>
 </head>
 <body>

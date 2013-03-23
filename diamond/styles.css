@@ -1,6 +1,10 @@
+.forward{
+   z-index:2;
+}
+
 .ui-tooltip {
     display:none;
-    width:175px;
+    width:180px;
 }
 
 #canvas {
