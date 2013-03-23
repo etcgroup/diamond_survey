@@ -4,7 +4,8 @@
 
 .ui-tooltip {
     display:none;
-    width:180px;
+    width:115px;
+    font: 13px "Helvetica Neue", Sans-Serif;
 }
 
 #canvas {
