@@ -112,23 +112,23 @@ $results = array(
              ),
         "fear"  => array (
                 "FTT" => 2, 
-                "TTT" => 40,
+                "TTT" => 20,
                 "TFT" => 3,
-                "TTF" => 5,
+                "TTF" => 25,
                 "FFT" => 5,
-                "FTF" => 3, 
-                "FFF" => 40, 
-                "TFF" => 2
+                "FTF" => 8, 
+                "FFF" => 30, 
+                "TFF" => 7
              ),
     "terror" => array (
-                "FTT" => 2, 
-                "TTT" => 40,
-                "TFT" => 3,
-                "TTF" => 5,
-                "FFT" => 5,
-                "FTF" => 3, 
-                "FFF" => 40, 
-                "TFF" => 2
+                "FTT" => 5, 
+                "TTT" => 45,
+                "TFT" => 0,
+                "TTF" => 0,
+                "FFT" => 0,
+                "FTF" => 0, 
+                "FFF" => 45, 
+                "TFF" => 5
              ),
     "distraction" => array (
                 "FTT" => 2, 
