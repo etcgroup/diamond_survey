@@ -2,6 +2,23 @@
    z-index:2;
 }
 
+body {
+    background-color: #aaaaaa;
+}
+
+.box {
+    background-color: white;
+    width: 600px;
+    padding: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin: auto;
+}
+
+.center {
+    text-align: center;
+}
+
 .ui-tooltip {
     display:none;
     width:115px;
@@ -63,17 +80,17 @@
 
 .toprow {
 	position:relative;
-	top:10px;
-	left:10px;
+	top:0px;
+	left:0px;
 	width: 112px;
-	height: 57px;
+	height: 52px;
 	background-color: black;
 }
 
 .bottomrow {
 	position:relative;
-	top:5px;
-	left:10px;
+	top:0px;
+	left:0px;
 	width: 112px;
 	height:52px;
 	background-color: black;
