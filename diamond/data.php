@@ -79,31 +79,32 @@ $task4_errors = array (
     );
 
 
-$task1 = get_values($labels12, $task1_errors, $bases);
+$task1 = get_values($labels12, $task1_errors, $bases, 10);
 //echo $task1;
-//$task2 = get_values($labels12, $task2_errors);
+//$task2 = get_values($labels12, $task2_errors, 10);
 //echo $task2;
-//$task3 = get_values($labels42, $task3_errors);
+//$task3 = get_values($labels42, $task3_errors, 10);
 //echo $task3;
-//$task4 = get_values($labels42, $task4_errors);
+//$task4 = get_values($labels42, $task4_errors, 10);
 //echo $task4;
 
 // returns an array of emotion labels and their values
-function get_values($labels_list, $error_list, $base_vals) {
+function get_values($labels_list, $error_list, $base_vals, $k) {
     $results = $labels_list;
+    $labels = $labels_list;
+    shuffle($labels_list);
     foreach ($labels_list as $label) {    
-        $values = array("FTT" => 0, "TTT" => 0, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 0, "TFF" => 0);  
-        
         // selecting a random error level to assign to emotion label (ex. ideal, very accurate, etc.)
-        $error = array_rand($error_list);
+        reset($error_list);
+        $error = key($error_list);
         if ($error === "ideal") {
             $results[$label] = $base_vals[$error];
         }else {
-            $jitter = 0;
+            $change = 0;
             if ($error === "very accurate") {
-                $jitter = mt_rand(1, 9);
+                $change = mt_rand(1, 9);
             } else {   
-                $jitter = mt_rand(0, 9);
+                $change = mt_rand(0, 9);
             }
             $data_types = $base_vals[$error];
             
@@ -112,12 +113,28 @@ function get_values($labels_list, $error_list, $base_vals) {
             $newresult = $base_vals[$error][$random_type];
             $change_minus = array_rand($newresult);
             
-            // skips jitter if leads to negative values
-            if ($newresult[$change_minus] - $jitter > 0) {
-                $newresult[$change_minus] = $newresult[$change_minus] - $jitter;
+            // skips percent error change leads to negative values
+            if ($newresult[$change_minus] - $change > 0) {
+                $newresult[$change_minus] = $newresult[$change_minus] - $change;
                 $change_add = array_rand(($newresult));
-                $newresult[$change_add] = $newresult[$change_add] + $jitter;
+                $newresult[$change_add] = $newresult[$change_add] + $change;
             } 
+            
+            //adding jitter
+            for ($i = 0; $i < $k; $i++) {
+                $pairs = $newresult;
+                $triangle1 = array_rand($pairs);
+                unset($pairs[$triangle1]);
+                $triangle2 = array_rand($pairs);
+                
+                // if triangle 1's value is 0, skip pair
+                if ($newresult[$triangle1] === 0) {
+                    $i--;
+                } else {
+                   $newresult[$triangle1] = $newresult[$triangle1] - 1;
+                   $newresult[$triangle2] = $newresult[$triangle2] + 1;
+                }
+            }
             $results[$label] = $newresult;
         }
         $error_list[$error] = $error_list[$error] - 1;
@@ -126,7 +143,11 @@ function get_values($labels_list, $error_list, $base_vals) {
         }
         
     } 
-        echo json_encode($results);
+    $return = $labels;
+    foreach ($return as $item) {
+        $return[$item] = $results[$item];
+    }
+    echo json_encode($return);
 }
 
 /*
