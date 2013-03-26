@@ -34,7 +34,7 @@ function get_triangle(which, value){
 	return out.join('\n');
 }
 
-$.getJSON('data.php', function(data) {
+$.getJSON('data.php', {"scenario": 1, "labels": 12}, function(data) {
 	var widgets = [];
 	$.each(data, function(code, diamond_data){
 		var toprow = []; 

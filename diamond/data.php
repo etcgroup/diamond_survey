@@ -1,5 +1,135 @@
 <?php
 
+$scenario = $_GET["scenario"];
+$labels = $_GET["labels"];
+
+// an array of 12 labels and 42 labels
+// an array of proportions of diff kinds of error, scenario1 and 2.
+// use mt_rand, WITH A SEED
+
+// emotion labels  
+$labels12 = array("interest", "amusement", "considering", "agreement", "annoyance", "confusion", "acceptance", "apprehension", "frustration", "supportive", "surprise", "anticipation");
+$labels42 = array("acceptance", "admiration", "agreement", "amazement", "amusement", "anger", "annoyance", "anticipation", "apologetic", "apprehension", "boredom", "confusion", "considering", "disagreement",
+                "disappointment", "disbelief", "disgust", "distraction", "ecstasy", "embarrassment", "excitement", "fear", "frustration", "gratitude", "grief", "happiness", "impatience", "interest", "joy", "loathing",
+                "pensiveness", "pride", "rage", "relief", "sadness", "serenity", "supportive", "surprise", "terror", "tired", "trust", "vigilance");
+
+// setting bases for each error type
+$bases = array(
+    "ideal" => array("FTT" => 0, "TTT" => 50, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 50, "TFF" => 0),
+    "very accurate" => array(
+        "historic" => array("FTT" => 1, "TTT" => 49, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 50, "TFF" => 0),
+        "auto" => array("FTT" => 0, "TTT" => 49, "TFT" => 1, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 50, "TFF" => 0),
+        "current" => array("FTT" => 0, "TTT" => 49, "TFT" => 0, "TTF" => 1, "FFT" => 0, "FTF" => 0, "FFF" => 50, "TFF" => 0)
+        ),
+    "moderately accurate" => array(
+        "historic" => array("FTT" => 5, "TTT" => 45, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 45, "TFF" => 5),
+        "auto" => array("FTT" => 0, "TTT" => 45, "TFT" => 5, "TTF" => 0, "FFT" => 0, "FTF" => 5, "FFF" => 45, "TFF" => 0),
+        "current" => array("FTT" => 0, "TTT" => 45, "TFT" => 0, "TTF" => 5, "FFT" => 5, "FTF" => 0, "FFF" => 45, "TFF" => 0)
+        ),
+    "low accuracy" => array(
+        "historic" => array("FTT" => 10, "TTT" => 40, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 40, "TFF" => 10),
+        "auto" => array("FTT" => 0, "TTT" => 40, "TFT" => 10, "TTF" => 0, "FFT" => 0, "FTF" => 10, "FFF" => 40, "TFF" => 0),
+        "current" => array("FTT" => 0, "TTT" => 40, "TFT" => 0, "TTF" => 10, "FFT" => 10, "FTF" => 0, "FFF" => 40, "TFF" => 0)
+        ),
+    "very low accuracy" => array(
+        "historic" => array("FTT" => 15, "TTT" => 35, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 35, "TFF" => 15),
+        "auto" => array("FTT" => 0, "TTT" => 35, "TFT" => 15, "TTF" => 0, "FFT" => 0, "FTF" => 15, "FFF" => 35, "TFF" => 0),
+        "current" => array("FTT" => 0, "TTT" => 35, "TFT" => 0, "TTF" => 15, "FFT" => 15, "FTF" => 0, "FFF" => 35, "TFF" => 0)
+        ),
+    "inaccurate" => array (
+        "historic" => array("FTT" => 20, "TTT" => 30, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 30, "TFF" => 20),
+        "auto" => array("FTT" => 0, "TTT" => 30, "TFT" => 20, "TTF" => 0, "FFT" => 0, "FTF" => 20, "FFF" => 30, "TFF" => 0),
+        "current" => array("FTT" => 0, "TTT" => 30, "TFT" => 0, "TTF" => 20, "FFT" => 20, "FTF" => 0, "FFF" => 30, "TFF" => 0)
+    )
+);
+
+// proportions for each error type
+$task1_errors = array(
+    "ideal" => 2,
+    "very accurate" => 5,
+    "moderately accurate" => 3,
+    "low accuracy" => 1,
+    "inaccurate" => 1
+    );
+
+$task2_errors = array (
+    "ideal" => 1,
+    "very accurate" => 4,
+    "moderately accurate" => 3,
+    "low accuracy" => 2,
+    "very low accuracy" => 1,
+    "inaccurate" => 1
+    );
+
+$task3_errors = array (
+    "ideal" => 5,
+    "very accurate" => 20,
+    "moderately accurate" => 11,
+    "low accuracy" => 5,
+    "inaccurate" => 1
+    );
+
+$task4_errors = array (
+    "ideal" => 5,
+    "very accurate" => 15,
+    "moderately accurate" => 10,
+    "low accuracy" => 6,
+    "very low accuracy" => 5,
+    "inaccurate" => 1
+    );
+
+
+$task1 = get_values($labels12, $task1_errors, $bases);
+//echo $task1;
+//$task2 = get_values($labels12, $task2_errors);
+//echo $task2;
+//$task3 = get_values($labels42, $task3_errors);
+//echo $task3;
+//$task4 = get_values($labels42, $task4_errors);
+//echo $task4;
+
+// returns an array of emotion labels and their values
+function get_values($labels_list, $error_list, $base_vals) {
+    $results = $labels_list;
+    foreach ($labels_list as $label) {    
+        $values = array("FTT" => 0, "TTT" => 0, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 0, "TFF" => 0);  
+        
+        // selecting a random error level to assign to emotion label (ex. ideal, very accurate, etc.)
+        $error = array_rand($error_list);
+        if ($error === "ideal") {
+            $results[$label] = $base_vals[$error];
+        }else {
+            $jitter = 0;
+            if ($error === "very accurate") {
+                $jitter = mt_rand(1, 9);
+            } else {   
+                $jitter = mt_rand(0, 9);
+            }
+            $data_types = $base_vals[$error];
+            
+            //selecting random error type (ex. historic, auto, current)
+            $random_type = array_rand($data_types);
+            $newresult = $base_vals[$error][$random_type];
+            $change_minus = array_rand($newresult);
+            
+            // skips jitter if leads to negative values
+            if ($newresult[$change_minus] - $jitter > 0) {
+                $newresult[$change_minus] = $newresult[$change_minus] - $jitter;
+                $change_add = array_rand(($newresult));
+                $newresult[$change_add] = $newresult[$change_add] + $jitter;
+            } 
+            $results[$label] = $newresult;
+        }
+        $error_list[$error] = $error_list[$error] - 1;
+        if ($error_list[$error] === 0) {
+            unset($error_list[$error]);
+        }
+        
+    } 
+        echo json_encode($results);
+}
+
+/*
 $results = array(
 	"anger" => array(
 		"TTF" => 30,
@@ -221,7 +351,9 @@ $results = array(
                 "TFF" => 2
              )
 	);
+*/
 
-echo json_encode($results);
+//echo $_GET["hello"];
+//echo json_encode($results);
 
 ?>
