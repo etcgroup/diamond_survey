@@ -34,38 +34,39 @@ function get_triangle(which, value){
 	return out.join('\n');
 }
 
-$.getJSON('data.php', {'task':1}, function(data) {
-	
-        var widgets = [];
-	$.each(data, function(code, diamond_data){
-		var toprow = []; 
-		$.each(window.top_triangles, function(key, which){
-			toprow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
-		});
-		var bottomrow = [];
-		$.each(window.bottom_triangles, function(key, which){
-			bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
-		});
-		widgets.push('<div class="widget inline"><div class="label">' + code + '</div><div class="diamond"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
-	});
-	$('#canvas').html(widgets.join('\n'));
-	
-	$(".triangle").each(function(){
-		var obj = $(this);
-		var which = "top";
-		if(obj.hasClass("triangle-bottomleft") || obj.hasClass("triangle-bottomright")){
-			which = "bottom";
-		}
-		var num = Number(obj.text());
-		var scale = [
-			[255,255,255],
-			[237,248,251],
-			[191,211,230],
-			[158,188,218],
-			[140,150,198],
-			[136,86,167]];
-		num = Math.floor(num/10);
-		num = num > 5 ? 5 : num;
-		obj.text("").css("border-"+which+"-color","rgb("+scale[num][0]+","+scale[num][1]+","+scale[num][2]+")");
-	});
-});
+function get_task(task_num) {
+    $.getJSON('data.php', {'task':task_num}, function(data) {
+            var widgets = [];
+            $.each(data, function(code, diamond_data){
+                    var toprow = []; 
+                    $.each(window.top_triangles, function(key, which){
+                            toprow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
+                    });
+                    var bottomrow = [];
+                    $.each(window.bottom_triangles, function(key, which){
+                            bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
+                    });
+                    widgets.push('<div class="widget inline"><div class="label">' + code + '</div><div class="diamond"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
+            });
+            $('#canvas' + task_num).html(widgets.join('\n'));
+
+            $(".triangle").each(function(){
+                    var obj = $(this);
+                    var which = "top";
+                    if(obj.hasClass("triangle-bottomleft") || obj.hasClass("triangle-bottomright")){
+                            which = "bottom";
+                    }
+                    var num = Number(obj.text());
+                    var scale = [
+                            [255,255,255],
+                            [237,248,251],
+                            [191,211,230],
+                            [158,188,218],
+                            [140,150,198],
+                            [136,86,167]];
+                    num = Math.floor(num/10);
+                    num = num > 5 ? 5 : num;
+                    obj.text("").css("border-"+which+"-color","rgb("+scale[num][0]+","+scale[num][1]+","+scale[num][2]+")");
+            });
+    });
+}

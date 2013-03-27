@@ -49,7 +49,16 @@
             <b>Your goal is to identify charts with the attributes specified in the scenarios</b>.</p>
     </div>
     <div class="box">
-        <div id="canvas"></div>
+       <script> 
+            get_task(1);
+            get_task(2);
+            get_task(3);
+            get_task(4);
+       </script>
+       <div id="canvas1"></div>
+       <div id="canvas2"></div>
+       <div id="canvas3"></div>
+       <div id="canvas4"></div>
     </div>
 </body>
 </html>
