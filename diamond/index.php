@@ -49,10 +49,12 @@
             <b>Your goal is to identify charts with the attributes specified in the scenarios</b>.</p>
     </div>
     <div class="box">
-       <div id="canvas1"></div>
-       <div id="canvas2"></div>
-       <div id="canvas3"></div>
-       <div id="canvas4"></div>
+        <form method="post" action="submit.php">
+           <div id="canvas1"></div>
+           <div id="canvas2"></div>
+           <div id="canvas3"></div>
+           <div id="canvas4"></div>
+        </form>
     </div>
 </body>
 </html>

@@ -51,7 +51,9 @@ function render_canvas(data) {
 		});
 		widgets.push('<div class="widget inline"><div class="label">' + code + '</div><div class="diamond"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
+        widgets.push('<br><p>Please describe your selection.</p><textarea name="task_' + task + '_text"></textarea><br><br>');
 	$('#canvas' + task).html(widgets.join('\n'));
+        //$('#canvas' + task).html('<textarea name="' + task + '"></textarea>');
 
 	$('#canvas' + task + ' .triangle').each(function(){
 		var obj = $(this);
