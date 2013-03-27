@@ -1,0 +1,266 @@
+#canvas {
+    width: 100%;
+    height: 100%;
+}
+.inline {
+    display: inline-block;
+}
+.triangle-topleft {
+	width: 0;
+	height: 0;
+	border-top: 100px solid red;
+	border-right: 100px solid transparent;
+}
+
+.triangle-topright {
+	width: 0;
+	height: 0;
+	border-top: 100px solid red;
+	border-left: 100px solid transparent;
+}
+
+.triangle-bottomleft {
+	width: 0;
+	height: 0;
+	border-bottom: 100px solid red;
+	border-right: 100px solid transparent;
+}
+
+.triangle-bottomright {
+	width: 0;
+	height: 0;
+	border-bottom: 100px solid red;
+	border-left: 100px solid transparent;
+}
+
+.squareblack {
+	width: 10px;
+	height: 10px;
+	background: black;
+}
+
+.squarewhite {
+	width: 10px;
+	height: 10px;
+	background: white;
+}
+
+.squaresbackground {
+	width: 34px;
+	height: 12px;
+	background: black;
+}
+
+.toprow {
+	position:relative;
+	top:10px;
+	left:10px;
+	width: 217px;
+	height: 107px;
+	background-color: black;
+}
+
+.bottomrow {
+	position:relative;
+	top:5px;
+	left:10px;
+	width: 217px;
+	height:102px;
+	background-color: black;
+}
+
+#legend {
+	position:absolute;
+	top:360px;
+	left:250px;
+}
+
+.historic {
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+
+.current {
+	position:absolute;
+	top:0px;
+	left:11px;
+}
+
+.auto {
+	position:absolute;
+	top:0px;
+	left:22px;
+}
+
+.FTT , .FFT {
+	position:absolute;
+	top:1px;
+	left:1px;
+}
+
+.FTTtext {
+	position:absolute;
+	top:25px;
+	left:15px;
+}
+
+.FTTbackground {
+	position:absolute;
+	top:5px;
+	left:5px;
+}
+
+.FTTsquares {
+	position:absolute;
+	top:6px;
+	left:6px;
+}
+
+.FFTsquares {
+	position:absolute;
+	top:86px;
+	left:6px;
+}
+
+.FFTbackground {
+	position:absolute;
+	top:85px;
+	left:5px;
+}
+
+.FFTtext {
+	position:absolute;
+	top:55px;
+	left:20px;
+}
+
+
+.TTT, .FTF {
+	position:absolute;
+	top:1px;
+	left:7px;
+}
+
+.TTTtext {
+	position:absolute;
+	top:50px;
+	left:75px;
+}
+
+.TTTsquares {
+	position:absolute;
+	top:85px;
+	left:70px;
+}
+
+.TTTbackground {
+	position:absolute;
+	top:84px;
+	left:69px;
+}
+
+.FTFsquares {
+	position:absolute;
+	top:5px;
+	left:70px;
+
+}
+
+.FTFbackground {
+	position:absolute;
+	top:4px;
+	left:69px;
+}
+
+.FTFtext {
+	position:absolute;
+	top:25px;
+	left:75px;
+}
+
+.TFT, .FFF {
+	position:absolute;
+	top:1px;
+	left:110px;
+}
+
+.TFTsquares {
+	position:absolute;
+	top:85px;
+	left:116px;
+}
+
+.TFTbackground {
+	position:absolute;
+	top:84px;
+	left:115px;
+}
+
+.FFFsquares {
+	position:absolute;
+	top:5px;
+	left:116px;
+}
+
+.FFFbackground {
+	position:absolute;
+	top:4px;
+	left:115px;
+}
+
+
+.TFTtext {
+	position:absolute;
+	top:50px;
+	left:125px;
+}
+
+.FFFtext {
+	position:absolute;
+	top:25px;
+	left:125px;
+}
+
+.TTF, .TFF {
+	position:absolute;
+	top:1px;
+	left:116px;
+}
+
+.TTFsquares {
+	position:absolute;
+	top:5px;
+	left:180px;
+}
+
+.TTFbackground {
+	position:absolute;
+	top:4px;
+	left:179px;
+}
+
+
+.TFFsquares {
+	position:absolute;
+	top:85px;
+	left:180px;
+}
+
+.TFFbackground {
+	position:absolute;
+	top:84px;
+	left:179px;
+}
+
+.TTFtext {
+	position:absolute;
+	top:25px;
+	left:190px;
+}
+
+.TFFtext {
+	position:absolute;
+	top:55px;
+	left:190px;
+}
