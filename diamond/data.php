@@ -71,17 +71,16 @@ $task4_errors = array (
     "inaccurate" => 1
     );
 
-
-$scenario = $_GET["task"];
-if ($scenario == 1) {
-    echo json_encode(get_values($labels12, $task1_errors, $bases, 10));
-} elseif ($scenario == 2) {
-    echo json_encode(get_values($labels12, $task2_errors, $bases, 10));
-} elseif ($scenario == 3) {
-    echo json_encode(get_values($labels42, $task3_errors, $bases, 10));
-} else {
-    echo json_encode(get_values($labels42, $task4_errors, $bases, 10));
+$values = null;
+	
+switch($_GET["task"]){
+	case 1: $values = get_values($labels12, $task1_errors, $bases, 10); break;
+	case 2: $values = get_values($labels12, $task2_errors, $bases, 10); break;
+	case 3: $values = get_values($labels42, $task3_errors, $bases, 10); break;
+	default: $values = get_values($labels42, $task4_errors, $bases, 10);
 }
+
+echo json_encode(array("task" => $_GET["task"], "values" => $values));
 
 // returns an array of emotion labels and their values
 function get_values($labels_list, $error_list, $base_vals, $k) {
