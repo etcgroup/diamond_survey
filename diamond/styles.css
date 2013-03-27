@@ -1,3 +1,20 @@
+.labels12 {
+    width: 500px;
+}
+
+.labels42 {
+    width: 900px;
+}
+
+.taskbox {
+    background-color: white;
+    width: 1000px;
+    padding: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin: auto;
+}
+
 .likert {
     white-space: normal;
     line-height: normal;

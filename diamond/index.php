@@ -48,12 +48,20 @@
             Each scenario will feature 42 charts, each representing a separate label, some with problems and others without. 
             <b>Your goal is to identify charts with the attributes specified in the scenarios</b>.</p>
     </div>
-    <div class="box">
+    <div>
         <form method="post" action="submit.php">
-           <div id="canvas1"></div>
-           <div id="canvas2"></div>
-           <div id="canvas3"></div>
-           <div id="canvas4"></div>
+            <div class="box">
+                <p>Task 1. Identify the emotion label that will have the most problems being identified automatically.</p>
+               <div id="canvas1" class="labels12"></div>
+                <p>Task 2. Select 3 charts where there is the largest change in code definition.</p>
+               <div id="canvas2" class="labels12"></div>
+            </div>
+            <div class="taskbox">
+                <p>Task 3. Identify the emotion label that will have the most problems being identified automatically. </p>
+               <div id="canvas3" class="labels42"></div>
+                <p>Task 4. Select 3 charts where there is the largest change in code definition.</p>
+               <div id="canvas4" class="labels42"></div>
+           <div>
            <div id="questions">
                <p>On a scale from 1 (Disagree) to 5 (Agree), please rate the following statements:</p>
                <table class="likert">
