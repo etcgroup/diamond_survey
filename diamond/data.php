@@ -6,26 +6,56 @@ $labels28 = array("acceptance", "admiration", "agreement", "amazement", "amuseme
 
 // setting bases for each error type
 $bases = array(
-    "ideal" => array("FTT" => 10, "TTT" => 40, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 40, "TFF" => 10),
+    "ideal" => array("FTT" => 0, "TTT" => 50, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 40, "TFF" => 10),
     "accurate" => array("FTT" => 25, "TTT" => 25, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 25, "TFF" => 25),
     "auto error" => array("FTT" => 0, "TTT" => 20, "TFT" => 30, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 20, "TFF" => 30),
     "current error" => array("FTT" => 0, "TTT" => 20, "TFT" => 0, "TTF" => 30, "FFT" => 30, "FTF" => 0, "FFF" => 20, "TFF" => 0)
 );
 
 // proportions for each error type
-$task3_errors = array (
+$ideal = array (
+    "ideal" => 23,
+    "accurate" => 3,
+    "auto error" => 1,
+    "current error" => 1
+    );
+
+$auto= array (
+    "ideal" => 3,
+    "accurate" => 1,
+    "auto error" => 23,
+    "current error" => 1
+    );
+
+$current= array (
+    "ideal" => 3,
+    "accurate" => 1,
+    "auto error" => 1,
+    "current error" => 23
+    );
+
+$accurate = array (
     "ideal" => 3,
     "accurate" => 23,
     "auto error" => 1,
     "current error" => 1
     );
+
 $values = null;
 	
-switch($_GET["task"]){
-	default: $values = get_values($labels28, $task3_errors, $bases, 10);
+$cases = array ($ideal, $auto, $current, $accurate);
+$selection = array_rand($cases);
+        
+switch($selection){
+    case $ideal: $values = get_values($labels28, $ideal, $bases, 10); break;
+    case $auto: $values = get_values($labels28, $auto, $bases, 10); break;
+    case $current: $values = get_values($labels28, $current, $bases, 10); break;
+    default: $values = get_values($labels28, $accurate, $bases, 10);
 }
 
-echo json_encode(array("task" => $_GET["task"], "values" => $values));
+echo json_encode(array("task" => 0, "values" => $values));
+
+//echo json_encode(array("label count" => 10, "error type" => ""));
 
 // returns an array of emotion labels and their values
 function get_values($labels_list, $error_list, $base_vals, $k) {

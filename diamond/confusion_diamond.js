@@ -25,11 +25,11 @@ function get_triangle(which, value){
         tooltip_vals = tooltip_vals.join('\n');
         
         out.push('<div class="'+which+' '+triangle_info[which][0]+' triangle">'+value+'</div>');
-        if (value >= 50) {
-                out.push('<div class="'+which+'text forward"><label style="color:#C1ABB4" title="'+value+' Messages rated:\n'+tooltip_vals+'">'+value+'</label></div>');
-        } else {        
+        //if (value >= 50) {
+        //        out.push('<div class="'+which+'text forward"><label style="color:#C1ABB4" title="'+value+' Messages rated:\n'+tooltip_vals+'">'+value+'</label></div>');
+        //} else {        
 		out.push('<div class="'+which+'text forward"><label title="'+value+' Messages rated:\n'+tooltip_vals+'">'+value+'</label></div>');
-        }
+        //}
 	//out.push('<div class="squaresbackground" id="'+which+'background"></div>');
 	out.push('<div class="'+which+'squares">');
 	//$.each(triangle_info[which][1], function(datasource, color){
@@ -80,4 +80,4 @@ function render_canvas(data) {
 	});
 }
 
-$.getJSON('data.php', {'task': 3}, render_canvas);
+$.getJSON('data.php', render_canvas);
