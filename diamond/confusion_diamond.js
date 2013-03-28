@@ -23,8 +23,13 @@ function get_triangle(which, value){
             }
         }
         tooltip_vals = tooltip_vals.join('\n');
-	out.push('<div class="'+which+' '+triangle_info[which][0]+' triangle">'+value+'</div>');
-	out.push('<div class="'+which+'text forward"><label title="'+value+' Messages rated:\n'+tooltip_vals+'">'+value+'</label></div>');
+        
+        out.push('<div class="'+which+' '+triangle_info[which][0]+' triangle">'+value+'</div>');
+        if (value >= 50) {
+                out.push('<div class="'+which+'text forward"><label style="color:#C1ABB4" title="'+value+' Messages rated:\n'+tooltip_vals+'">'+value+'</label></div>');
+        } else {        
+		out.push('<div class="'+which+'text forward"><label title="'+value+' Messages rated:\n'+tooltip_vals+'">'+value+'</label></div>');
+        }
 	//out.push('<div class="squaresbackground" id="'+which+'background"></div>');
 	out.push('<div class="'+which+'squares">');
 	//$.each(triangle_info[which][1], function(datasource, color){
@@ -50,9 +55,8 @@ function render_canvas(data) {
 				bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
 		});
 		widgets.push('<div class="widget inline">' //<div class="label">' + code + '</div>
-                +'<div class="diamond"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
+                +'<div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
-        widgets.push('<br><p>Please describe your selection.</p><textarea name="task_' + task + '_text"></textarea><br><br>');
 	$('#canvas' + task).html(widgets.join('\n'));
         //$('#canvas' + task).html('<textarea name="' + task + '"></textarea>');
 
@@ -64,17 +68,16 @@ function render_canvas(data) {
 		}
 		var num = Number(obj.text());
 		var scale = [
-				[255,255,255],
-				[237,248,251],
-				[191,211,230],
-				[158,188,218],
-				[140,150,198],
-				[136,86,167]];
+				[208,209,230],
+				[166,189,219],
+				[103,169,207],
+				[54,144,192],
+				[2,129,138],
+				[1,100,80]];
 		num = Math.floor(num/10);
 		num = num > 5 ? 5 : num;
 		obj.text("").css("border-"+which+"-color","rgb("+scale[num][0]+","+scale[num][1]+","+scale[num][2]+")");
 	});
 }
 
-for (var i=1; i<=4; i++)
-	$.getJSON('data.php', {'task': i}, render_canvas);
+$.getJSON('data.php', {'task': 3}, render_canvas);

@@ -1,3 +1,9 @@
+
+.outline {
+    background-color: black;
+    padding: 1px;
+}
+
 .labels12 {
     width: 500px;
 }
@@ -8,7 +14,7 @@
 
 .taskbox {
     background-color: white;
-    width: 1000px;
+    width: 800px;
     padding: 50px;
     margin-top: 30px;
     margin-bottom: 30px;
@@ -116,22 +122,19 @@ body {
 	background: black;
 }
 
-.toprow {
+.toprow, .bottomrow{
 	position:relative;
 	top:0px;
 	left:0px;
-	width: 112px;
+	width: 106px;
+	background-color: white;
+}
+.toprow {
 	height: 52px;
-	background-color: black;
 }
 
 .bottomrow {
-	position:relative;
-	top:0px;
-	left:0px;
-	width: 112px;
-	height:52px;
-	background-color: black;
+	height:54px;
 }
 
 #legend {
@@ -160,14 +163,21 @@ body {
 
 .FTT , .FFT {
 	position:absolute;
-	top:1px;
-	left:1px;
+	left:0px;
+}
+
+.FFT {
+        top:4px;  
+}
+
+.FTT {
+    	top:0px;
 }
 
 .FTTtext {
 	position:absolute;
-	top:8px;
-	left:8px;
+	top:7px;
+	left:7px;
 }
 
 .FTTbackground {
@@ -196,21 +206,21 @@ body {
 
 .FFTtext {
 	position:absolute;
-	bottom:8px;
-	left:8px;
+	bottom:7px;
+	left:7px;
 }
 
 
 .TTT, .FTF {
 	position:absolute;
-	top:1px;
-	left:5px;
+	top:2px;
+	left:2px;
 }
 
 .TTTtext {
 	position:absolute;
-	top:25px;
-	left:33px;
+	top:24px;
+	left:32px;
 }
 
 .TTTsquares {
@@ -240,14 +250,14 @@ body {
 
 .FTFtext {
 	position:absolute;
-	top:5px;
-	left:33px;
+	top:4px;
+	left:32px;
 }
 
 .TFT, .FFF {
 	position:absolute;
-	top:1px;
-	left:57px;
+	top:2px;
+	left:54px;
 }
 
 .TFTsquares {
@@ -277,22 +287,29 @@ body {
 
 .TFTtext {
 	position:absolute;
-	top:25px;
-	left:63px;
+	top:24px;
+	left:62px;
 }
 
 .FFFtext {
 	position:absolute;
-	top:5px;
-	left:63px;
+	top:4px;
+	left:62px;
 }
 
 .TTF, .TFF {
 	position:absolute;
-	top:1px;
-	left:61px;
+	left:56px;
 }
 
+.TTF {
+	top:0px;
+}
+
+.TFF {
+    top:4px;
+}
+        
 .TTFsquares {
 	position:absolute;
 	top:5px;
@@ -320,12 +337,12 @@ body {
 
 .TTFtext {
 	position:absolute;
-	top:8px;
-	right:8px;
+	top:7px;
+	right:7px;
 }
 
 .TFFtext {
 	position:absolute;
-	bottom:8px;
-	right:8px;
+	bottom:7px;
+	right:7px;
 }
