@@ -10,7 +10,7 @@
 	<link rel="stylesheet" href="confusion_diamond.css" />
         <script>
             $(function() {
-              $( document ).tooltip();
+              //$( document ).tooltip();
             });
         </script>
 </head>

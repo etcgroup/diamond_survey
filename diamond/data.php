@@ -6,13 +6,24 @@ $labels28 = array("acceptance", "admiration", "agreement", "amazement", "amuseme
 
 // setting bases for each error type
 $bases = array(
-    "ideal" => array("FTT" => 0, "TTT" => 50, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 40, "TFF" => 10),
-    "accurate" => array("FTT" => 25, "TTT" => 25, "TFT" => 0, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 25, "TFF" => 25),
-    "auto error" => array("FTT" => 0, "TTT" => 20, "TFT" => 30, "TTF" => 0, "FFT" => 0, "FTF" => 0, "FFF" => 20, "TFF" => 30),
-    "current error" => array("FTT" => 0, "TTT" => 20, "TFT" => 0, "TTF" => 30, "FFT" => 30, "FTF" => 0, "FFF" => 20, "TFF" => 0)
+    "70-80" => array(
+            "uphill" => array("FTT" => 0, "TTT" => 25, "TFT" => 15, "TTF" => 10, "FFT" => 10, "FTF" => 15, "FFF" => 25, "TFF" => 0),
+            "downhill" => array("FTT" => 10, "TTT" => 35, "TFT" => 5, "TTF" => 0, "FFT" => 0, "FTF" => 5, "FFF" => 35, "TFF" => 10)
+        ),
+    "50-40" => array("FTT" => 25, "TTT" => 20, "TFT" => 0, "TTF" => 5, "FFT" => 5, "FTF" => 0, "FFF" => 20, "TFF" => 25),
+    "50-80"=> array(
+            "uphill" => array("FTT" => 0, "TTT" => 20, "TFT" => 20, "TTF" => 5, "FFT" => 5, "FTF" => 20, "FFF" => 20, "TFF" => 0),
+            "downhill" => array("FTT" => 10, "TTT" => 25, "TFT" => 15, "TTF" => 0, "FFT" => 0, "FTF" => 15, "FFF" => 25, "TFF" => 10)
+        )
 );
 
 // proportions for each error type
+$bowties = array (
+    "70-80" => 12,
+    "50-40" => 3,
+    "50-80" => 13
+);
+/*
 $ideal = array (
     "ideal" => 23,
     "accurate" => 3,
@@ -40,17 +51,20 @@ $accurate = array (
     "auto error" => 1,
     "current error" => 1
     );
+*/
+
 
 $values = null;
 	
-$cases = array ($ideal, $auto, $current, $accurate);
-$selection = array_rand($cases);
+//$cases = array ($ideal, $auto, $current, $accurate);
+//$selection = array_rand($cases);
         
-switch($selection){
-    case $ideal: $values = get_values($labels28, $ideal, $bases, 10); break;
+switch($bowties){
+    /*case $ideal: $values = get_values($labels28, $ideal, $bases, 10); break;
     case $auto: $values = get_values($labels28, $auto, $bases, 10); break;
     case $current: $values = get_values($labels28, $current, $bases, 10); break;
-    default: $values = get_values($labels28, $accurate, $bases, 10);
+    default: $values = get_values($labels28, $accurate, $bases, 10); */
+    default: $values = get_values($labels28, $bowties, $bases, 10);
 }
 
 echo json_encode(array("task" => 0, "values" => $values));
@@ -64,13 +78,19 @@ function get_values($labels_list, $error_list, $base_vals, $k) {
     shuffle($labels_list);
     foreach ($labels_list as $label) {    
         // selecting a random error level to assign to emotion label (ex. ideal, very accurate, etc.)
+        
         reset($error_list);
         $error = key($error_list);
 
         $change = mt_rand(0, 9);
-
-        $newresult = $base_vals[$error];
-
+        
+        $newresult;
+        if ($error == "50-40") {
+             $newresult = $base_vals[$error];
+        } else {
+            $type = array_rand($base_vals[$error]);
+            $newresult = $base_vals[$error][$type];
+        }
         $change_minus = array_rand($newresult);
 
         //echo json_encode($change_minus);
