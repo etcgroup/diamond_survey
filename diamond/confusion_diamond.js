@@ -26,7 +26,6 @@ function get_triangle(which, value){
         
         out.push('<div class="'+which+' '+triangle_info[which][0]+' triangle">'+value+'</div>');
         out.push('<div class="'+which+'text forward"><label title="'+value+' Messages rated:\n'+tooltip_vals+'"><p class="num">'+value+'</p></label></div>');
-        //}
 	//out.push('<div class="squaresbackground" id="'+which+'background"></div>');
 	out.push('<div class="'+which+'squares">');
 	//$.each(triangle_info[which][1], function(datasource, color){
@@ -51,8 +50,7 @@ function render_canvas(data) {
 		$.each(window.bottom_triangles, function(key, which){
 				bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
 		});
-		widgets.push('<div class="widget inline">' //<div class="label">' + code + '</div>
-                +'<div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
+		widgets.push('<div class="widget inline hover-group"><div class="label code hover-toggle">' + code + '</div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
 	$('#canvas' + task).html(widgets.join('\n'));
         //$('#canvas' + task).html('<textarea name="' + task + '"></textarea>');
