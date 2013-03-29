@@ -16,6 +16,11 @@
     border:solid 1px #333333;    
 }
 
+.question{
+	background-color:#aa0000;
+	color:#ffffff;
+	padding:3px;
+}
 .canvas {
 	-moz-user-select: none;
 	-khtml-user-select: none;
@@ -99,9 +104,9 @@ body {
     background-color: white;
     width: 700px;
     padding: 50px;
+    margin: auto;
     margin-top: 30px;
     margin-bottom: 30px;
-    margin: auto;
 }
 
 .center {

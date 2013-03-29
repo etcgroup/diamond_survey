@@ -67,20 +67,16 @@ include("utils/UI.php");
             This might happen if the scientists who are labeling emotion in chat messages decide to change their definition of <i>frustration</i>; 
             perhaps they are now distinguishing <i>frustration</i> and <i>annoyance</i>, so messages that used to be labeled frustration would no longer be labeled as such. 
             This can lead to errors in similar codes, such as anger.</p>
-        <p><b>Please analyze</b> the following three scenarios, based on the charts shown. 
-            Each scenario will feature 42 charts, each representing a separate label, some with problems and others without. 
-            <b>Your goal is to identify charts with the attributes specified in the scenarios</b>.</p>
+        <p><b>Please analyze</b> the following scenarios, based on the charts shown. 
+            Each scenario will feature 30 charts, each representing a separate label, some with problems and others without. 
+            <b>Your goal is to identify the most problematic chart in each scenario</b>.</p>
     </div>
-    <div id="canvases">
 	 <form method="post" action="submit.php">
-           <div id="canvas1" class="canvas box deselect_text"></div>
-           <div id="canvas2" class="canvas box deselect_text"></div>
-           <div id="canvas3" class="canvas box deselect_text"></div>
-           <div id="canvas4" class="canvas box deselect_text"></div>
+    <div id="canvases">
     </div>
 	   <div class="box">
 
-			<p><span class="question">Question 7.</span> On a scale from 1 (Disagree) to 5 (Agree)
+			<p><span class="question">Question 6.</span> On a scale from 1 (Disagree) to 5 (Agree)
 				please rate the following statements:</p>
 
 			<?php
@@ -93,7 +89,7 @@ include("utils/UI.php");
 					), 5, "disagree", "agree");
 			?>
 
-			<p><span class="question">Question 8.</span> On a scale from 1
+			<p><span class="question">Question 7.</span> On a scale from 1
 				(unfamiliar) to 7 (expert) please rate your familiarity with
 				the following topics:</p>
 
@@ -109,7 +105,7 @@ include("utils/UI.php");
 			?>
 
 
-			<p><span class="question">Question 9.</span> Is there anything
+			<p><span class="question">Question 8.</span> Is there anything
 				you'd like to comment on regarding the chart or this survey?</span></p>
 			<textarea name="open-ended-comments"></textarea>
 		</div>

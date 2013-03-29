@@ -1,8 +1,7 @@
 <?php
 
 // emotion labels  
-$labels28 = array("acceptance", "admiration", "agreement", "amazement", "amusement", "anger", "annoyance", "anticipation", "apologetic", "apprehension", "boredom", "confusion", "considering", "disagreement",
-                "disappointment", "disbelief", "disgust", "distraction", "ecstasy", "embarrassment", "excitement", "fear", "frustration", "gratitude", "grief", "happiness", "impatience", "interest");
+$labels28 = array("acceptance", "admiration", "agreement", "amazement", "amusement", "anger", "annoyance", "anticipation", "apologetic", "apprehension", "boredom", "confusion", "considering", "disagreement", "disappointment", "disbelief", "disgust", "distraction", "ecstasy", "embarrassment", "excitement", "fear", "frustration", "gratitude", "grief", "happiness", "impatience", "interest");
 
 // setting bases for each error type
 $bases = array(
@@ -25,7 +24,7 @@ $bowties = array (
 );
 
 $values = get_values($labels28, $bowties, $bases, 10);
-echo json_encode(array("task" => $_GET["task"], "values" => $values));
+echo json_encode($values);
 
 // returns an array of emotion labels and their values
 function get_values($labels_list, $error_list, $base_vals, $k) {

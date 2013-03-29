@@ -10,6 +10,8 @@ window.triangle_info["TFF"] = ["triangle-bottomright", {"historic": "black", "cu
 window.top_triangles = ["FTT", "TTT", "TFT", "TTF"];
 window.bottom_triangles = ["FFT", "FTF", "FFF", "TFF"];
 
+window.loaded_canvases = 0;
+
 function get_triangle(which, value){
 	var out = [];
 	var tooltip_vals = [];
@@ -30,9 +32,7 @@ function get_triangle(which, value){
 
 function render_canvas(data) {
 	var widgets = [];
-	
-	var task = data.task;
-	data = data.values;
+	window.loaded_canvases++;
 	
 	$.each(data, function(code, diamond_data){
 		var toprow = []; 
@@ -45,9 +45,23 @@ function render_canvas(data) {
 		});
 		widgets.push('<div class="widget inline hover-group"><div class="label code hover-toggle"><p class="affect">' + code + '</p></div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
-	$('#canvas' + task).html(widgets.join('\n') + '\n<textarea name="open-ended-' + task + '"></textarea>');
+	
+	console.log('Question ' + window.loaded_canvases + '');
+	$('#canvas'+window.loaded_canvases).html(function(){
+	console.log('Question ' + window.loaded_canvases + '');
+		question = '<div><span class=\"question\">Question ' + window.loaded_canvases + ':</span> Select (by clicking) the <u>most problematic</u> label, such as when the classifier disagrees with manual or varifying data, when the manual and varifying data disagree, or a combination. <u>Justify your choice</u> in one or two sentences below:<br /><textarea name=\"open-ended-'+window.loaded_canvases+'-explanation\"></textarea></div>';
+		return widgets.join('\n') + question;
+	});
 
-	$('#canvas' + task + ' .triangle').each(function(){
+	activate_canvases();
+}
+
+function activate_canvases(){
+	if(window.loaded_canvases < window.goal_canvases){
+		return;
+	}
+	
+	$('.canvas .triangle').each(function(){
 		var obj = $(this);
 		var which = "top";
 		if(obj.hasClass("triangle-bottomleft") || obj.hasClass("triangle-bottomright")){
@@ -65,19 +79,27 @@ function render_canvas(data) {
 		num = num > 5 ? 5 : num;
 		obj.text("").css("border-"+which+"-color","rgb("+scale[num][0]+","+scale[num][1]+","+scale[num][2]+")");
 	});
-	$('#canvas' + task + ' .triangle').on('click', function(){
+	$('.canvas .triangle').on('click', function(){
 		$(".outline-active").removeClass("outline-active");
 		$(this).parent().parent().addClass("outline-active");
 		$('#answer').val($('.code', $(this).parent().parent().parent()).text());
 	});
-	$('#canvas' + task + ' .num').on('click', function(){
+	$('.canvas .num').on('click', function(){
 		$(".outline-active").removeClass("outline-active");
 		$(this).parent().parent().parent().addClass("outline-active");
 		$('#answer').val($('.code', $(this).parent().parent()).text());
 	});
 }
 
-$.getJSON('survey2_data.php', {'task': 1}, render_canvas);
-$.getJSON('survey2_data.php', {'task': 2}, render_canvas);
-$.getJSON('survey2_data.php', {'task': 3}, render_canvas);
-$.getJSON('survey2_data.php', {'task': 4}, render_canvas);
+$(document).ready(function(){
+	window.goal_canvases = 5;
+	canvases = [];
+	for(var i=1; i<=window.goal_canvases; i++){
+		canvases.push('<div id="canvas' + i + '" class="canvas box deselect_text"></div>');
+	}
+	$('#canvases').html(canvases.join('\n'));
+	console.log($('#canvases').html());
+	for(var i=1; i<=window.goal_canvases; i++){
+		$.getJSON('survey2_data.php', render_canvas);
+	}
+});
