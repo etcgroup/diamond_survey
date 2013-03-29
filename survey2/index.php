@@ -44,171 +44,63 @@
             <b>Your goal is to identify charts with the attributes specified in the scenarios</b>.</p>
     </div>
 	 <form method="post" action="submit.php">
-		<div class="box">
+		<div class="taskbox">
 			<p>Task 1. Identify the emotion label that will have the most problems being identified automatically.</p>
 		   <div id="canvas1"></div>
 		</div>
-		<div class="box">
+		<div class="taskbox">
 			<p>Task 2. Select 3 charts where there is the largest change in code definition.</p>
 		   <div id="canvas2"></div>
 		</div>
-		<div class="box">
+		<div class="taskbox">
 			<p>Task 3. Identify the emotion label that will have the most problems being identified automatically. </p>
 		   <div id="canvas3"></div>
 		</div>
-		<div class="box">
+		<div class="taskbox">
 			<p>Task 4. Select 3 charts where there is the largest change in code definition.</p>
 		   <div id="canvas4"></div>
 	   </div>
+	   
 	   <div class="box">
-	   <div id="questions">
-		   <p>On a scale from 1 (Disagree) to 5 (Agree), please rate the following statements:</p>
-		   <table class="likert">
-			   <tbody>
-				   <tr>
-					   <td class="likert-option">The chart was difficult to learn</td>
-					   <td class="likert-extreme">disagree</td>
-					   <td><input type="radio" name="reflection-difficulty" value="1"></td>
-					   <td><input type="radio" name="reflection-difficulty" value="2"></td>
-					   <td><input type="radio" name="reflection-difficulty" value="3"></td>
-					   <td><input type="radio" name="reflection-difficulty" value="4"></td>
-					   <td><input type="radio" name="reflection-difficulty" value="5"></td>
-					   <td class="likert-extreme">agree</td>
-				   </tr>
-				   <tr>
-					   <td class="likert-option">The chart was easy to use once I figured it out</td>
-					   <td class="likert-extreme">disagree</td>
-					   <td><input type="radio" name="reflection-learned" value="1"></td>
-					   <td><input type="radio" name="reflection-learned" value="2"></td>
-					   <td><input type="radio" name="reflection-learned" value="3"></td>
-					   <td><input type="radio" name="reflection-learned" value="4"></td>
-					   <td><input type="radio" name="reflection-learned" value="5"></td>
-					   <td class="likert-extreme">agree</td>
-				   </tr>
-				   <tr>
-					   <td class="likert-option">I was able to use the chart to guide me through the scenarios</td>
-					   <td class="likert-extreme">disagree</td>
-					   <td><input type="radio" name="reflection-usable" value="1"></td>
-					   <td><input type="radio" name="reflection-usable" value="2"></td>
-					   <td><input type="radio" name="reflection-usable" value="3"></td>
-					   <td><input type="radio" name="reflection-usable" value="4"></td>
-					   <td><input type="radio" name="reflection-usable" value="5"></td>
-					   <td class="likert-extreme">agree</td>
-				   </tr>
-				   <tr>
-					   <td class="likert-option">The chart was helpful for understanding classifier bugs</td>
-					   <td class="likert-extreme">disagree</td>
-					   <td><input type="radio" name="reflection-bugs" value="1"></td>
-					   <td><input type="radio" name="reflection-bugs" value="2"></td>
-					   <td><input type="radio" name="reflection-bugs" value="3"></td>
-					   <td><input type="radio" name="reflection-bugs" value="4"></td>
-					   <td><input type="radio" name="reflection-bugs" value="5"></td>
-					   <td class="likert-extreme">agree</td>
-				   </tr>
-				   <tr>
-					   <td class="likert-option">The chart was useful for understanding shifts in the dataset</td>
-					   <td class="likert-extreme">disagree</td>
-					   <td><input type="radio" name="reflection-data_shifts" value="1"></td>
-					   <td><input type="radio" name="reflection-data_shifts" value="2"></td>
-					   <td><input type="radio" name="reflection-data_shifts" value="3"></td>
-					   <td><input type="radio" name="reflection-data_shifts" value="4"></td>
-					   <td><input type="radio" name="reflection-data_shifts" value="5"></td>
-					   <td class="likert-extreme">agree</td>
-				   </tr>
-			   </tbody>
-		   </table>
-		   <p>On a scale from 1 (unfamiliar) to 7 (expert) please rate your familiarity with the following topics:</p>
-		   <table class="likert">
-			   <tbody>
-				   <tr>
-					   <td class="likert-option">Quantitative Data Analysis</td>
-					   <td class="likert-extreme">unfamiliar</td>
-					   <td>
-						   <input type="radio" name="familiarity-0" value="1">
-						   <input type="radio" name="familiarity-0" value="2">
-						   <input type="radio" name="familiarity-0" value="3">
-						   <input type="radio" name="familiarity-0" value="4">
-						   <input type="radio" name="familiarity-0" value="5">
-						   <input type="radio" name="familiarity-0" value="6">
-						   <input type="radio" name="familiarity-0" value="7">
-					   </td>
-					   <td class="likert-extreme">expert</td>
-				   </tr>
-				   <tr>
-					   <td class="likert-option">Qualitative Data Analysis</td>
-					   <td class="likert-extreme">unfamiliar</td>
-					   <td>
-						   <input type="radio" name="familiarity-1" value="1">
-						   <input type="radio" name="familiarity-1" value="2">
-						   <input type="radio" name="familiarity-1" value="3">
-						   <input type="radio" name="familiarity-1" value="4">
-						   <input type="radio" name="familiarity-1" value="5">
-						   <input type="radio" name="familiarity-1" value="6">
-						   <input type="radio" name="familiarity-1" value="7">
-					   </td>
-					   <td class="likert-extreme">expert</td>
-				   </tr>
-				   <tr>
-					   <td class="likert-option">Visual Analytics</td>
-					   <td class="likert-extreme">unfamiliar</td>
-					   <td>
-						   <input type="radio" name="familiarity-2" value="1">
-						   <input type="radio" name="familiarity-2" value="2">
-						   <input type="radio" name="familiarity-2" value="3">
-						   <input type="radio" name="familiarity-2" value="4">
-						   <input type="radio" name="familiarity-2" value="5">
-						   <input type="radio" name="familiarity-2" value="6">
-						   <input type="radio" name="familiarity-2" value="7">
-					   </td>
-					   <td class="likert-extreme">expert</td>
-				   </tr>
-				   <tr>
-					   <td class="likert-option">Machine Learning</td>
-					   <td class="likert-extreme">unfamiliar</td>
-					   <td>
-						   <input type="radio" name="familiarity-3" value="1">
-						   <input type="radio" name="familiarity-3" value="2">
-						   <input type="radio" name="familiarity-3" value="3">
-						   <input type="radio" name="familiarity-3" value="4">
-						   <input type="radio" name="familiarity-3" value="5">
-						   <input type="radio" name="familiarity-3" value="6">
-						   <input type="radio" name="familiarity-3" value="7">
-					   </td>
-					   <td class="likert-extreme">expert</td>
-				   </tr>
-				   <tr>
-					   <td class="likert-option">Data Mining</td>
-					   <td class="likert-extreme">unfamiliar</td>
-					   <td>
-						   <input type="radio" name="familiarity-4" value="1">
-						   <input type="radio" name="familiarity-4" value="2">
-						   <input type="radio" name="familiarity-4" value="3">
-						   <input type="radio" name="familiarity-4" value="4">
-						   <input type="radio" name="familiarity-4" value="5">
-						   <input type="radio" name="familiarity-4" value="6">
-						   <input type="radio" name="familiarity-4" value="7">
-					   </td>
-					   <td class="likert-extreme">expert</td>
-				   </tr>
-				   <tr>
-					   <td class="likert-option">Confusion Matrices</td>
-					   <td class="likert-extreme">unfamiliar</td>
-					   <td>
-						   <input type="radio" name="familiarity-5" value="1">
-						   <input type="radio" name="familiarity-5" value="2">
-						   <input type="radio" name="familiarity-5" value="3">
-						   <input type="radio" name="familiarity-5" value="4">
-						   <input type="radio" name="familiarity-5" value="5">
-						   <input type="radio" name="familiarity-5" value="6">
-						   <input type="radio" name="familiarity-5" value="7">
-					   </td>
-					   <td class="likert-extreme">expert</td>
-				   </tr>
-			   </tbody>
-		   </table>
-		   <p>Is there anything you would like to comment on regarding the chart or this survey?</p>
-		   <textarea name="comments"></textarea>
-	   </div>
+
+			<p><span class="question">Question 7.</span> On a scale from 1 (Disagree) to 5 (Agree)
+				please rate the following statements:</p>
+
+			<?php
+			echo UI::likert("reflection", array(
+				"difficulty" => " The chart was difficult to learn",
+				"learned" => "The chart was easy to use once I figured it out",
+				"usable" => "I was able to use the chart to guide me through the scenarios",
+				"bugs" => "The chart was helpful for understanding classifier bugs",
+				"data_shifts" => "The chart was useful for understanding shifts in the dataset"
+					), 5, "disagree", "agree");
+			?>
+
+			<p><span class="question">Question 8.</span> On a scale from 1
+				(unfamiliar) to 7 (expert) please rate your familiarity with
+				the following topics:</p>
+
+			<?php
+			echo UI::likert("familiarity", array(
+				"Quantitative Data Analysis",
+				"Qualitative Data Analysis",
+				"Visual Analytics",
+				"Machine Learning",
+				"Data Mining",
+				"Confusion Matrices"
+					), 7, "unfamiliar", "familiar");
+			?>
+
+
+			<p><span class="question">Question 9.</span> Is there anything
+				you'd like to comment on regarding the chart or this survey?</span></p>
+			<textarea name="open-ended-comments"></textarea>
+		</div>
+	   
+		<div class="box">
+		   <input name="answer" id="answer" type="hidden" value="" />
+			<input type="submit" onclick="submitTime()" class="submit">
+		</div>
 	</form>
 </div>
 </body>

@@ -45,7 +45,7 @@ function render_canvas(data) {
 		});
 		widgets.push('<div class="widget inline hover-group"><div class="label code hover-toggle"><p class="affect">' + code + '</p></div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
-	$('#canvas' + task).html(widgets.join('\n') + '\n<textarea name="' + task + '"></textarea>');
+	$('#canvas' + task).html(widgets.join('\n') + '\n<textarea name="open-ended-' + task + '"></textarea>');
 
 	$('#canvas' + task + ' .triangle').each(function(){
 		var obj = $(this);
