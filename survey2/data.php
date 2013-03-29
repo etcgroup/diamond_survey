@@ -23,53 +23,9 @@ $bowties = array (
     "50-40" => 3,
     "50-80" => 13
 );
-/*
-$ideal = array (
-    "ideal" => 23,
-    "accurate" => 3,
-    "auto error" => 1,
-    "current error" => 1
-    );
 
-$auto= array (
-    "ideal" => 3,
-    "accurate" => 1,
-    "auto error" => 23,
-    "current error" => 1
-    );
-
-$current= array (
-    "ideal" => 3,
-    "accurate" => 1,
-    "auto error" => 1,
-    "current error" => 23
-    );
-
-$accurate = array (
-    "ideal" => 3,
-    "accurate" => 23,
-    "auto error" => 1,
-    "current error" => 1
-    );
-*/
-
-
-$values = null;
-	
-//$cases = array ($ideal, $auto, $current, $accurate);
-//$selection = array_rand($cases);
-        
-switch($bowties){
-    /*case $ideal: $values = get_values($labels28, $ideal, $bases, 10); break;
-    case $auto: $values = get_values($labels28, $auto, $bases, 10); break;
-    case $current: $values = get_values($labels28, $current, $bases, 10); break;
-    default: $values = get_values($labels28, $accurate, $bases, 10); */
-    default: $values = get_values($labels28, $bowties, $bases, 10);
-}
-
-echo json_encode(array("task" => 0, "values" => $values));
-
-//echo json_encode(array("label count" => 10, "error type" => ""));
+$values = get_values($labels28, $bowties, $bases, 10);
+echo json_encode(array("task" => $_GET["task"], "values" => $values));
 
 // returns an array of emotion labels and their values
 function get_values($labels_list, $error_list, $base_vals, $k) {
@@ -78,7 +34,6 @@ function get_values($labels_list, $error_list, $base_vals, $k) {
     shuffle($labels_list);
     foreach ($labels_list as $label) {    
         // selecting a random error level to assign to emotion label (ex. ideal, very accurate, etc.)
-        
         reset($error_list);
         $error = key($error_list);
 

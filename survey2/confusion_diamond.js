@@ -43,16 +43,15 @@ function render_canvas(data) {
 		$.each(window.bottom_triangles, function(key, which){
 				bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
 		});
-		widgets.push('<div class="widget inline hover-group"><div class="label code hover-toggle">' + code + '</div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
+		widgets.push('<div class="widget inline hover-group"><div class="label code hover-toggle"><p class="affect">' + code + '</p></div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
-	$('#canvas' + task).html(widgets.join('\n'));
-    $('#canvas' + task).html('<textarea name="' + task + '"></textarea>');
+	$('#canvas' + task).html(widgets.join('\n') + '\n<textarea name="' + task + '"></textarea>');
 
 	$('#canvas' + task + ' .triangle').each(function(){
 		var obj = $(this);
 		var which = "top";
 		if(obj.hasClass("triangle-bottomleft") || obj.hasClass("triangle-bottomright")){
-				which = "bottom";
+			which = "bottom";
 		}
 		var num = Number(obj.text());
 		var scale = [
@@ -66,6 +65,19 @@ function render_canvas(data) {
 		num = num > 5 ? 5 : num;
 		obj.text("").css("border-"+which+"-color","rgb("+scale[num][0]+","+scale[num][1]+","+scale[num][2]+")");
 	});
+	$('#canvas' + task + ' .triangle').on('click', function(){
+		$(".outline-active").removeClass("outline-active");
+		$(this).parent().parent().addClass("outline-active");
+		$('#answer').val($('.code', $(this).parent().parent().parent()).text());
+	});
+	$('#canvas' + task + ' .num').on('click', function(){
+		$(".outline-active").removeClass("outline-active");
+		$(this).parent().parent().parent().addClass("outline-active");
+		$('#answer').val($('.code', $(this).parent().parent()).text());
+	});
 }
 
-$.getJSON('data.php', render_canvas);
+$.getJSON('data.php', {'task': 1}, render_canvas);
+$.getJSON('data.php', {'task': 2}, render_canvas);
+$.getJSON('data.php', {'task': 3}, render_canvas);
+$.getJSON('data.php', {'task': 4}, render_canvas);
