@@ -59,6 +59,7 @@ switch($_GET["task"]){
     default: 
 }*/
 $values = get_values($labels15, $task1, $bases, 10);
+
 echo json_encode($values);
 
 //echo json_encode(array("label count" => 10, "error type" => ""));
@@ -75,38 +76,36 @@ function get_values($labels_list, $error_list, $base_vals, $k) {
         $error = key($error_list);
 
         $change = mt_rand(0, 9);
-        
-        $type = array_rand($base_vals[$error]);
-		$newresult = $base_vals[$error][$type];
 
+		$types = array_keys($base_vals[$error]);
+		$type = $types[mt_rand(0, count($types)-1)];
+        $newresult = $base_vals[$error][$type];
+		$regions = array_keys($newresult);
+		
         //adding jitter
         for ($i = 0; $i < $k; $i++) {
-            $pairs = $newresult;
-            $triangle1 = array_rand($pairs);
-            unset($pairs[$triangle1]);
-            $triangle2 = array_rand($pairs);
-
-            // if triangle 1's value is 0, skip pair
-            if ($newresult[$triangle1] === 0) {
-                $i--;
-            } else {
-               $newresult[$triangle1] = $newresult[$triangle1] - 1;
-               $newresult[$triangle2] = $newresult[$triangle2] + 1;
-            }
+			$first = mt_rand(0, count($regions)-1);
+			while($newresult[$regions[$first]]==0){
+				$first = mt_rand(0, count($regions)-1);
+			}
+			$second = $first;
+			while($second == $first){
+				$second = mt_rand(0, count($regions)-1);
+			}
+		    $newresult[$regions[$first]]--;
+ 		    $newresult[$regions[$second]]++;
         }
-       
+
         $dict["data"] = $newresult;
         $dict["type"] = $error;
         $dict["hill"] = $type;
-        
-         //echo json_encode($dict);
-        
+		
         $results[$label] = $dict;
 
-    $error_list[$error] = $error_list[$error] - 1;
-    if ($error_list[$error] === 0) {
-        unset($error_list[$error]);
-    }
+		$error_list[$error] = $error_list[$error] - 1;
+		if ($error_list[$error] === 0) {
+			unset($error_list[$error]);
+		}
         
     } 
     $return = array();
