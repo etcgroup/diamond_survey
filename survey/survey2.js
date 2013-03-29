@@ -50,7 +50,7 @@ function render_canvas(data) {
 	
 	$('#canvas'+window.loaded_canvases).html(function(){
 		question = '<div><span class=\"question\">Question ' + window.loaded_canvases + ':</span> Select (by clicking) the <u>most problematic</u> label, such as when the classifier disagrees with manual or varifying data, when the manual and varifying data disagree, or a combination. <u>Justify your choice</u> in one or two sentences below:<br /><textarea name=\"open-ended-'+window.loaded_canvases+'-explanation\"></textarea><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-selection\" id=\"open-ended-'+window.loaded_canvases+'-selection\" /></div>';
-		return widgets.join('\n') + question;
+		return question + widgets.join('\n');
 	});
 
 	activate_canvases();

@@ -1,9 +1,16 @@
+.label{ font-family:courier; }
+.code{ font- }
+.manual{ }
+.automatic{ }
+.verifying{ }
+
 .example_interp {
     width: 200px;
     font-size: .8em;
 }
 
 #key {
+	width:200px;
     -moz-border-radius: 15px;
     border-radius: 15px;
     padding:20px;
@@ -39,9 +46,9 @@
 }
 
 .outline-active {
-    background-color: red;
+    background-color: #aa0000;
     padding: 3px;
-    margin:0px; 
+    margin: 0px; 
 }
 
 .hover-group:hover .hover-toggle{
@@ -129,28 +136,28 @@ body {
 .triangle-topleft {
 	width: 0;
 	height: 0;
-	border-top: 50px solid red;
+	border-top: 50px solid white;
 	border-right: 50px solid transparent;
 }
 
 .triangle-topright {
 	width: 0;
 	height: 0;
-	border-top: 50px solid red;
+	border-top: 50px solid white;
 	border-left: 50px solid transparent;
 }
 
 .triangle-bottomleft {
 	width: 0;
 	height: 0;
-	border-bottom: 50px solid red;
+	border-bottom: 50px solid white;
 	border-right: 50px solid transparent;
 }
 
 .triangle-bottomright {
 	width: 0;
 	height: 0;
-	border-bottom: 50px solid red;
+	border-bottom: 50px solid white;
 	border-left: 50px solid transparent;
 }
 
@@ -217,11 +224,11 @@ body {
 }
 
 .FFT {
-        top:4px;  
+	top:4px;  
 }
 
 .FTT {
-    	top:0px;
+	top:0px;
 }
 
 .FTTtext {
