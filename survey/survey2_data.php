@@ -1,7 +1,7 @@
 <?php
 
 // emotion labels  
-$labels12 = array("interest", "amusement", "considering", "agreement", "annoyance", "confusion", "acceptance", "apprehension", "frustration", "supportive", "surprise", "anticipation");
+$labels15 = array("interest", "amusement", "considering", "agreement", "annoyance", "confusion", "acceptance", "apprehension", "frustration", "supportive", "surprise", "anticipation", "tired", "trust", "vigilance");
 $labels42 = array("acceptance", "admiration", "agreement", "amazement", "amusement", "anger", "annoyance", "anticipation", "apologetic", "apprehension", "boredom", "confusion", "considering", "disagreement", "disappointment", "disbelief", "disgust", "distraction", "ecstasy", "embarrassment", "excitement", "fear", "frustration", "gratitude", "grief", "happiness", "impatience", "interest", "joy", "loathing", "pensiveness", "pride", "rage", "relief", "sadness", "serenity", "supportive", "surprise", "terror", "tired", "trust", "vigilance");
 
 // setting bases for each error type
@@ -20,9 +20,9 @@ $bases = array(
 );
 
 $task1 = array (
-    "70-80" => 5,
+    "70-80" => 10,
     "50-40" => 1,
-    "50-80" => 6
+    "50-80" => 4
 );
 
 $task2 = array (
@@ -45,6 +45,7 @@ $task4 = array (
 
 
 
+
 $values = null;
 	
 //$cases = array ($ideal, $auto, $current, $accurate);
@@ -57,7 +58,7 @@ switch($_GET["task"]){
     case 3: $values = get_values($labels42, $task3, $bases, 10); break;
     default: 
 }*/
-$values = get_values($labels42, $task4, $bases, 10);
+$values = get_values($labels15, $task1, $bases, 10);
 echo json_encode($values);
 
 //echo json_encode(array("label count" => 10, "error type" => ""));

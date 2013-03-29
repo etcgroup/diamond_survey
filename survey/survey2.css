@@ -108,9 +108,13 @@ body {
     background-color: #aaaaaa;
 }
 
+.canvas{
+	width:470px;
+	}
+
 .box {
     background-color: white;
-    width: 700px;
+    width: 600px;
     padding: 50px;
     margin: auto;
     margin-top: 30px;

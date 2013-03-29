@@ -49,7 +49,7 @@ function render_canvas(data) {
 	});
 	
 	$('#canvas'+window.loaded_canvases).html(function(){
-		question = '<div><span class=\"question\">Question ' + window.loaded_canvases + ':</span> Select (by clicking) the <u>most problematic</u> label, such as when the classifier disagrees with manual or varifying data, when the manual and varifying data disagree, or a combination. <u>Justify your choice</u> in one or two sentences below:<br /><textarea name=\"open-ended-'+window.loaded_canvases+'-explanation\"></textarea><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-selection\" id=\"open-ended-'+window.loaded_canvases+'-selection\" /></div>';
+		question = '<div><span class=\"question\">Question ' + window.loaded_canvases + ':</span> Select (by clicking) the <u>the most difficult emotion to label, with the most problematic performance</u>. <u>Justify your choice</u> in one or two sentences below:<br /><textarea name=\"open-ended-'+window.loaded_canvases+'-explanation\"></textarea><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-selection\" id=\"open-ended-'+window.loaded_canvases+'-selection\" /></div>';
 		return question + widgets.join('\n');
 	});
 
@@ -96,7 +96,7 @@ function activate_canvases(){
 }
 
 $(document).ready(function(){
-	window.goal_canvases = 3;
+	window.goal_canvases = 5;
 	canvases = [];
 	for(var i=1; i<=window.goal_canvases; i++){
 		canvases.push('<div id="canvas' + i + '" class="canvas box deselect_text"></div>');
