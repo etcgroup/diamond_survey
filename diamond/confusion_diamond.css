@@ -1,21 +1,43 @@
-.hover-group:hover .hover-toggle{
-    display:block;
-}
-
-.code {
-    display: none;
-    position: fixed;
-    left: 250px;
-}
-
-.num {
-    font-size: 0.7em;
-    
+#canvas0 {
+ -moz-user-select: none;
+ -khtml-user-select: none;
+ -webkit-user-select: none;
+ user-select: none;
 }
 
 .outline {
     background-color: black;
     padding: 1px;
+    margin:2px;
+}
+
+.outline:hover {
+    background-color: orange;
+}
+
+.outline-active {
+    background-color: red;
+    padding: 3px;
+    margin:0px; 
+}
+
+.hover-group:hover .hover-toggle{
+    display:block;
+}
+
+.affect {
+    font-size: 1.3em;
+}
+
+.code {
+    display: none;
+    position: fixed;
+    right: 19%;
+}
+
+.num {
+    font-size: 0.7em;
+    
 }
 
 .labels12 {
@@ -28,7 +50,7 @@
 
 .taskbox {
     background-color: white;
-    width: 800px;
+    width: 900px;
     padding: 50px;
     margin-top: 30px;
     margin-bottom: 30px;

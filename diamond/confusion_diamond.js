@@ -50,7 +50,7 @@ function render_canvas(data) {
 		$.each(window.bottom_triangles, function(key, which){
 				bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
 		});
-		widgets.push('<div class="widget inline hover-group"><div class="label code hover-toggle">' + code + '</div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
+		widgets.push('<div class="widget inline hover-group"><div class="label code hover-toggle"><p class="affect">' + code + '</p></div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
 	$('#canvas' + task).html(widgets.join('\n'));
         //$('#canvas' + task).html('<textarea name="' + task + '"></textarea>');
@@ -73,6 +73,16 @@ function render_canvas(data) {
 		num = num > 5 ? 5 : num;
 		obj.text("").css("border-"+which+"-color","rgb("+scale[num][0]+","+scale[num][1]+","+scale[num][2]+")");
 	});
+	$('#canvas' + task + ' .triangle').on('click', function(){
+            $(".outline-active").removeClass("outline-active");
+            $(this).parent().parent().addClass("outline-active");
+            $('#answer').val($('.code', $(this).parent().parent().parent()).text());
+        });
+	$('#canvas' + task + ' .num').on('click', function(){
+            $(".outline-active").removeClass("outline-active");
+            $(this).parent().parent().parent().parent().addClass("outline-active");
+            $('#answer').val($('.code', $(this).parent().parent().parent()).text());
+        });
 }
 
 $.getJSON('data.php', render_canvas);

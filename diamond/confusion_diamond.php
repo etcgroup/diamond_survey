@@ -18,10 +18,14 @@
     <div>
         <div class="taskbox">
            <div id="canvas0"></div>
+           <form id="selection">
+               <input name="answer" id="answer" type="hidden" value="" />
+           </form>
            <br>
            <br>
            <p>Showing 10 labels with majority of confusion diamonds with xx error. </p>
            <p>Noise was introduced by random uniform selection of 10 pairs of data cells with incrementing one and decrementing the other. This was done independently for each label.</p>
+           
            <input type="button" value="Reload Page" onClick="document.location.reload(true);">
         </div>
        </div>
