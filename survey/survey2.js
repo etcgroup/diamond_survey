@@ -51,6 +51,8 @@ function render_canvas(data) {
 		question = '<div><span class=\"question\">Question ' + window.loaded_canvases + ':</span> Select (by clicking) the <u>the square that reflects the most problematic data</u>; see the examples in the introduction for help. <u>Justify your choice</u> in one or two sentences below:<br /><textarea name=\"open-ended-'+window.loaded_canvases+'-explanation\"></textarea><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-selection\" id=\"open-ended-'+window.loaded_canvases+'-selection\" /><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-data\" id=\"open-ended-'+window.loaded_canvases+'-data\" /></div>';
 		return question + widgets.join('\n');
 	});
+	$("#open-ended-" + window.loaded_canvases + "-data").val(JSON.stringify(data));
+	console.log($("#open-ended-" + window.loaded_canvases + "-data").val());
 
 	activate_canvases();
 }
@@ -83,16 +85,14 @@ function activate_canvases(){
 		$(".outline-active", $(this).parent().parent().parent().parent()).removeClass("outline-active");
 		$(this).parent().parent().addClass("outline-active");
 		canvas_num = $(this).parent().parent().parent().parent().attr('id').substring(6);
-		$("#open-ended-" + canvas_num + "-selection").val($('.type', $(this).parent().parent().parent()).text());
-		$('#open-ended-' + canvas_num + '-data').val($(this).parent().parent().text().trim());
+		$('#open-ended-' + canvas_num + '-selection').val($(this).parent().parent().text().trim());
 	});
 	
 	$('.canvas .num').on('click', function(){
 		$(".outline-active", $(this).parent().parent().parent().parent().parent()).removeClass("outline-active");
 		$(this).parent().parent().parent().addClass("outline-active");
 		canvas_num = $(this).parent().parent().parent().parent().parent().attr('id').substring(6);
-		$("#open-ended-" + canvas_num + "-selection").val($('.type', $(this).parent().parent().parent().parent()).text());
-		$('#open-ended-' + canvas_num + '-data').val($(this).parent().parent().parent().text().trim());
+		$('#open-ended-' + canvas_num + '-selection').val($(this).parent().parent().parent().text().trim());
 	});
 }
 
