@@ -1,3 +1,6 @@
+<?php
+include("utils/UI.php");
+?>
 <!DOCTYPE html>
 <html>
 <head>
