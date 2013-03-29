@@ -102,7 +102,9 @@ $(document).ready(function(){
 		canvases.push('<div id="canvas' + i + '" class="canvas box deselect_text"></div>');
 	}
 	$('#canvases').html(canvases.join('\n'));
+	// var timestamp = new Date().getTime();
+	var seed = 1234567;
 	for(var i=1; i<=window.goal_canvases; i++){
-		$.getJSON('survey2_data.php', render_canvas);
+		$.getJSON('survey2_data.php', {'seed': seed * i},  render_canvas);
 	}
 });

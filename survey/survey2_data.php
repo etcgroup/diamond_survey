@@ -43,21 +43,19 @@ $task4 = array (
     "50-80" => 18
 );
 
-
-
-
 $values = null;
 	
 //$cases = array ($ideal, $auto, $current, $accurate);
 //$selection = array_rand($cases);
-        
-		/*
+/*        
 switch($_GET["task"]){
     case 1: $values = get_values($labels12, $task1, $bases, 10); break;
     case 2: $values = get_values($labels12, $task2, $bases, 10); break;
     case 3: $values = get_values($labels42, $task3, $bases, 10); break;
     default: 
 }*/
+if(isset($_GET['seed'])) 
+	mt_srand($_GET['seed']);
 $values = get_values($labels15, $task1, $bases, 10);
 
 echo json_encode($values);
@@ -68,7 +66,7 @@ echo json_encode($values);
 function get_values($labels_list, $error_list, $base_vals, $k) {
     $results = $labels_list;
     $labels = $labels_list;
-    shuffle($labels_list);
+  //  shuffle($labels_list);
     foreach ($labels_list as $label) {    
         // selecting a random error level to assign to emotion label (ex. ideal, very accurate, etc.)
         
