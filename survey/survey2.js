@@ -45,7 +45,7 @@ function render_canvas(data) {
 		$.each(window.bottom_triangles, function(key, which){
 			bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
 		});
-		widgets.push('<div class="widget inline hover-group"><div style="display:none" class="type">' + info + '</div><div class="label code hover-toggle"><p class="affect">' + code + '</p></div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
+		widgets.push('<div class="widget inline hover-group"><div style="display:none" class="type">' + info + '</div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
 	
 	$('#canvas'+window.loaded_canvases).html(function(){
