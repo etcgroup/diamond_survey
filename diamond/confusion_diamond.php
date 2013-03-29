@@ -20,6 +20,8 @@
            <div id="canvas0"></div>
            <form id="selection">
                <input name="answer" id="answer" type="hidden" value="" />
+               <input name="type" id="type" type="hidden" value="" />
+               <input name="hill" id="hill" type="hidden" value="" />
            </form>
            <br>
            <br>

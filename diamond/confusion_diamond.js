@@ -37,20 +37,31 @@ function get_triangle(which, value){
 
 function render_canvas(data) {
 	var widgets = [];
-	
 	var task = data.task;
 	data = data.values;
-	
-	$.each(data, function(code, diamond_data){
-		var toprow = []; 
-		$.each(window.top_triangles, function(key, which){
-				toprow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
-		});
-		var bottomrow = [];
-		$.each(window.bottom_triangles, function(key, which){
-				bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
-		});
-		widgets.push('<div class="widget inline hover-group"><div class="label code hover-toggle"><p class="affect">' + code + '</p></div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
+        
+	$.each(data, function(code, dict_data){
+
+                
+                i = 0;
+                $.each(dict_data, function(data_type, diamond_data) {
+                    if(i == 0) {
+                        $Hill = dict_data["Hill"];
+                        $Type = dict_data["Type"];
+                        var toprow = []; 
+                        $.each(window.top_triangles, function(key, which){
+                                        toprow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
+                        });
+                        var bottomrow = [];
+                        $.each(window.bottom_triangles, function(key, which){
+                                        bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
+                        });
+                        //widgets.push('<div class="hill hide">' + $Hill + '</div><div class="type hide">' + $Type + '</div>');
+                        widgets.push('<div class="widget inline hover-group"><div class="hill hide">' + $Hill + '</div><div class="type hide">' + $Type + '</div>' +
+                        '<div class="label code hover-toggle"><p class="affect">' + code + '</p></div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
+                    }
+                    i++;
+                });
 	});
 	$('#canvas' + task).html(widgets.join('\n'));
         //$('#canvas' + task).html('<textarea name="' + task + '"></textarea>');
@@ -77,11 +88,15 @@ function render_canvas(data) {
             $(".outline-active").removeClass("outline-active");
             $(this).parent().parent().addClass("outline-active");
             $('#answer').val($('.code', $(this).parent().parent().parent()).text());
+            $('#hill').val($('.hill', $(this).parent().parent().parent()).text());
+            $('#type').val($('.type', $(this).parent().parent().parent()).text());
         });
 	$('#canvas' + task + ' .num').on('click', function(){
             $(".outline-active").removeClass("outline-active");
             $(this).parent().parent().parent().parent().addClass("outline-active");
             $('#answer').val($('.code', $(this).parent().parent().parent()).text());
+            $('#hill').val($('.hill', $(this).parent().parent().parent().parent().parent()).text());
+            $('#type').val($('.type', $(this).parent().parent().parent().parent().parent()).text());
         });
 }
 

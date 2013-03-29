@@ -1,3 +1,7 @@
+.hide {
+    display: none;
+}
+
 #canvas0 {
  -moz-user-select: none;
  -khtml-user-select: none;

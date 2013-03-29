@@ -85,8 +85,10 @@ function get_values($labels_list, $error_list, $base_vals, $k) {
         $change = mt_rand(0, 9);
         
         $newresult;
+        $type;
         if ($error == "50-40") {
              $newresult = $base_vals[$error];
+             $type = "NA";
         } else {
             $type = array_rand($base_vals[$error]);
             $newresult = $base_vals[$error][$type];
@@ -116,7 +118,14 @@ function get_values($labels_list, $error_list, $base_vals, $k) {
                $newresult[$triangle2] = $newresult[$triangle2] + 1;
             }
         }
-        $results[$label] = $newresult;
+       
+        $dict["Data"] = $newresult;
+        $dict["Type"] = $error;
+        $dict["Hill"] = $type;
+        
+         //echo json_encode($dict);
+        
+        $results[$label] = $dict;
 
     $error_list[$error] = $error_list[$error] - 1;
     if ($error_list[$error] === 0) {
