@@ -81,14 +81,14 @@ function activate_canvases(){
 	});
 	
 	$('.canvas .triangle').on('click', function(){
-		$(".outline-active").removeClass("outline-active");
+		$(".outline-active", $(this).parent().parent().parent().parent()).removeClass("outline-active");
 		$(this).parent().parent().addClass("outline-active");
 		canvas_num = $(this).parent().parent().parent().parent().attr('id').substring(6);
 		$("#open-ended-"+canvas_num+"-selection").val($('.type', $(this).parent().parent().parent()).text());
 	});
 	
 	$('.canvas .num').on('click', function(){
-		$(".outline-active").removeClass("outline-active");
+		$(".outline-active", $(this).parent().parent().parent().parent().parent()).removeClass("outline-active");
 		$(this).parent().parent().parent().addClass("outline-active");
 		canvas_num = $(this).parent().parent().parent().parent().parent().attr('id').substring(6);
 		$("#open-ended-"+canvas_num+"-selection").val($('.type', $(this).parent().parent().parent().parent()).text());
