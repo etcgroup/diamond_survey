@@ -57,7 +57,7 @@ switch($_GET["task"]){
     case 3: $values = get_values($labels42, $task3, $bases, 10); break;
     default: 
 }*/
-$values = get_values($labels42, $task4, $bases, 3);
+$values = get_values($labels42, $task4, $bases, 0);
 echo json_encode($values);
 
 //echo json_encode(array("label count" => 10, "error type" => ""));

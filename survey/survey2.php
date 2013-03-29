@@ -39,37 +39,27 @@ include("utils/UI.php");
 </head>
 <body>
     <div class="box">
-        <p>A group of scientists is studying emotion expression in text.
-            They want to identify what emotion is expressed in individual text-based chat messages,
-            but the chat log dataset is too large to be labeled manually, so:</p>
-        <ol>
-            <li>Scientists manually apply labels, such as "anger" and "frustration" to 15% of the chat log messages. This is the <b>historic data</b>.</li>
-            <li>An automated classifier is created based on the <i>historic data</i>, and used to label the remaining 85% of the chat log messages. This is the <b>automatic data</b>.</li>
-            <li>For validity, scientists look at 100 random messages that have been <i>both</i> manually and automatically labeled. They check whether they agree or disagree with a particular label that was applied. This is the <b>current data</b>.</li>
-        </ol>
-        <p>I designed a chart to help these scientists analyze the performance of their labels, 
-            which have historic, automatic, and current data for 100 messages. <b>Please help me improve this 
-            chart</b> by using it to analyze how well the labeling process (outlined above) is working! Consult the legend on the right for an example interpretation of this chart.</p>
-<!---        <p>An example of how to interpret the chart is below:</p>
-        <p class="center">
-            <img src="img/example_1_legend.png" height="400px">
-        </p>
-        <p>True signifies that the data type applied the label, where false did not. In triangle A, all three data types applied the label and were in agreement. 
-            In triangle B, all three data types did not apply the label and were also in agreement. 
-            Both of these elements lead to an accurate classifier.</p>
-        <p>Analyze all 42 labels – each represented by a single chart – and identify each as accurate or inaccurate:</p>
-        <p class="center">
-            <img src="img/canvasexample.png">
-        </p>
-        <p>In the chart on the left, the automatic classifier is accurate relative to both current and historic data. 
-            In the chart on the right, the automatic classifier is accurate, but <i>only for historic data, not current</i>. 
-            The historic and automatic data can be said to be obsolete because it is outdated; what used to be true is not true now. 
-            This might happen if the scientists who are labeling emotion in chat messages decide to change their definition of <i>frustration</i>; 
-            perhaps they are now distinguishing <i>frustration</i> and <i>annoyance</i>, so messages that used to be labeled frustration would no longer be labeled as such. 
-            This can lead to errors in similar codes, such as anger.</p> -->
-        <p><b>Please analyze</b> the following scenarios, based on the charts shown. 
-            Each scenario will feature 30 charts, each representing a separate label, some with problems and others without. 
-            <b>Your goal is to identify the most problematic chart in each scenario</b>.</p>
+		<p>Imagine you had to look at a text message, like <em>"WHAAAAAAT?!"</em> and decide if it expresses an emotion, like <em>frustration</em>. At the same time, an automated classifier is also trying to decide whether the message expresses emotion. When people create <strong>manual</strong> labels, as well as when algorithms generate <strong>inferred</strong> labels, there is some possibility of error. Imagine that, to judge this error, a human judge is asked to also label this message, creating a <strong>verifying</strong> label. Some labels are more straightforward than others; identifying <em>frustration</em> is more straightforward than figuring out whether <em>"hmmmmm"</em> expresses <em>interest</em> or <em>confusion</em>. <strong>The following chart summarizes the result of a person, an algorithm, and a judge all labeling 100 messages with a single emotion label.</strong></p> 
+		<p>
+            <p class="img">
+                <img src="img/legend.PNG" alt="" height="120">
+                <img src="img/annotatedexample.PNG" alt="" height="120">
+            <ul >
+                <li>20 messages were labeled true by all three data sets (Manual, Inferred, Verifying).</li>
+                <li>26 messages were labeled as false by Manual, but true by Inferred and Verifying. This indicates an interesting change between the Manual and Verifying data sets.</li>
+                <li>34 messages were labeled true in Manual, but false by Inferred and Verifying. This also indicates a change between the Manual and Verifying data.</li>
+                <li>The 26 and 34 percent message groups signify that there was a severe label definition shift problem.</li>
+            </ul>
+		</p>
+		<p>In this task, <b>please identify the most difficult label with the most problematic performance</b>, based on the charts shown. <u>You will be judged based on your justification of your choice; the more detail you include, the more we can learn about how to improve these charts.</u>
+            Each scenario will feature 30 charts, each representing a separate label, some with problems and others without. Here's some possible kinds of charts you might see:</p>
+		<table>
+		<tr><td><img src="img/type-2.png"><!-- 70 acc, 80 rel --></td><td>This is <strong>pretty good</strong>. All three sets of labels agree a lot. Those times when the inferred labels disagree with the manual labels, the <em>verificaiton labels disagree with the manual and agree with the inferred</em>. In other words, the original labeller made some errors, but the algorithm works regardless, so it's okay.</td></tr>
+		<tr><td><img src="img/type-4.png"><!-- 50 acc, 40 rel --></td><td>This is <strong>okay</strong>. All three sets of labels agree on half othe messages, which isn't great, but when the inferred labels disagree with the manual labels, the <em>verificaiton labels disagree with the manual and agree with the inferred</em>. Once again, the original labeller made some errors, but the algorithm works regardless, so it's okay.</td></tr>
+		<tr><td><img src="img/type-5.png"><!-- 50 acc, 80 rel --></td><td>This is <strong>not okay</strong>. Not only are there 10+10=20 messages where the manual and verification labels disagree, but also 15+15=30 messages where the manual disagrees with the inferred. There is noise in both the labeller and the algorithm.</td></tr>
+		<tr><td><img src="img/type-1.png"><!-- 50 acc, 80 rel --></td><td>This is <strong>pretty bad</strong>. The inferred labels are pretty much as bad as they can reasonably get, getting only about half of anythign right, <em>but at least the manual labels are consistent with the verifying labels.</em></td></tr>
+		<tr><td><img src="img/type-3.png"><!-- 70 acc, 80 rel --></td><td>This is <strong>awful</strong>. All three sets of labels disgree in pretty bad ways. There are 10+10=20 messages where the inferred label agrees with the manual label, <em>but not with the verificaiton label</em>. In other words, the original labelled made some errors, which really messed up the algorithm, so it's not okay.</td></tr>
+		</table>
     </div>
 	 <form method="post" action="submit.php">
     <div id="canvases">
@@ -124,17 +114,8 @@ include("utils/UI.php");
         <p>
             <button id="key-button">[-]</button>
             <em>Legend:</em>
+			<p class="img"><img src="img/annotatedexample.PNG" alt="" height="100"></p>
             <p class="img"><img src="img/legend.PNG" alt="" height="150"></p>
-            <em>Example Interpretation:</em>
-            <p class="img">
-                <img src="img/annotatedexample.PNG" alt="" height="100">
-            <ul class="example_interp">
-                <li>20 messages were labeled true by all three data sets (Manual, Inferred, Verifying).</li>
-                <li>26 messages were labeled as false by Manual, but true by Inferred and Verifying. This indicates an interesting change between the Manual and Verifying data sets.</li>
-                <li>34 messages were labeled true in Manual, but false by Inferred and Verifying. This also indicates a change between the Manual and Verifying data.</li>
-                <li>The 26 and 34 percent message groups signify that there was a severe code definition shift problem.</li>
-            </ul>
-            </p>
         </p>
     </div>
 	   
