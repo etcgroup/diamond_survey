@@ -96,7 +96,7 @@ function activate_canvases(){
 }
 
 $(document).ready(function(){
-	window.goal_canvases = 5;
+	window.goal_canvases = 3;
 	canvases = [];
 	for(var i=1; i<=window.goal_canvases; i++){
 		canvases.push('<div id="canvas' + i + '" class="canvas box deselect_text"></div>');
