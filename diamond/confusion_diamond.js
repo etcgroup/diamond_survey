@@ -94,7 +94,7 @@ function render_canvas(data) {
 	$('#canvas' + task + ' .num').on('click', function(){
             $(".outline-active").removeClass("outline-active");
             $(this).parent().parent().parent().parent().addClass("outline-active");
-            $('#answer').val($('.code', $(this).parent().parent().parent()).text());
+            $('#answer').val($('.code', $(this).parent().parent().parent().parent().parent()).text());
             $('#hill').val($('.hill', $(this).parent().parent().parent().parent().parent()).text());
             $('#type').val($('.type', $(this).parent().parent().parent().parent().parent()).text());
         });
