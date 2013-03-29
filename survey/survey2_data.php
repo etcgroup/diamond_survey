@@ -10,7 +10,9 @@ $bases = array(
             "uphill" => array("FTT" => 0, "TTT" => 25, "TFT" => 15, "TTF" => 10, "FFT" => 10, "FTF" => 15, "FFF" => 25, "TFF" => 0),
             "downhill" => array("FTT" => 10, "TTT" => 35, "TFT" => 5, "TTF" => 0, "FFT" => 0, "FTF" => 5, "FFF" => 35, "TFF" => 10)
         ),
-    "50-40" => array("FTT" => 25, "TTT" => 20, "TFT" => 0, "TTF" => 5, "FFT" => 5, "FTF" => 0, "FFF" => 20, "TFF" => 25),
+    "50-40" => array(
+			"NA" => array("FTT" => 25, "TTT" => 20, "TFT" => 0, "TTF" => 5, "FFT" => 5, "FTF" => 0, "FFF" => 20, "TFF" => 25)
+		),
     "50-80"=> array(
             "uphill" => array("FTT" => 0, "TTT" => 20, "TFT" => 20, "TTF" => 5, "FFT" => 5, "FTF" => 20, "FFF" => 20, "TFF" => 0),
             "downhill" => array("FTT" => 10, "TTT" => 25, "TFT" => 15, "TTF" => 0, "FFT" => 0, "FTF" => 15, "FFF" => 25, "TFF" => 10)
@@ -55,7 +57,7 @@ switch($_GET["task"]){
     case 3: $values = get_values($labels42, $task3, $bases, 10); break;
     default: 
 }*/
-$values = get_values($labels42, $task4, $bases, 10);
+$values = get_values($labels42, $task4, $bases, 3);
 echo json_encode($values);
 
 //echo json_encode(array("label count" => 10, "error type" => ""));
@@ -73,24 +75,8 @@ function get_values($labels_list, $error_list, $base_vals, $k) {
 
         $change = mt_rand(0, 9);
         
-        $newresult;
-        $type;
-        if ($error == "50-40") {
-             $newresult = $base_vals[$error];
-             $type = "NA";
-        } else {
-            $type = array_rand($base_vals[$error]);
-            $newresult = $base_vals[$error][$type];
-        }
-        $change_minus = array_rand($newresult);
-
-        //echo json_encode($change_minus);
-        // skips percent error change leads to negative values
-        if ($newresult[$change_minus] - $change > 0) {
-            $newresult[$change_minus] = $newresult[$change_minus] - $change;
-            $change_add = array_rand(($newresult));
-            $newresult[$change_add] = $newresult[$change_add] + $change;
-        } 
+        $type = array_rand($base_vals[$error]);
+		$newresult = $base_vals[$error][$type];
 
         //adding jitter
         for ($i = 0; $i < $k; $i++) {
