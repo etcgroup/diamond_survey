@@ -35,21 +35,21 @@ function render_canvas(data) {
 	window.loaded_canvases++;
 	
 	$.each(data, function(code, diamond_data){
+		info = diamond_data.type+' '+diamond_data.hill;
+		diamond_data = diamond_data.data;
 		var toprow = []; 
 		$.each(window.top_triangles, function(key, which){
-				toprow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
+			toprow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
 		});
 		var bottomrow = [];
 		$.each(window.bottom_triangles, function(key, which){
-				bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
+			bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
 		});
-		widgets.push('<div class="widget inline hover-group"><div class="label code hover-toggle"><p class="affect">' + code + '</p></div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
+		widgets.push('<div class="widget inline hover-group"><div style="display:none" class="type">' + info + '</div><div class="label code hover-toggle"><p class="affect">' + code + '</p></div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
 	
-	console.log('Question ' + window.loaded_canvases + '');
 	$('#canvas'+window.loaded_canvases).html(function(){
-	console.log('Question ' + window.loaded_canvases + '');
-		question = '<div><span class=\"question\">Question ' + window.loaded_canvases + ':</span> Select (by clicking) the <u>most problematic</u> label, such as when the classifier disagrees with manual or varifying data, when the manual and varifying data disagree, or a combination. <u>Justify your choice</u> in one or two sentences below:<br /><textarea name=\"open-ended-'+window.loaded_canvases+'-explanation\"></textarea></div>';
+		question = '<div><span class=\"question\">Question ' + window.loaded_canvases + ':</span> Select (by clicking) the <u>most problematic</u> label, such as when the classifier disagrees with manual or varifying data, when the manual and varifying data disagree, or a combination. <u>Justify your choice</u> in one or two sentences below:<br /><textarea name=\"open-ended-'+window.loaded_canvases+'-explanation\"></textarea><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-selection\" id=\"open-ended-'+window.loaded_canvases+'-selection\" /></div>';
 		return widgets.join('\n') + question;
 	});
 
@@ -79,15 +79,19 @@ function activate_canvases(){
 		num = num > 5 ? 5 : num;
 		obj.text("").css("border-"+which+"-color","rgb("+scale[num][0]+","+scale[num][1]+","+scale[num][2]+")");
 	});
+	
 	$('.canvas .triangle').on('click', function(){
 		$(".outline-active").removeClass("outline-active");
 		$(this).parent().parent().addClass("outline-active");
-		$('#answer').val($('.code', $(this).parent().parent().parent()).text());
+		canvas_num = $(this).parent().parent().parent().parent().attr('id').substring(6);
+		$("#open-ended-"+canvas_num+"-selection").val($('.type', $(this).parent().parent().parent()).text());
 	});
+	
 	$('.canvas .num').on('click', function(){
 		$(".outline-active").removeClass("outline-active");
 		$(this).parent().parent().parent().addClass("outline-active");
-		$('#answer').val($('.code', $(this).parent().parent()).text());
+		canvas_num = $(this).parent().parent().parent().parent().parent().attr('id').substring(6);
+		$("#open-ended-"+canvas_num+"-selection").val($('.type', $(this).parent().parent().parent().parent()).text());
 	});
 }
 
@@ -98,7 +102,6 @@ $(document).ready(function(){
 		canvases.push('<div id="canvas' + i + '" class="canvas box deselect_text"></div>');
 	}
 	$('#canvases').html(canvases.join('\n'));
-	console.log($('#canvases').html());
 	for(var i=1; i<=window.goal_canvases; i++){
 		$.getJSON('survey2_data.php', render_canvas);
 	}

@@ -47,10 +47,10 @@ include("utils/UI.php");
             <li>An automated classifier is created based on the <i>historic data</i>, and used to label the remaining 85% of the chat log messages. This is the <b>automatic data</b>.</li>
             <li>For validity, scientists look at 100 random messages that have been <i>both</i> manually and automatically labeled. They check whether they agree or disagree with a particular label that was applied. This is the <b>current data</b>.</li>
         </ol>
-        <p>I designed a chart to help these scientists analyze the performance of all 42 of their labels, 
+        <p>I designed a chart to help these scientists analyze the performance of their labels, 
             which have historic, automatic, and current data for 100 messages. <b>Please help me improve this 
-            chart</b> by using it to analyze how well the labeling process (outlined above) is working!</p>
-        <p>An example of how to interpret the chart is below:</p>
+            chart</b> by using it to analyze how well the labeling process (outlined above) is working! Consult the legend on the right for an example interpretation of this chart.</p>
+<!---        <p>An example of how to interpret the chart is below:</p>
         <p class="center">
             <img src="img/example_1_legend.png" height="400px">
         </p>
@@ -66,7 +66,7 @@ include("utils/UI.php");
             The historic and automatic data can be said to be obsolete because it is outdated; what used to be true is not true now. 
             This might happen if the scientists who are labeling emotion in chat messages decide to change their definition of <i>frustration</i>; 
             perhaps they are now distinguishing <i>frustration</i> and <i>annoyance</i>, so messages that used to be labeled frustration would no longer be labeled as such. 
-            This can lead to errors in similar codes, such as anger.</p>
+            This can lead to errors in similar codes, such as anger.</p> -->
         <p><b>Please analyze</b> the following scenarios, based on the charts shown. 
             Each scenario will feature 30 charts, each representing a separate label, some with problems and others without. 
             <b>Your goal is to identify the most problematic chart in each scenario</b>.</p>

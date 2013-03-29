@@ -57,13 +57,14 @@ $values = null;
 //$cases = array ($ideal, $auto, $current, $accurate);
 //$selection = array_rand($cases);
         
+		/*
 switch($_GET["task"]){
     case 1: $values = get_values($labels12, $task1, $bases, 10); break;
     case 2: $values = get_values($labels12, $task2, $bases, 10); break;
     case 3: $values = get_values($labels42, $task3, $bases, 10); break;
-    default: $values = get_values($labels42, $task4, $bases, 10);
-}
-
+    default: 
+}*/
+$values = get_values($labels42, $task4, $bases, 10);
 echo json_encode(array("task" => $_GET["task"], "values" => $values));
 
 //echo json_encode(array("label count" => 10, "error type" => ""));
