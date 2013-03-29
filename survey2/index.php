@@ -43,12 +43,31 @@
             Each scenario will feature 42 charts, each representing a separate label, some with problems and others without. 
             <b>Your goal is to identify charts with the attributes specified in the scenarios</b>.</p>
     </div>
+    <div id="canvases">
 	 <form method="post" action="submit.php">
            <div id="canvas1" class="box deselect_text"></div>
            <div id="canvas2" class="box deselect_text"></div>
            <div id="canvas3" class="taskbox deselect_text"></div>
            <div id="canvas4" class="taskbox deselect_text"></div>
-	   </div>
+           
+    </div>
+    <div id="key">
+        <p>
+            <button id="key-button">[-]</button>
+            <em>Legend:</em>
+            <p class="img"><img src="legend.PNG" alt="" height="150"></p>
+            <em>Example Interpretation:</em>
+            <p class="img">
+                <img src="annotatedexample.PNG" alt="" height="100">
+            <ul class="example_interp">
+                <li>20 messages were labeled true by all three data sets (Manual, Inferred, Verifying).</li>
+                <li>26 messages were labeled as false by Manual, but true by Inferred and Verifying. This indicates an interesting change between the Manual and Verifying data sets.</li>
+                <li>34 messages were labeled true in Manual, but false by Inferred and Verifying. This also indicates a change between the Manual and Verifying data.</li>
+                <li>The 26 and 34 percent message groups signify that there was a severe code definition shift problem.</li>
+            </ul>
+            </p>
+        </p>
+    </div>
 	   
 	   <div class="box">
 
