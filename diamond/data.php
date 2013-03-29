@@ -1,8 +1,10 @@
 <?php
 
 // emotion labels  
-$labels28 = array("acceptance", "admiration", "agreement", "amazement", "amusement", "anger", "annoyance", "anticipation", "apologetic", "apprehension", "boredom", "confusion", "considering", "disagreement",
-                "disappointment", "disbelief", "disgust", "distraction", "ecstasy", "embarrassment", "excitement", "fear", "frustration", "gratitude", "grief", "happiness", "impatience", "interest");
+$labels12 = array("interest", "amusement", "considering", "agreement", "annoyance", "confusion", "acceptance", "apprehension", "frustration", "supportive", "surprise", "anticipation");
+$labels42 = array("acceptance", "admiration", "agreement", "amazement", "amusement", "anger", "annoyance", "anticipation", "apologetic", "apprehension", "boredom", "confusion", "considering", "disagreement",
+                "disappointment", "disbelief", "disgust", "distraction", "ecstasy", "embarrassment", "excitement", "fear", "frustration", "gratitude", "grief", "happiness", "impatience", "interest", "joy", "loathing",
+                "pensiveness", "pride", "rage", "relief", "sadness", "serenity", "supportive", "surprise", "terror", "tired", "trust", "vigilance");
 
 // setting bases for each error type
 $bases = array(
@@ -18,40 +20,36 @@ $bases = array(
 );
 
 // proportions for each error type
-$bowties = array (
-    "70-80" => 12,
-    "50-40" => 3,
-    "50-80" => 13
+//$bowties = array (
+//    "70-80" => 12,
+//    "50-40" => 3,
+//    "50-80" => 13
+//);
+
+$task1 = array (
+    "70-80" => 5,
+    "50-40" => 1,
+    "50-80" => 6
 );
-/*
-$ideal = array (
-    "ideal" => 23,
-    "accurate" => 3,
-    "auto error" => 1,
-    "current error" => 1
-    );
 
-$auto= array (
-    "ideal" => 3,
-    "accurate" => 1,
-    "auto error" => 23,
-    "current error" => 1
-    );
+$task2 = array (
+    "70-80" => 5,
+    "50-40" => 2,
+    "50-80" => 5
+);
 
-$current= array (
-    "ideal" => 3,
-    "accurate" => 1,
-    "auto error" => 1,
-    "current error" => 23
-    );
+$task3 = array (
+    "70-80" => 18,
+    "50-40" => 5,
+    "50-80" => 19
+);
 
-$accurate = array (
-    "ideal" => 3,
-    "accurate" => 23,
-    "auto error" => 1,
-    "current error" => 1
-    );
-*/
+$task4 = array (
+    "70-80" => 18,
+    "50-40" => 6,
+    "50-80" => 18
+);
+
 
 
 $values = null;
@@ -59,15 +57,14 @@ $values = null;
 //$cases = array ($ideal, $auto, $current, $accurate);
 //$selection = array_rand($cases);
         
-switch($bowties){
-    /*case $ideal: $values = get_values($labels28, $ideal, $bases, 10); break;
-    case $auto: $values = get_values($labels28, $auto, $bases, 10); break;
-    case $current: $values = get_values($labels28, $current, $bases, 10); break;
-    default: $values = get_values($labels28, $accurate, $bases, 10); */
-    default: $values = get_values($labels28, $bowties, $bases, 10);
+switch($_GET["task"]){
+    case 1: $values = get_values($labels12, $task1, $bases, 10); break;
+    case 2: $values = get_values($labels12, $task2, $bases, 10); break;
+    case 3: $values = get_values($labels42, $task3, $bases, 10); break;
+    default: $values = get_values($labels42, $task4, $bases, 10);
 }
 
-echo json_encode(array("task" => 0, "values" => $values));
+echo json_encode(array("task" => $_GET["task"], "values" => $values));
 
 //echo json_encode(array("label count" => 10, "error type" => ""));
 

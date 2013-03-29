@@ -44,21 +44,10 @@
             <b>Your goal is to identify charts with the attributes specified in the scenarios</b>.</p>
     </div>
 	 <form method="post" action="submit.php">
-		<div class="taskbox">
-			<p>Task 1. Identify the emotion label that will have the most problems being identified automatically.</p>
-		   <div id="canvas1"></div>
-		</div>
-		<div class="taskbox">
-			<p>Task 2. Select 3 charts where there is the largest change in code definition.</p>
-		   <div id="canvas2"></div>
-		</div>
-		<div class="taskbox">
-			<p>Task 3. Identify the emotion label that will have the most problems being identified automatically. </p>
-		   <div id="canvas3"></div>
-		</div>
-		<div class="taskbox">
-			<p>Task 4. Select 3 charts where there is the largest change in code definition.</p>
-		   <div id="canvas4"></div>
+           <div id="canvas1" class="box deselect_text"></div>
+           <div id="canvas2" class="box deselect_text"></div>
+           <div id="canvas3" class="taskbox deselect_text"></div>
+           <div id="canvas4" class="taskbox deselect_text"></div>
 	   </div>
 	   
 	   <div class="box">
@@ -99,7 +88,8 @@
 	   
 		<div class="box">
 		   <input name="answer" id="answer" type="hidden" value="" />
-			<input type="submit" onclick="submitTime()" class="submit">
+                    <input name="type" id="type" type="hidden" value="" />
+                    <input name="hill" id="hill" type="hidden" value="" />
 		</div>
 	</form>
 </div>

@@ -1,4 +1,8 @@
-#canvas0 {
+.hide {
+    display: none;
+}
+
+.deselect_text {
  -moz-user-select: none;
  -khtml-user-select: none;
  -webkit-user-select: none;
