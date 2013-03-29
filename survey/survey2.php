@@ -56,7 +56,7 @@ include("utils/UI.php");
     </div>
 	   <div class="box">
 
-			<p><span class="question">Question 6.</span> On a scale from 1 (Disagree) to 5 (Agree)
+			<p><span class="question">Question 4.</span> On a scale from 1 (Disagree) to 5 (Agree)
 				please rate the following statements:</p>
 
 			<?php
@@ -69,7 +69,7 @@ include("utils/UI.php");
 					), 5, "disagree", "agree");
 			?>
 
-			<p><span class="question">Question 7.</span> On a scale from 1
+			<p><span class="question">Question 5.</span> On a scale from 1
 				(unfamiliar) to 7 (expert) please rate your familiarity with
 				the following topics:</p>
 
@@ -85,7 +85,7 @@ include("utils/UI.php");
 			?>
 
 
-			<p><span class="question">Question 8.</span> Is there anything
+			<p><span class="question">Question 6.</span> Is there anything
 				you'd like to comment on regarding the chart or this survey?</span></p>
 			<textarea name="open-ended-comments"></textarea>
 		</div>

@@ -47,12 +47,12 @@ function render_canvas(data) {
 		});
 		widgets.push('<div class="widget inline hover-group"><div style="display:none" class="type">' + info + '</div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
-	
 	$('#canvas'+window.loaded_canvases).html(function(){
-		question = '<div><span class=\"question\">Question ' + window.loaded_canvases + ':</span> Select (by clicking) the <u>the most difficult emotion to label, with the most problematic performance</u>. <u>Justify your choice</u> in one or two sentences below:<br /><textarea name=\"open-ended-'+window.loaded_canvases+'-explanation\"></textarea><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-selection\" id=\"open-ended-'+window.loaded_canvases+'-selection\" /></div>';
+		question = '<div><span class=\"question\">Question ' + window.loaded_canvases + ':</span> Select (by clicking) the <u>the square that reflects the most problematic data</u>; see the examples in the introduction for help. <u>Justify your choice</u> in one or two sentences below:<br /><textarea name=\"open-ended-'+window.loaded_canvases+'-explanation\"></textarea><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-selection\" id=\"open-ended-'+window.loaded_canvases+'-selection\" /><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-data\" id=\"open-ended-'+window.loaded_canvases+'-data\" /></div>';
 		return question + widgets.join('\n');
 	});
 
+	$('#open-ended-'+window.loaded_canvases+'-data').val(JSON.stringify(data));
 	activate_canvases();
 }
 
@@ -96,7 +96,7 @@ function activate_canvases(){
 }
 
 $(document).ready(function(){
-	window.goal_canvases = 5;
+	window.goal_canvases = 3;
 	canvases = [];
 	for(var i=1; i<=window.goal_canvases; i++){
 		canvases.push('<div id="canvas' + i + '" class="canvas box deselect_text"></div>');
