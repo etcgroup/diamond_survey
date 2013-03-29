@@ -8,9 +8,9 @@ include("utils/UI.php");
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-	<script src="confusion_diamond.js"></script>
+	<script src="survey2.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" />
-	<link rel="stylesheet" href="confusion_diamond.css" />
+	<link rel="stylesheet" href="survey2.css" />
 </head>
 <body>
     <div class="box">
@@ -27,14 +27,14 @@ include("utils/UI.php");
             chart</b> by using it to analyze how well the labeling process (outlined above) is working!</p>
         <p>An example of how to interpret the chart is below:</p>
         <p class="center">
-            <img src="example_1_legend.png" height="400px">
+            <img src="img/example_1_legend.png" height="400px">
         </p>
         <p>True signifies that the data type applied the label, where false did not. In triangle A, all three data types applied the label and were in agreement. 
             In triangle B, all three data types did not apply the label and were also in agreement. 
             Both of these elements lead to an accurate classifier.</p>
         <p>Analyze all 42 labels – each represented by a single chart – and identify each as accurate or inaccurate:</p>
         <p class="center">
-            <img src="canvasexample.png">
+            <img src="img/canvasexample.png">
         </p>
         <p>In the chart on the left, the automatic classifier is accurate relative to both current and historic data. 
             In the chart on the right, the automatic classifier is accurate, but <i>only for historic data, not current</i>. 
