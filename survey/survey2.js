@@ -52,7 +52,6 @@ function render_canvas(data) {
 		return question + widgets.join('\n');
 	});
 
-	$('#open-ended-'+window.loaded_canvases+'-data').val(JSON.stringify(data));
 	activate_canvases();
 }
 
@@ -84,14 +83,16 @@ function activate_canvases(){
 		$(".outline-active", $(this).parent().parent().parent().parent()).removeClass("outline-active");
 		$(this).parent().parent().addClass("outline-active");
 		canvas_num = $(this).parent().parent().parent().parent().attr('id').substring(6);
-		$("#open-ended-"+canvas_num+"-selection").val($('.type', $(this).parent().parent().parent()).text());
+		$("#open-ended-" + canvas_num + "-selection").val($('.type', $(this).parent().parent().parent()).text());
+		$('#open-ended-' + canvas_num + '-data').val($(this).parent().parent().text().trim());
 	});
 	
 	$('.canvas .num').on('click', function(){
 		$(".outline-active", $(this).parent().parent().parent().parent().parent()).removeClass("outline-active");
 		$(this).parent().parent().parent().addClass("outline-active");
 		canvas_num = $(this).parent().parent().parent().parent().parent().attr('id').substring(6);
-		$("#open-ended-"+canvas_num+"-selection").val($('.type', $(this).parent().parent().parent().parent()).text());
+		$("#open-ended-" + canvas_num + "-selection").val($('.type', $(this).parent().parent().parent().parent()).text());
+		$('#open-ended-' + canvas_num + '-data').val($(this).parent().parent().parent().text().trim());
 	});
 }
 
