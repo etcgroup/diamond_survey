@@ -1,8 +1,9 @@
-.label{ font-family:courier; }
-.code{ font- }
-.manual{ }
-.automatic{ }
-.verifying{ }
+.message{ font-family:courier; background-color:#dddddd; }
+.emotion{ font-variant:small-caps; }
+.manual, .automatic, .verifying{ padding-left:2px; padding-right:2px; }
+.manual{ background-color:#ffffaa; }
+.automatic{ background-color:#aaffaa; }
+.verifying{ background-color:#ffaaff; }
 
 .example_interp {
     width: 200px;
