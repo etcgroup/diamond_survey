@@ -14,7 +14,7 @@ $bases = array(
 			"NA" => array("FTT" => 25, "TTT" => 20, "TFT" => 0, "TTF" => 5, "FFT" => 5, "FTF" => 0, "FFF" => 20, "TFF" => 25)
 		),
     "50-80"=> array(
-            "uphill" => array("FTT" => 0, "TTT" => 20, "TFT" => 20, "TTF" => 10, "FFT" => 10, "FTF" => 20, "FFF" => 20, "TFF" => 0),
+            "uphill" => array("FTT" => 5, "TTT" => 20, "TFT" => 20, "TTF" => 5, "FFT" => 5, "FTF" => 20, "FFF" => 20, "TFF" => 5),
             "downhill" => array("FTT" => 10, "TTT" => 25, "TFT" => 15, "TTF" => 0, "FFT" => 0, "FTF" => 15, "FFF" => 25, "TFF" => 10)
         )
 );
