@@ -2,7 +2,6 @@
 
 // emotion labels  
 $labels15 = array("interest", "amusement", "considering", "agreement", "annoyance", "confusion", "acceptance", "apprehension", "frustration", "supportive", "surprise", "anticipation", "tired", "trust", "vigilance");
-$labels42 = array("acceptance", "admiration", "agreement", "amazement", "amusement", "anger", "annoyance", "anticipation", "apologetic", "apprehension", "boredom", "confusion", "considering", "disagreement", "disappointment", "disbelief", "disgust", "distraction", "ecstasy", "embarrassment", "excitement", "fear", "frustration", "gratitude", "grief", "happiness", "impatience", "interest", "joy", "loathing", "pensiveness", "pride", "rage", "relief", "sadness", "serenity", "supportive", "surprise", "terror", "tired", "trust", "vigilance");
 
 // setting bases for each error type
 $bases = array(
@@ -25,35 +24,6 @@ $task1 = array (
     "50-80" => 4
 );
 
-$task2 = array (
-    "70-80" => 5,
-    "50-40" => 2,
-    "50-80" => 5
-);
-
-$task3 = array (
-    "70-80" => 18,
-    "50-40" => 5,
-    "50-80" => 19
-);
-
-$task4 = array (
-    "70-80" => 18,
-    "50-40" => 6,
-    "50-80" => 18
-);
-
-$values = null;
-	
-//$cases = array ($ideal, $auto, $current, $accurate);
-//$selection = array_rand($cases);
-/*        
-switch($_GET["task"]){
-    case 1: $values = get_values($labels12, $task1, $bases, 10); break;
-    case 2: $values = get_values($labels12, $task2, $bases, 10); break;
-    case 3: $values = get_values($labels42, $task3, $bases, 10); break;
-    default: 
-}*/
 if(isset($_GET['seed'])) 
 	mt_srand($_GET['seed']);
 $values = get_values($labels15, $task1, $bases, 10);
@@ -66,19 +36,15 @@ echo json_encode($values);
 function get_values($labels_list, $error_list, $base_vals, $k) {
     $results = $labels_list;
     $labels = $labels_list;
-  //  shuffle($labels_list);
     foreach ($labels_list as $label) {    
         // selecting a random error level to assign to emotion label (ex. ideal, very accurate, etc.)
-        
         reset($error_list);
         $error = key($error_list);
 
-        $change = mt_rand(0, 9);
-
-		$types = array_keys($base_vals[$error]);
-		$type = $types[mt_rand(0, count($types)-1)];
+	$types = array_keys($base_vals[$error]);
+	$type = $types[mt_rand(0, count($types)-1)];
         $newresult = $base_vals[$error][$type];
-		$regions = array_keys($newresult);
+	$regions = array_keys($newresult);
 		
         //adding jitter
         for ($i = 0; $i < $k; $i++) {
