@@ -60,15 +60,8 @@
     font-size: 1.3em;
 }
 
-.code {
-    display: none;
-    position: fixed;
-    right: 19%;
-}
-
 .num {
     font-size: 0.7em;
-    
 }
 
 .likert {
@@ -102,7 +95,7 @@ body {
 
 .canvas{
 	width:470px;
-	}
+}
 
 .box {
     background-color: white;
