@@ -10,67 +10,63 @@ window.triangle_info["TFF"] = ["triangle-bottomright", {"historic": "black", "cu
 window.top_triangles = ["FTT", "TTT", "TFT", "TTF"];
 window.bottom_triangles = ["FFT", "FTF", "FFF", "TFF"];
 
+window.loaded_canvases = 0;
+
 function get_triangle(which, value){
 	var out = [];
-        var tooltip_vals = [];
-        var data_type = ["Historic", "Automatic", "Current"];
-        for (var i = 0, len = which.length; i < len; i++) {
-            if (which[i] === 'T') {
-                tooltip_vals.push("True in " + data_type[i]);
-            } 
-            else {
-                tooltip_vals.push("False in " + data_type[i]);
-            }
-        }
-        tooltip_vals = tooltip_vals.join('\n');
-        
-        out.push('<div class="'+which+' '+triangle_info[which][0]+' triangle">'+value+'</div>');
-        out.push('<div class="'+which+'text forward"><label title="'+value+' Messages rated:\n'+tooltip_vals+'"><p class="num">'+value+'</p></label></div>');
-	//out.push('<div class="squaresbackground" id="'+which+'background"></div>');
-	out.push('<div class="'+which+'squares">');
-	//$.each(triangle_info[which][1], function(datasource, color){
-	//	out.push('<div class="' + datasource + ' square' + color + '"></div>');
-	//});
-	out.push('</div>');
+	var tooltip_vals = [];
+	var data_type = ["Historic", "Automatic", "Current"];
+	for (var i = 0, len = which.length; i < len; i++) {
+		if (which[i] === 'T') {
+			tooltip_vals.push("True in " + data_type[i]);
+		} 
+		else {
+			tooltip_vals.push("False in " + data_type[i]);
+		}
+	}
+	tooltip_vals = tooltip_vals.join('\n');
+	out.push('<div class="'+which+' '+triangle_info[which][0]+' triangle">'+value+'</div>');
+	out.push('<div class="'+which+'text forward"><p class="num">'+value+'</p></div>');
 	return out.join('\n');
 }
 
 function render_canvas(data) {
 	var widgets = [];
-	var task = data.task;
-	data = data.values;
-        
-	$.each(data, function(code, dict_data){
-
-                
-                i = 0;
-                $.each(dict_data, function(data_type, diamond_data) {
-                    if(i == 0) {
-                        $Hill = dict_data["Hill"];
-                        $Type = dict_data["Type"];
-                        var toprow = []; 
-                        $.each(window.top_triangles, function(key, which){
-                                        toprow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
-                        });
-                        var bottomrow = [];
-                        $.each(window.bottom_triangles, function(key, which){
-                                        bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
-                        });
-                        //widgets.push('<div class="hill hide">' + $Hill + '</div><div class="type hide">' + $Type + '</div>');
-                        widgets.push('<div class="widget inline hover-group"><div class="hill hide">' + $Hill + '</div><div class="type hide">' + $Type + '</div>' +
-                        '<div class="label code hover-toggle"><p class="affect">' + code + '</p></div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
-                    }
-                    i++;
-                });
+	window.loaded_canvases++;
+	console.log("test2");
+	$.each(data, function(code, diamond_data){
+		info = diamond_data.type+' '+diamond_data.hill;
+		diamond_data = diamond_data.data;
+		var toprow = []; 
+		$.each(window.top_triangles, function(key, which){
+			toprow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
+		});
+		var bottomrow = [];
+		$.each(window.bottom_triangles, function(key, which){
+			bottomrow.push(get_triangle(which, diamond_data[which]==undefined?0:diamond_data[which]));
+		});
+		widgets.push('<div class="widget inline hover-group"><div style="display:none" class="type">' + info + '</div><div class="diamond outline"><div class="toprow">' + toprow.join('') + '</div><div class="bottomrow">' + bottomrow.join('') + '</div></div></div>');
 	});
-	$('#canvas' + task).html(widgets.join('\n'));
-        //$('#canvas' + task).html('<textarea name="' + task + '"></textarea>');
+	$('#canvas'+window.loaded_canvases).html(function(){
+		//question = '<div><span class=\"question\">Question ' + window.loaded_canvases + ':</span> Select (by clicking) the <u>the square that reflects the most problematic data</u>; see the examples in the introduction for help. <u>Justify your choice</u> in one or two sentences below:<br /><textarea name=\"open-ended-'+window.loaded_canvases+'-explanation\"></textarea><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-selection\" id=\"open-ended-'+window.loaded_canvases+'-selection\" /><input type=hidden name=\"open-ended-'+window.loaded_canvases+'-data\" id=\"open-ended-'+window.loaded_canvases+'-data\" /></div>';
+		return widgets.join('\n');
+	});
+	$("#open-ended-" + window.loaded_canvases + "-data").val(JSON.stringify(data));
+	console.log($("#open-ended-" + window.loaded_canvases + "-data").val());
 
-	$('#canvas' + task + ' .triangle').each(function(){
+	activate_canvases();
+}
+
+function activate_canvases(){
+	if(window.loaded_canvases < window.goal_canvases){
+		return;
+	}
+	
+	$('.canvas .triangle').each(function(){
 		var obj = $(this);
 		var which = "top";
 		if(obj.hasClass("triangle-bottomleft") || obj.hasClass("triangle-bottomright")){
-				which = "bottom";
+			which = "bottom";
 		}
 		var num = Number(obj.text());
 		var scale = [
@@ -84,20 +80,32 @@ function render_canvas(data) {
 		num = num > 5 ? 5 : num;
 		obj.text("").css("border-"+which+"-color","rgb("+scale[num][0]+","+scale[num][1]+","+scale[num][2]+")");
 	});
-	$('#canvas' + task + ' .triangle').on('click', function(){
-            $(".outline-active").removeClass("outline-active");
-            $(this).parent().parent().addClass("outline-active");
-            $('#answer').val($('.code', $(this).parent().parent().parent()).text());
-            $('#hill').val($('.hill', $(this).parent().parent().parent()).text());
-            $('#type').val($('.type', $(this).parent().parent().parent()).text());
-        });
-	$('#canvas' + task + ' .num').on('click', function(){
-            $(".outline-active").removeClass("outline-active");
-            $(this).parent().parent().parent().parent().addClass("outline-active");
-            $('#answer').val($('.code', $(this).parent().parent().parent().parent().parent()).text());
-            $('#hill').val($('.hill', $(this).parent().parent().parent().parent().parent()).text());
-            $('#type').val($('.type', $(this).parent().parent().parent().parent().parent()).text());
-        });
+	
+	$('.canvas .triangle').on('click', function(){
+		$(".outline-active", $(this).parent().parent().parent().parent()).removeClass("outline-active");
+		$(this).parent().parent().addClass("outline-active");
+		canvas_num = $(this).parent().parent().parent().parent().attr('id').substring(6);
+		$('#open-ended-' + canvas_num + '-selection').val($(this).parent().parent().text().trim());
+	});
+	
+	$('.canvas .num').on('click', function(){
+		$(".outline-active", $(this).parent().parent().parent().parent().parent()).removeClass("outline-active");
+		$(this).parent().parent().parent().addClass("outline-active");
+		canvas_num = $(this).parent().parent().parent().parent().parent().attr('id').substring(6);
+		$('#open-ended-' + canvas_num + '-selection').val($(this).parent().parent().parent().text().trim());
+	});
 }
 
-$.getJSON('data.php', render_canvas);
+$(document).ready(function(){
+	window.goal_canvases = 1;
+	canvases = [];
+	for(var i=1; i<=window.goal_canvases; i++){
+		canvases.push('<div id="canvas' + i + '" class="canvas box deselect_text"></div>');
+	}
+	$('#canvases').html(canvases.join('\n'));
+	var seed = 1234567;
+	for(var i=1; i<=window.goal_canvases; i++){
+		$.getJSON('data.php', {'seed': seed * i},  render_canvas);
+
+	}
+});
