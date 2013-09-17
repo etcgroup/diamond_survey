@@ -1,10 +1,8 @@
-<?php
-include("utils/UI.php");
-?>
 <html>
     <head>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <link rel="stylesheet" href="css/bootstrap.css" />
+        <link rel="stylesheet" href="css/baseline.css" />
         <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="https://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <script src="libs/bootstrap.js"></script>
@@ -212,7 +210,25 @@ include("utils/UI.php");
             <div class="box">
                 <h1>Scenario 1</h1>
                 <p>Consider the chart below:</p>
-                <p class="img"><img src="img/scenario1.PNG" alt="" width="300"/></p>
+                <!-- <p class="img"><img src="img/scenario1.PNG" alt="" width="300"/></p> -->
+
+                <p>Out</p>
+                div class=”shaded2x2”>
+                    <div class=”tl”>2</div>
+                    <div class=”tr”>17</div>
+                    <div class=”bl”>4</div>
+                    <div class=”br”>1</div>
+                </div>
+
+                <p>OIn</p>
+                div class=”shaded2x2”>
+                    <div class=”tl”>2</div>
+                    <div class=”tr”>17</div>
+                    <div class=”bl”>4</div>
+                    <div class=”br”>1</div>
+                </div>
+
+
 
                 <div class="help ui-state-highlight" help="possible-problems">help</div>
                 <p><span class="question">Question 1.</span> What problem(s) exist

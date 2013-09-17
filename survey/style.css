@@ -1,0 +1,14 @@
+body {
+background-color: #aaa;
+}
+
+#content {
+background-color: white;
+margin-top:50px;
+margin-left: auto;
+margin-right: auto;
+padding: 10px;
+padding-left: 20px;
+padding-right: 20px;
+width: 550px;
+}

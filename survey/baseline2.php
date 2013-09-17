@@ -5,10 +5,68 @@ include("utils/UI.php");
     <head>
         <link rel="stylesheet" href="https://code.jquery.com/ui/1.10.1/themes/base/jquery-ui.css" />
         <link rel="stylesheet" href="css/bootstrap.css" />
+        <!-- <link rel="stylesheet" href="css/baseline.css" /> -->
         <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
         <script src="https://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
         <script src="libs/bootstrap.js"></script>
         <style>
+            .shaded { 
+                width:20px; 
+                height:50px; 
+                position:relative; 
+            }
+
+            .shade {
+                border: 1px solid;
+            }
+
+            .tl { 
+                padding-left: 15px;
+                padding-top: 15px;
+                width: 35px;
+                height: 35px;
+                position:absolute; 
+                top:2px; 
+                left:2px; }
+
+            .tr { 
+                padding-left: 15px;
+                padding-top: 15px;
+                width: 35px;
+                height: 35px;
+                position:absolute; 
+                top:2px; 
+                left:53px; }
+
+            .br { 
+                padding-left: 15px;
+                padding-top: 15px;
+                width: 35px;
+                height: 35px;
+                position:absolute; 
+                top:53px; 
+                left:53px; }
+
+            .bl {
+                padding-left: 15px;
+                padding-top: 15px;
+                width: 35px;
+                height: 35px;
+                position:absolute; 
+                top:53px;
+                left:2px; }
+
+            .in {
+                float: left;
+            }
+
+            .out {
+                float: left;
+                margin-left: 105px;
+            }
+
+
+
             .sortable { list-style-type: none; margin: 0; padding: 0; width: 500px; }
             .sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: .9em; height:18px }
             .sortable li span { position: absolute; margin-left: -1.3em; }
@@ -104,9 +162,29 @@ include("utils/UI.php");
                     sessions_example += time_example[x];
                 }
                 total_example.value = sessions_example;
+
             
             }
+
+            /*function color (obj) {
+                
+                console.log(obj);
+                if (obj < 10) {
+                   return "#FFFFFF";
+                } else {
+                    return "#47A347"
+                }
+            } */
+
             $(function() {
+                //$(".shade").css("background-color", color($(this).innerText));
+
+               /* $(".shade").css("background-color", function(){ 
+                    alert($(this).innerText); 
+                    return color($(this).innerText); 
+                }); */
+
+
                 $(".sortable").sortable({
                     stop: function() {
                         ids = $(this).sortable("toArray");
@@ -158,7 +236,7 @@ include("utils/UI.php");
     <body>
         <div id="key">
             <p><button id="key-button">[-]</button> <em>How to read the chart:</em></p>
-            <p class="img"><img src="img/example_1_legend.PNG" alt="" height=300 /></p>
+            <p class="img"><img src="img/baseline2_legend_key.png" height=250 /></p>
         </div>
         <div class="box">
             <div class="help ui-state-highlight" help="example" style="margin-top:20px">example</div>
@@ -186,12 +264,18 @@ include("utils/UI.php");
                 <strong>Please help me improve this chart</strong> by using it to analyze how well
                 the labeling process (outlined above) is working!</p>
 
-            <p>For example, consider these two charts:</p>
-            <p class="img"><img src="img/example_2_obsolete.PNG" height=200></p>
+            <p>Each chart is composed of squares organized into two parts. Each square
+                compares a different aspect of each dataset (see legend). The best
+                classifiers have high percentages of agreement (ex. <img src="img/TTT.png"/> and  <img src="img/FFF.png"/>)
 
-            <p>In the chart on the left, the automatic classifier is accurate
+                and low percentages of disagreement (ex. <img src="img/TTF.png"/>, <img src="img/FFT.png"/>, and etc.). </p>
+
+            <p>For example, consider these two charts:</p>
+            <p class="img"><img src="img/baseline2_example.png" height=300></p>
+
+            <p>In the chart on the top (Chart A), the automatic classifier is accurate
                 relative to both current and historic data. In the chart on the
-                right, the automatic classifier is accurate, but <em>only for
+                bottom (Chart B), the automatic classifier is accurate, but <em>only for
                     historic data</em>, not current. The historic and automatic
                 data can be said to be obsolete because it is outdated; what
                 used to be true is not true now. This might happen if the
@@ -212,7 +296,41 @@ include("utils/UI.php");
             <div class="box">
                 <h1>Scenario 1</h1>
                 <p>Consider the chart below:</p>
-                <p class="img"><img src="img/scenario1.PNG" alt="" width="300"/></p>
+                <!-- <p class="img"><img src="img/scenario1.PNG" alt="" width="300"/></p> -->
+
+                <div class="baselines">
+                    <div class="in">
+                        <p>Accuracy</p>
+                        <div class="shaded">
+                            <div class="shade tl" style="background-color:#FFFFFF">2</div>
+                            <div class="shade tr" style="background-color:#C2E0C2">17</div>
+                            <div class="shade bl" style="background-color:#FFFFFF">4</div>
+                            <div class="shade br" style="background-color:#FFFFFF">1</div>
+                        </div>
+                    </div>
+
+                    <div class="out">
+                        <p>Errors</p>
+                        <div class="shaded">
+                            <div class="shade tl" style="background-color:#C2E0C2">13</div>
+                            <div class="shade tr" style="background-color:#C2E0C2">18</div>
+                            <div class="shade bl" style="background-color:#FFFFFF">9</div>
+                            <div class="shade br" style="background-color:#70b870">36</div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
 
                 <div class="help ui-state-highlight" help="possible-problems">help</div>
                 <p><span class="question">Question 1.</span> What problem(s) exist
@@ -245,7 +363,43 @@ include("utils/UI.php");
             <div class="box">
                 <h1>Scenario 2</h1>
                 <p>Consider the chart below:</p>
-                <p class="img"><img src="img/scenario2.PNG" alt="" wdith="300" /></p>
+                
+
+            <div class="baselines">
+                    <div class="in">
+                        <p>Accuracy</p>
+                        <div class="shaded">
+                            <div class="shade tl" style="background-color:#70b870">36</div>
+                            <div class="shade tr" style="background-color:#FFFFFF">9</div>
+                            <div class="shade bl" style="background-color:#FFFFFF">9</div>
+                            <div class="shade br" style="background-color:#99cc99">22</div>
+                        </div>
+                    </div>
+
+                    <div class="out">
+                        <p>Errors</p>
+                        <div class="shaded">
+                            <div class="shade tl" style="background-color:#C2E0C2">17</div>
+                            <div class="shade tr" style="background-color:#FFFFFF">4</div>
+                            <div class="shade bl" style="background-color:#FFFFFF">2</div>
+                            <div class="shade br" style="background-color:#FFFFFF">1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+
+
                 <div class="help ui-state-highlight" help="possible-problems">help</div>
                 <p><span class="question">Question 3.</span> Describe what
                     problems exist in this scenario.
@@ -258,7 +412,84 @@ include("utils/UI.php");
             <div class="box">
                 <h1>Scenario 3</h1>
                 <p>Consider the chart below:</p>
-                <p class="img"><img src="img/scenario3.PNG" alt="" width="500 "/></p>
+
+
+            <div>
+                <h3>#1</h3>
+            </div>
+            <div class="baselines">
+                    <div class="in">
+                        <p>Accuracy</p>
+                        <div class="shaded">
+                            <div class="shade tl" style="background-color:#99cc99">25</div>
+                            <div class="shade tr" style="background-color:#C2E0C2">14</div>
+                            <div class="shade bl" style="background-color:#C2E0C2">12</div>
+                            <div class="shade br" style="background-color:#99cc99">27</div>
+                        </div>
+                    </div>
+
+                    <div class="out">
+                        <p>Errors</p>
+                        <div class="shaded">
+                            <div class="shade tl" style="background-color:#FFFFFF">8</div>
+                            <div class="shade tr" style="background-color:#FFFFFF">9</div>
+                            <div class="shade bl" style="background-color:#FFFFFF">3</div>
+                            <div class="shade br" style="background-color:#FFFFFF">2</div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+            <div>
+                <h3>#2</h3>
+            </div>
+            <div class="baselines">
+                    <div class="in">
+                        <p>Accuracy</p>
+                        <div class="shaded">
+                            <div class="shade tl" style="background-color:#C2E0C2">10</div>
+                            <div class="shade tr" style="background-color:#C2E0C2">13</div>
+                            <div class="shade bl" style="background-color:#FFFFFF">5</div>
+                            <div class="shade br" style="background-color:#99cc99">27</div>
+                        </div>
+                    </div>
+
+                    <div class="out">
+                        <p>Errors</p>
+                        <div class="shaded">
+                            <div class="shade tl" style="background-color:#C2E0C2">15</div>
+                            <div class="shade tr" style="background-color:#99cc99">26</div>
+                            <div class="shade bl" style="background-color:#FFFFFF">3</div>
+                            <div class="shade br" style="background-color:#FFFFFF">1</div>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+
+
+
+
+
+
                 <div class="help ui-state-highlight" help="possible-problems">help</div>
                 <p>Here, two charts are shown side by side: the first one is
                     from December 2012, and the second - from January 2013.

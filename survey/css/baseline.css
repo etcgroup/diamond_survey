@@ -1,0 +1,30 @@
+.shaded { 
+	background-color:#000000; 
+	width:104px; 
+	height:104px; 
+	position:relative; 
+}
+
+.tl { 
+	width: 10px;
+	position:absolute; 
+	top:2px; 
+	left:2px; }
+
+.tr { 
+	width: 10px;
+	position:absolute; 
+	top:1002px; 
+	right:2px; }
+
+.br { 
+	width: 10px;
+	position:absolute; 
+	bottom:2px; 
+	right:2px; }
+
+.bl {
+ 	width: 10px;
+ 	position:absolute; 
+ 	bottom:2px;
+ 	left:2px; }
